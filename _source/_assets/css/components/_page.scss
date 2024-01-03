@@ -1,0 +1,27 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75em 1em;
+}
+
+.page-footer {
+  position: relative;
+  margin: 6em 0 0 0;
+  padding: 3em 0;
+  text-align: center;
+
+  @include media(medium) {
+    &:before {
+      background: url('/assets/pattern.svg') center top no-repeat;
+      background-size: cover;
+      content: '';
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 110%;
+      z-index: -1;
+    }
+  }
+}
