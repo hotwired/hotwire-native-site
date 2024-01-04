@@ -23,6 +23,7 @@
   height: 2em;
   margin: 0;
   max-height: 100%;
+  text-decoration: none;
 
   .logo {
     height: 100%;
@@ -42,6 +43,18 @@
     &:hover path {
       fill: $color-accent;
     }
+
+    &:hover span {
+      color: $color-accent;
+    }
+  }
+
+  span {
+    font-family: $mono-stack;
+    font-size: $font-xxx-large;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-style: italic;
   }
 }
 

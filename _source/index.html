@@ -7,13 +7,19 @@ layout: default
 
 <div class="landing-intro grid">
   <h1 class="landing-intro__text grid__item grid__item--start-2 grid__item--span-10">
-    Create fully native controls, driven by your web app.
+    Build high-fidelity hybrid apps with native navigation and a single shared web view.
   </h1>
 </div>
 
-<p class="landing-version">
-  <span>Current version: <a href="{{ release.url }}">{{ release.tag_name }}</a> &mdash; released {{ release.created_at | date: "%b %d, %Y" }}</span>
-</p>
+<div class="landing-versions grid__item grid__item--span-12">
+  <p class="landing-version">
+    <span>Current Android version: <a href="{{ android_release.url }}">{{ android_release.tag_name }}</a> &mdash; released {{ android_release.created_at | date: "%b %e, %Y" }}</span>
+  </p>
+
+  <p class="landing-version">
+    <span>Current iOS version: <a href="{{ ios_release.url }}">{{ ios_release.tag_name }}</a> &mdash; released {{ ios_release.created_at | date: "%b %e, %Y" }}</span>
+  </p>
+</div>
 
 <section class="landing-summary">
   <p>
@@ -41,9 +47,14 @@ layout: default
     Installation
   </a>
 
-  <a class="landing-actions__item" href="{{ site.github_url }}">
+  <a class="landing-actions__item" href="{{ site.android_github_url }}">
     <div class="landing-actions__icon landing-actions__icon--github" aria-hidden="true"></div>
-    Source
+    Android Source
+  </a>
+
+  <a class="landing-actions__item" href="{{ site.ios_github_url }}">
+    <div class="landing-actions__icon landing-actions__icon--github" aria-hidden="true"></div>
+    iOS Source
   </a>
 </div>
 

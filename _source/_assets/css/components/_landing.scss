@@ -25,6 +25,12 @@
   font-size: $font-large;
 }
 
+.landing-versions {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+
 .landing-version {
   grid-column: 2/5;
   position: relative;
