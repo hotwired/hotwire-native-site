@@ -1,6 +1,6 @@
 <!-- TODO: Add real Hotwire Native logo and fix hover/highlight. -->
 <svg class="logo" width="100" height="60" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
-  <g fill="#D946EF" stroke-width="1">
+  <g fill="#A855F7" stroke-width="1">
     <rect id="Rectangle" x="0" y="0" width="250" height="250" rx="16"></rect>
     <path d="M106.197674,18 L87.0625,18 C74.325433,18 64,28.3134406 64,41.0357143 L64,209.964286 C64,222.686559 74.325433,233 87.0625,233 L163.9375,233 C176.674567,233 187,222.686559 187,209.964286 L187,41.0357143 C187,28.3134406 176.674567,18 163.9375,18 L146.709302,18 M95.5,210.5 L155.5,210.5" id="Shape" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"></path>
   </g>
