@@ -1,6 +1,6 @@
 ---
 permalink: /handbook/getting-started-ios.html
-description: ""
+description: "How to create a new Hotwire Native app on iOS."
 ---
 
 # Getting Started on iOS
@@ -36,6 +36,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 Click Product → Run and the app should launch in the simulator.
 
-Note that we are pointing to a demo application server that expects a bit more native functionality. Some of the links, like native controls, won't work out of the box. Check out the demo app included in the repo for examples on how to handle those.
+Note that we are pointing to a demo application server that expects a bit more native functionality. Some of the links, like native controls, won't work out of the box. Check out the [demo app](#) included in the repo for examples on how to handle those.
 
 This example only touches on the core requirements of creating a `TurboNavigator` and routing the root URL. Feel free to can change the URL used for the initial visit to point to your web app.

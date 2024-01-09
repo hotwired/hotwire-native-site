@@ -2,7 +2,7 @@
 permalink: /handbook/turbo-navigator.html
 redirect_from: /handbook/
 title: "Turbo Navigator"
-description: "Produce common navigation patterns via the path configuration."
+description: "Execute common navigation patterns via the path configuration and Turbo Navigator."
 ---
 
 # Turbo Navigator

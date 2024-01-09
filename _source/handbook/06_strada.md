@@ -1,7 +1,7 @@
 ---
 permalink: /handbook/strada.html
 title: "Strada"
-description: "Build HTML-powered native components with Strada."
+description: "Build HTML-driven native components with Strada."
 ---
 
 # Strada
