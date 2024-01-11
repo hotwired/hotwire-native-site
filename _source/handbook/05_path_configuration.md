@@ -86,4 +86,4 @@ This configuration does two things:
 1. Overrides URL path patterns *ending* in `/new` to be presented as a modal with pull-to-refresh disabled.
 2. Routes the `/number` URL path to a native view controller identified as `"numbers"`.
 
-Read the [path configuration reference](/reference/path-configuration) for more information as well as all the behavior Hotwire Native provides out of the box.
+The [path configuration reference](/reference/path-configuration) provides more information including all the behavior Hotwire Native provides out of the box.
