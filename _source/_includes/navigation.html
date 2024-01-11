@@ -12,12 +12,12 @@
 
   <ul class="nav__list {% if type == "horizontal" %} nav__list--horizontal{% endif %}">
     <li>
-      <a class="nav__list-link{% if section_title == "Handbook" %} active{% endif %}" href="/handbook">Handbook</a>
+      <a class="nav__list-link{% if section_title == "Handbook" %} active{% endif %}" href="/handbook/how-it-works">Handbook</a>
 
       {% include section-nav.html, section: "handbook" %}
     </li>
     <li>
-      <a class="nav__list-link{% if section_title == "Reference" %} active{% endif %}" href="/reference/components">Reference</a>
+      <a class="nav__list-link{% if section_title == "Reference" %} active{% endif %}" href="/reference/path-configuration">Reference</a>
 
       {% include section-nav.html, section: "reference" %}
     </li>

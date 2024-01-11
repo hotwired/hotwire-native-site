@@ -1,6 +1,5 @@
 ---
 permalink: /handbook/how-it-works.html
-redirect_from: /handbook
 description: "How Hotwire Native renders web content in a native app."
 ---
 
