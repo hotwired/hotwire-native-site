@@ -7,23 +7,26 @@ layout: default
 
 <div class="landing-intro grid">
   <h1 class="landing-intro__text grid__item grid__item--start-2 grid__item--span-10">
-    Hotwire Native makes mobile apps possible for small teams.
+    Hotwire Native is a web-first framework to build native mobile apps.
   </h1>
 </div>
 
 <div class="landing-versions grid__item grid__item--span-12">
   <p class="landing-version">
-    <span>Current Android version: <a href="{{ android_release.url }}">{{ android_release.tag_name }}</a> &mdash; released {{ android_release.created_at | date: "%b %e, %Y" }}</span>
+    <span>Current iOS version: <a href="{{ ios_release.url }}">{{ ios_release.tag_name }}</a> &mdash; released {{ ios_release.created_at | date: "%b %e, %Y" }}</span>
   </p>
 
   <p class="landing-version">
-    <span>Current iOS version: <a href="{{ ios_release.url }}">{{ ios_release.tag_name }}</a> &mdash; released {{ ios_release.created_at | date: "%b %e, %Y" }}</span>
+    <span>Current Android version: <a href="{{ android_release.url }}">{{ android_release.tag_name }}</a> &mdash; released {{ android_release.created_at | date: "%b %e, %Y" }}</span>
   </p>
 </div>
 
 <section class="landing-summary">
   <p>
-    Using <b>Hotwire Native</b> means building your screens once, in HTML and CSS, and reusing them across all your mobile platforms.
+    Building completely native mobile apps is often time-consuming, requires large teams, and every update needs to wind its way through the app store review process. <b>Hotwire Native</b> provides an answer to all of these drawbacks with its web-first approach.</b>
+  </p>
+  <p>
+    Hotwire Native enables you to build your screens once, in HTML and CSS, and reuse them across all your mobile platforms. If you already have a <a href="https://hotwired.dev">Hotwire</a> web app, you can use the screens you've already built!
   </p>
 
   <p>
@@ -35,11 +38,15 @@ layout: default
   </p>
 
   <p>
-    It's all done by wrapping a web view and rendering HTML. And for those instances when the web's not enough, you can upgrade to native screens and components with <a href="https://strada.hotwired.dev">Strada</a>.
+    The framework wraps a web view within a native shell and renders HTML from your server. Native navigation and transition animations between screens work automatically out-of-the-box. And for those instances when the web's not enough, you can upgrade to fully native screens and components.
   </p>
 
   <p>
-  Learn <a href="/handbook/how-it-works">how it works</a> or get started with an <a href="/handbook/getting-started-android">Android</a> or <a href="/handbook/getting-started-ios">iOS</a> app.
+    It's all done by combining the power of <a href="https://turbo.hotwired.dev">Turbo</a> and <a href="https://strada.hotwired.dev">Strada</a> together into a single top-level framework that makes it easy to build your own mobile apps.
+  </p>
+
+  <p>
+  Learn <a href="/handbook/how-it-works">how it works</a> or get started with an <a href="/handbook/getting-started-ios">iOS</a> or <a href="/handbook/getting-started-android">Android</a> app.
   </p>
 </section>
 
@@ -54,14 +61,14 @@ layout: default
     Installation
   </a>
 
-  <a class="landing-actions__item" href="{{ site.android_github_url }}">
-    <div class="landing-actions__icon landing-actions__icon--github" aria-hidden="true"></div>
-    Android Source
-  </a>
-
   <a class="landing-actions__item" href="{{ site.ios_github_url }}">
     <div class="landing-actions__icon landing-actions__icon--github" aria-hidden="true"></div>
     iOS Source
+  </a>
+
+  <a class="landing-actions__item" href="{{ site.android_github_url }}">
+    <div class="landing-actions__icon landing-actions__icon--github" aria-hidden="true"></div>
+    Android Source
   </a>
 </div>
 
