@@ -34,4 +34,4 @@ Note that if the URL of a tapped link is _not_ on the same domain as the current
 
 Hotwire Native supports a bunch of other navigation patterns like popping the entire stack and manually refreshing the current page. But individually decorating each link would create a maintenance nightmare.
 
-So we've abstracted these _rules_ into something called the path configuration.
+So we've abstracted these _rules_ into something called the [path configuration](/overview/path-configuration).
