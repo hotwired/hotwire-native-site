@@ -1,20 +1,12 @@
 ---
-permalink: /handbook/native-screens.html
+permalink: /ios/native-screens.html
 title: "Native Screens"
-description: "Integrate fully native Kotlin and Swift screens in your Hotiwre Native app."
+description: "Integrate fully native Swift screens in your Hotiwre Native app."
 ---
 
 # Native Screens
 
-There are times where neither web-based content nor [native components](/handbook/native-components) are enough. Times where you need maximum fidelity or interaction with native SDKs and APIs. For these, you can build fully native screens in Kotlin and Swift.
-
-## Native Screens on Android
-
-> Coming soon...
-
-## Native Screens on iOS
-
-To render a native screen on iOS you need match an identifier in the [path configuration](/handbook/path-configuration) with your `UIViewController`.
+To render a native screen on iOS you need match an identifier in the [path configuration](/overview/path-configuration) with your `UIViewController`.
 
 First, match a URL path pattern and set the `view_controller` property.
 

@@ -114,7 +114,12 @@
   mask: url('/assets/icon-install.svg') center / 100% no-repeat;
 }
 
-.landing-actions__icon--github {
-  -webkit-mask: url('/assets/icon-github.svg') center / 100% no-repeat;
-  mask: url('/assets/icon-github.svg') center / 100% no-repeat;
+.landing-actions__icon--apple {
+  -webkit-mask: url('/assets/icon-apple.svg') center / 100% no-repeat;
+  mask: url('/assets/icon-apple.svg') center / 100% no-repeat;
+}
+
+.landing-actions__icon--android {
+  -webkit-mask: url('/assets/icon-android.svg') center / 100% no-repeat;
+  mask: url('/assets/icon-android.svg') center / 100% no-repeat;
 }

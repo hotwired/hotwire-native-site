@@ -12,9 +12,19 @@
 
   <ul class="nav__list {% if type == "horizontal" %} nav__list--horizontal{% endif %}">
     <li>
-      <a class="nav__list-link{% if section_title == "Handbook" %} active{% endif %}" href="/handbook/how-it-works">Handbook</a>
+      <a class="nav__list-link{% if section_title == "Overview" %} active{% endif %}" href="/overview/how-it-works">Overview</a>
 
-      {% include section-nav.html, section: "handbook" %}
+      {% include section-nav.html, section: "overview" %}
+    </li>
+    <li>
+      <a class="nav__list-link{% if section_title == "Build an iOS app" %} active{% endif %}" href="/ios/getting-started">Build an iOS app</a>
+
+      {% include section-nav.html, section: "ios" %}
+    </li>
+    <li>
+      <a class="nav__list-link{% if section_title == "Build an Android app" %} active{% endif %}" href="/android/getting-started">Build an Android app</a>
+
+      {% include section-nav.html, section: "android" %}
     </li>
     <li>
       <a class="nav__list-link{% if section_title == "Reference" %} active{% endif %}" href="/reference/path-configuration">Reference</a>
@@ -23,12 +33,6 @@
     </li>
     <li>
       <a class="nav__list-link" href="{{ site.discourse_url }}" title="Have a question? Connect with other developers on the Hotwire Discourse community forum.">Community</a>
-    </li>
-    <li>
-      <a class="nav__list-link" href="{{ site.android_github_url }}" title="Head over to GitHub for Android code, bug reports, and pull requests.">Android Code</a>
-    </li>
-    <li>
-      <a class="nav__list-link" href="{{ site.ios_github_url }}" title="Head over to GitHub for iOS code, bug reports, and pull requests.">iOS Code</a>
     </li>
   </ul>
 

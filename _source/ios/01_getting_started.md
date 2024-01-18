@@ -1,15 +1,19 @@
 ---
-permalink: /handbook/getting-started-ios.html
+permalink: /ios/getting-started.html
 description: "How to create a new Hotwire Native app on iOS."
 ---
 
-# Getting Started on iOS
+# Getting Started
 
 Follow these steps to create a minimal Hotwire Native application on iOS. This will support basic back/forward navigation but will not be a fully functional application.
+
+## New Project
 
 First, download and install [Xcode 15+](https://developer.apple.com/xcode/).
 
 Open Xcode and create a new iOS app via File → New → Project… Choose the default iOS "App" template, select "Swift" under "Language", and "Storyboard" under "Interface" in the project creation dialog.
+
+## Integrate Hotwire Native
 
 Then add the Hotwire Native package via File → Add Packages Dependencies… and enter `https://github.com/hotwired/hotwire-native-ios`.
 
@@ -33,6 +37,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 ```
+
+## Run!
 
 Click Product → Run and the app should launch in the simulator.
 

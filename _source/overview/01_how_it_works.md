@@ -1,5 +1,5 @@
 ---
-permalink: /handbook/how-it-works.html
+permalink: /overview/how-it-works.html
 description: "How Hotwire Native renders web content in a native app."
 ---
 
@@ -20,5 +20,3 @@ Every time a new link is clicked a screenshot of the current page is captured. T
 Adding new screens is as straightforward as building new pages in your web app. Your Android and iOS clients see updates as soon as you deploy. All without new submissions to the app stores.
 
 And upgrading to native isn’t an all-or-nothing decision. You are free to choose specific screens or even specific *components* to migrate when you’re ready. It truly is progressive enhancement.
-
-Get started by following the [Android](/handbook/getting-started-android) or [iOS](/handbook/getting-started-ios) guides.

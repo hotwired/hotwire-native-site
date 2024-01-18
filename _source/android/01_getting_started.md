@@ -1,8 +1,8 @@
 ---
-permalink: /handbook/getting-started-android.html
+permalink: /android/getting-started.html
 description: "How to create a new Hotwire Native app on Android."
 ---
 
-# Getting Started on Android
+# Getting Started
 
 > Coming soon...
