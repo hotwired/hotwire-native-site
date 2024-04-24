@@ -8,11 +8,12 @@ description: "How to navigate between pages in Hotwire Native."
 
 The main interaction in Hotwire Native apps is tapping on links. Like the web, every page can link to another.
 
-When a link is tapped Hotwire Native:
+1. Click a link.
+1. A new screen is pushed onto the navigation stack with a native animation.
+1. A spinner appears indicating the page is loading.
+1. The page contents render inside the web view.
 
-1. Pushes a new screen onto the navigation stack with a native animation.
-1. Shows a spinner to indicate the page is loading.
-1. Renders the page contents inside the web view.
+<img src="/assets/basic-navigation.png" width="800" alt="Basic navigation">
 
 ## Replacing Screens
 
