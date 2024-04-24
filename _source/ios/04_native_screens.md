@@ -44,12 +44,12 @@ Finally, tell Hotwire Native to use this new controller when the property matche
 
 ```swift
 class SceneDelegate: UIResponder {
-    private lazy var navigator = TurboNavigator(delegate: self)
+    private lazy var navigator = Navigator(delegate: self)
 
     // ...
 }
 
-extension SceneDelegate: TurboNavigatorDelegate {
+extension SceneDelegate: NavigatorDelegate {
     func handle(proposal: VisitProposal) -> ProposalResult {
         switch proposal.viewController {
         case NumbersViewController.pathConfigurationIdentifier:

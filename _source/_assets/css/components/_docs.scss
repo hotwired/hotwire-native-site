@@ -24,6 +24,11 @@
   p > img:not([class]) {
     min-width: 15em;
   }
+
+  img.border {
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.5em;
+  }
 }
 
 .docs__index {
