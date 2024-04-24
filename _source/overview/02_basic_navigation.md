@@ -1,5 +1,6 @@
 ---
 permalink: /overview/basic-navigation.html
+order: 02
 title: "Basic Navigation"
 description: "How to navigate between pages in Hotwire Native."
 ---

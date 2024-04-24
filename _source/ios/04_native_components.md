@@ -1,5 +1,6 @@
 ---
 permalink: /ios/native-components.html
+order: 04
 title: "Native Components"
 description: "Bridge the gap with native components driven by the web on iOS."
 ---

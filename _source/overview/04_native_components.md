@@ -1,5 +1,6 @@
 ---
 permalink: /overview/native-components.html
+order: 04
 title: "Native Components"
 description: "Build HTML-driven native components with Strada."
 ---

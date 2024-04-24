@@ -1,5 +1,6 @@
 ---
 permalink: /overview/path-configuration.html
+order: 03
 title: "Path Configuration"
 description: "Customize app behavior remotely via the path configuration."
 ---
