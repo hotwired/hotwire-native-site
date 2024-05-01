@@ -1,14 +1,15 @@
 ---
 permalink: /ios/native-components.html
+order: 03
 title: "Native Components"
 description: "Bridge the gap with native components driven by the web on iOS."
 ---
 
 # Native Components
 
-Hotwire Native abstracts the integration with [Strada](https://strada.hotwired.dev), making it even faster to get started. Let's walk through how to create a new component on iOS. This assumes you've already installed [the Strada JavaScript package](https://strada.hotwired.dev/handbook/installing).
+Hotwire Native abstracts the integration with the bridge (formerly [Strada](https://strada.hotwired.dev)), making it even faster to get started. Let's walk through how to create a new component on iOS. This assumes you've already installed [the Strada JavaScript package](https://strada.hotwired.dev/handbook/installing) on your server.
 
-Our component will add a native bar button item to the right side of the navigation bar. Tapping it will "click" the associated link in the HTML that drove it.
+The component will add a native bar button item to the right side of the navigation bar. Tapping it will "click" the associated link in the HTML.
 
 <img src="/assets/strada-ios-button.png" width="500" alt="Native button component on iOS">
 
@@ -46,7 +47,11 @@ export default class extends BridgeComponent {
 }
 ```
 
-When `data-controller="button"` is found in the DOM `connect()` will be fired. This then calls `send()` which passes a message to a native component identified by `"button"`.
+This component identifies itself as `"button"` via the static `component` property. It will pass all messages to a native component identified with the same name.
+
+When `data-controller="button"` is found in the DOM then `connect()` is fired. This function calls `send()` which passes the title of the button to the native component.
+
+The third parameter of send, the callback block, is executed when the native component replies back to the message, which is explained below. Here, the button is clicked.
 
 ## Swift Component
 
@@ -86,9 +91,11 @@ private extension ButtonComponent {
 }
 ```
 
-This unpacks the `{title}` object from the fired message and adds a native button to the right side of the screen. When it's tapped, the `UIAction` is fired, replying to the Strada message and calling `this.element.click()` in JavaScript.
+First, the component identifies itself as `"button"` via `name` to match the Stimulus controller.
 
-Finally, register the component. If you followed the [getting started steps](/overview/getting-started-ios) then this will go in `SceneDelegate.swift`.
+`onReceive(message:)` is called when a message is received from Stimulus. Here, the `{title}` object is unpacked to add a native button to the right side of the screen. When it's tapped, the `UIAction` is fired, replying to the message and calling the callback block, clicking the button.
+
+Finally, register the component. If you followed the [getting started steps](/overview/getting-started-ios) then this will go in `SceneDelegate.swift` before routing your first URL.
 
 ```swift
 Hotwire.registerStradaComponents([
