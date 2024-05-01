@@ -1,5 +1,6 @@
 ---
 permalink: /ios/native-screens.html
+order: 04
 title: "Native Screens"
 description: "Integrate fully native Swift screens in your Hotiwre Native app."
 ---
@@ -8,7 +9,7 @@ description: "Integrate fully native Swift screens in your Hotiwre Native app."
 
 To render a native screen on iOS you need match an identifier in the [path configuration](/overview/path-configuration) with your `UIViewController`.
 
-First, match a URL path pattern and set the `view_controller` property.
+First, match a URL path pattern and set the `view_controller` property. This path configuration routes all URLs ending in `/numbers`.
 
 ```json
 {
@@ -61,4 +62,4 @@ extension SceneDelegate: NavigatorDelegate {
 }
 ```
 
-Check out the [demo app](#) to see how everything is wired up and for more complex examples.
+Check out the [demo app](https://github.com/hotwired/hotwire-native-ios/tree/main/Demo) to see how everything is wired up and for more complex examples.

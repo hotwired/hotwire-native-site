@@ -1,5 +1,6 @@
 ---
 permalink: /overview/basic-navigation.html
+order: 02
 title: "Basic Navigation"
 description: "How to navigate between pages in Hotwire Native."
 ---
@@ -29,7 +30,7 @@ Tapping the native "back" button instantly shows a snapshot of the previous page
 
 ## External Links
 
-Note that if the URL of a tapped link is _not_ on the same domain as the current page it is considered _external_. External links are not routed through Hotwire Native. They instead open via an in-app web browser, iOS uses a [`SFSafariViewController`](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) and [Android Custom Tabs](Android Custom Tabs) on Android.
+Note that if the URL of a tapped link is _not_ on the same domain as the current page it is considered _external_. External links are not routed through Hotwire Native. They instead open via an in-app web browser, iOS uses a [`SFSafariViewController`](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) and [Custom Tabs](https://developer.chrome.com/docs/android/custom-tabs) on Android.
 
 ## Advanced Navigation
 

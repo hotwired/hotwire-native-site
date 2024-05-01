@@ -1,11 +1,13 @@
 ---
 permalink: /ios/getting-started.html
+order: 01
+title: "Getting Started"
 description: "How to create a new Hotwire Native app on iOS."
 ---
 
 # Getting Started
 
-Follow these steps to create a minimal Hotwire Native application on iOS. This will support basic back/forward navigation but will not be a fully functional application.
+Follow these steps to create a minimal Hotwire Native application on iOS with support for basic back/forward navigation and error handling.
 
 ## New Project
 
@@ -46,8 +48,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 ## Run!
 
-Click Product → Run and the app should launch in the simulator.
-
-Note that we are pointing to a demo application server that expects a bit more native functionality. Some of the links, like native controls, won't work out of the box. Check out the [demo app](#) included in the repo for examples on how to handle those.
+Click Product → Run to launch the app in the simulator.
 
 This example only touches on the core requirements of creating a `Navigator` and routing the root URL. Feel free to can change the URL used for the initial visit to point to your web app.
+
+And note that we are pointing to a demo application server that expects a bit more native functionality. Some of the links, like native controls, won't work out of the box. Check out the [Hotwire Native iOS demo app](https://github.com/hotwired/hotwire-native-ios/tree/main/Demo) for examples on how to add bridge components, native screens, and more.
