@@ -9,7 +9,11 @@ description: "How to customize a Hotwire Native iOS app."
 
 `HotwireConfig` provides a few options to customize your Hotwire Native iOS app. We recommend making all configuration changes *before* instantiating a `Navigator`, ideally in `AppDelegate` or `SceneDelegate`.
 
-Append the following to `Hotwire.config` to change the global configuration.
+Append the following options to `Hotwire.config` to change the global configuration. For example, to enable debug logging call:
+
+```swift
+Hotwire.config.debugLoggingEnabled = true
+```
 
 ## General
 
