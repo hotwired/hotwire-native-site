@@ -45,13 +45,7 @@ let navigator = Navigator(pathConfiguration: pathConfiguration)
 
 ## Query String Matching
 
-By default, path patterns only match against the path component of the URL.
-
-Enable query string matching via:
-
-```swift
-Hotwire.config.pathConfiguration.matchQueryStrings = true
-```
+By default, path patterns match against the path component *and* query string of the URL.
 
 To ensure the order of query string parameters don't affect matching, a wildcard `.*` before and after the match is recommended, like so:
 
@@ -62,6 +56,12 @@ To ensure the order of query string parameters don't affect matching, a wildcard
     "foo": "bar"
   }
 }
+```
+
+Disable query string matching via:
+
+```swift
+Hotwire.config.pathConfiguration.matchQueryStrings = false
 ```
 
 The [path configuration reference](/reference/path-configuration) provides more information including all the behavior Hotwire Native provides out of the box.
