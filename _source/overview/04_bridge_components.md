@@ -1,11 +1,11 @@
 ---
-permalink: /overview/native-components.html
+permalink: /overview/bridge-components.html
 order: 04
-title: "Native Components"
-description: "Build HTML-driven native components with Strada."
+title: "Bridge Components"
+description: "Build HTML-driven native bridge components."
 ---
 
-# Native Components
+# Bridge Components
 
 You can build Hotwire Native apps to enjoy the best of the web alongside the best of native apps and fully native screens. But there’s a major limitation: there’s no way for the native app to know what’s happening within the web view and adapt to the content that it’s displaying.
 
@@ -17,4 +17,4 @@ Example components include native buttons to submit forms, web dialogs rendered 
 
 <img src="/assets/bridge-examples.png" width="600" alt="Basic navigation">
 
-Check out the [iOS](/ios/native-components)- and [Android](/android/native-components)-specific pages for information and code snippets.
+Check out the [iOS](/ios/bridge-components)- and [Android](/android/bridge-components)-specific pages for information and code snippets.
