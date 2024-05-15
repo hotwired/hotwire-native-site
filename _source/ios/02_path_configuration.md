@@ -43,15 +43,6 @@ let pathConfiguration = PathConfiguration(sources: [
 let navigator = Navigator(pathConfiguration: pathConfiguration)
 ```
 
-## Versioning
-
-It is recommended to version your path configuration file names and use a unique resource per platform, like so:
-
-`/configurations/ios_v1.json`
-`/configurations/android_v1.json`
-
-This allows forward and backward compatibility with new app versions that you release. If you make breaking changes in a new version of your app then start pointing to `*_v2.json` for the new build. Keep old versions available so older clients can continue to work properly until the app is updated.
-
 ## Query String Matching
 
 By default, path patterns match against the path component *and* query string of the URL.
