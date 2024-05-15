@@ -58,7 +58,7 @@ The third parameter of send, the callback block, is executed when the bridge com
 In Xcode, create a new Swift file with the following.
 
 ```swift
-import Strada
+import HotwireNative
 import UIKit
 
 final class ButtonComponent: BridgeComponent {
@@ -98,7 +98,7 @@ First, the component identifies itself as `"button"` via `name` to match the Sti
 Finally, register the component. If you followed the [getting started steps](/overview/getting-started-ios) then this will go in `SceneDelegate.swift` before routing your first URL.
 
 ```swift
-Hotwire.registerStradaComponents([
+Hotwire.registerBridgeComponents([
     ButtonComponent.self
 ])
 ```

@@ -39,7 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private let navigator = Navigator()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        Hotwire.registerStradaComponents([])
+        Hotwire.registerBridgeComponents([])
         window?.rootViewController = navigator.rootViewController
         navigator.route(rootURL)
     }
