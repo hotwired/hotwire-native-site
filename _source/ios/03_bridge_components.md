@@ -1,11 +1,11 @@
 ---
-permalink: /ios/native-components.html
+permalink: /ios/bridge-components.html
 order: 03
-title: "Native Components"
-description: "Bridge the gap with native components driven by the web on iOS."
+title: "Bridge Components"
+description: "Bridge the gap with native bridge components driven by the web on iOS."
 ---
 
-# Native Components
+# Bridge Components
 
 Hotwire Native abstracts the integration with the bridge (formerly [Strada](https://strada.hotwired.dev)), making it even faster to get started. Let's walk through how to create a new component on iOS. This assumes you've already installed [the Strada JavaScript package](https://strada.hotwired.dev/handbook/installing) on your server.
 
@@ -47,11 +47,11 @@ export default class extends BridgeComponent {
 }
 ```
 
-This component identifies itself as `"button"` via the static `component` property. It will pass all messages to a native component identified with the same name.
+This component identifies itself as `"button"` via the static `component` property. It will pass all messages to a bridge component identified with the same name.
 
-When `data-controller="button"` is found in the DOM then `connect()` is fired. This function calls `send()` which passes the title of the button to the native component.
+When `data-controller="button"` is found in the DOM then `connect()` is fired. This function calls `send()` which passes the title of the button to the bridge component.
 
-The third parameter of send, the callback block, is executed when the native component replies back to the message, which is explained below. Here, the button is clicked.
+The third parameter of send, the callback block, is executed when the bridge component replies back to the message, which is explained below. Here, the button is clicked.
 
 ## Swift Component
 
