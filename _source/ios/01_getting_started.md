@@ -28,7 +28,7 @@ Then add the Hotwire Native package via File → Add Packages Dependencies… an
 Finally, open `SceneDelegate` and replace the entire file with this code:
 
 ```swift
-import Hotwire
+import HotwireNative
 import UIKit
 
 let rootURL = URL(string: "https://turbo-native-demo.glitch.me")!
@@ -39,7 +39,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private let navigator = Navigator()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        Hotwire.registerBridgeComponents([])
         window?.rootViewController = navigator.rootViewController
         navigator.route(rootURL)
     }
