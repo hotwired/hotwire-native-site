@@ -11,7 +11,7 @@ Hotwire Native abstracts the integration with the bridge (formerly [Strada](http
 
 The component will add a native bar button item to the right side of the navigation bar. Tapping it will "click" the associated link in the HTML.
 
-<img src="/assets/strada-ios-button.png" width="500" alt="Native button component on iOS">
+<img src="/assets/bridge-ios-button.png" width="500" alt="Native button component on iOS">
 
 Native button component on iOS
 
