@@ -19,11 +19,11 @@ Open Xcode and create a new iOS app via File → New → Project... and choose t
 
 Then select "Swift" under "Language", and "Storyboard" under "Interface" in the project creation dialog.
 
-<img src="/assets/xcode-project-options.png" class="border" width="600" alt="New Xcode project" />
+<img src="/assets/xcode-project-options.png" class="border" width="600" alt="Configure Xcode project" />
 
 ## Integrate Hotwire Native
 
-Then add the Hotwire Native package via File → Add Packages Dependencies… and enter `https://github.com/hotwired/hotwire-native-ios`.
+Next, add the Hotwire Native package via File → Add Packages Dependencies... and enter `https://github.com/hotwired/hotwire-native-ios`.
 
 Finally, open `SceneDelegate` and replace the entire file with this code:
 
@@ -49,6 +49,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 Click Product → Run to launch the app in the simulator.
 
-This example only touches on the core requirements of creating a `Navigator` and routing the root URL. Feel free to can change the URL used for the initial visit to point to your web app.
+This example only touches on the core requirements of creating a `Navigator` and routing the root URL. Feel free to change the URL used for the initial visit to point to your web app.
 
 And note that we are pointing to a demo application server that expects a bit more native functionality. Some of the links, like native controls, won't work out of the box. Check out the [Hotwire Native iOS demo app](https://github.com/hotwired/hotwire-native-ios/tree/main/Demo) for examples on how to add bridge components, native screens, and more.
