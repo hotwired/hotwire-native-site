@@ -1,13 +1,17 @@
 ---
-permalink: /reference/routing.html
+permalink: /reference/navigation.html
 order: 01
-title: "Routing"
-description: "Full documentation on Hotwire Native routing."
+title: "Navigation"
+description: "How to navigate between screens with Hotwire Native."
 ---
 
-# Routing
+# Navigation
 
-Hotwire Native provides some URL routing options preconfigured out of the box. The following table outlines each scenario and the expected behavior.
+Navigating between screens is a core concept of building Hotwire Native apps. By default, all screens will be pushed onto the main navigation stack with animation. You can customize the navigation behavior by providing path configuration rules or manually routing in Swift or Kotlin.
+
+## Routing
+
+Set `context` or `presentation` to a [path configuration](/reference/path-configuration) rule to apply the logic in the following table.
 
 * **State** describes what state the app is currently in: `modal` if a modal is presented, `default` otherwise.
 * **Context** is the value of the `context` property on the tapped link: `modal` or `default`. No value defaults to `default`.
@@ -137,32 +141,78 @@ Hotwire Native provides some URL routing options preconfigured out of the box. T
   </tbody>
 </table>
 
-## Server-Driven Navigation
+### Server-Driven Routing in Rails
 
-You can also use these URL paths to drive navigation directly from your server. Either redirect to or link directly to one.
+If you're using Ruby on Rails, the [turbo-rails](https://github.com/hotwired/turbo-rails) gem provides the following additional routes. Use these to customize the behavior for Turbo Native apps but falling back to redirecting elsewhere.
 
-* **Recede**: `/turbo_recede_historical_location_url` - Pops the visible screen off of the navigation stack. If a modal is presented on iOS, the modal is dismissed instead.
-* **Resume**: `/turbo_resume_historical_location_url` - No action is taken.
-* **Refresh**: `/turbo_refresh_historical_location_url` - Reloads the visible screen by performing a new web request and invalidating the cache.
+* `recede_or_redirect_to(url, **options)` - Pops the visible screen off of the navigation stack. If a modal is presented on iOS, the modal is dismissed instead.
+* `resume_or_redirect_to(url **options)` - No action is taken.
+* `refresh_or_redirect_to(url, **options)` - Reloads the visible screen by performing a new web request and invalidating the cache.
 
-> **Note**: These are not _currently_ supported in Hotwire Native without first applying the following path configuration.
->
-> ```json
-> {
->   "settings": {},
->   "rules": [
->     {
->       "patterns": ["/turbo_recede_historical_location_url"],
->       "properties": {"presentation": "pop"}
->     },
->     {
->       "patterns": ["/turbo_resume_historical_location_url"],
->       "properties": {"presentation": "none"}
->     },
->     {
->       "patterns": ["/turbo_refresh_historical_location_url"],
->       "properties": {"presentation": "refresh"}
->     }
->   ]
-> }
-> ```
+Add the following to your path configuration to apply the presentation logic.
+
+```json
+{
+  "settings": {},
+  "rules": [
+    {
+      "patterns": ["/turbo_recede_historical_location_url"],
+      "properties": {"presentation": "pop"}
+    },
+    {
+      "patterns": ["/turbo_resume_historical_location_url"],
+      "properties": {"presentation": "none"}
+    },
+    {
+      "patterns": ["/turbo_refresh_historical_location_url"],
+      "properties": {"presentation": "refresh"}
+    }
+  ]
+}
+```
+
+## Manual Navigation
+
+`Navigator` can be used to navigate from a [native screen](/overview/native-screens) to another native screen or back to a web context.
+
+### iOS
+
+```swift
+let rootURL = URL(string: "...")!
+let navigator = Navigator()
+
+// Visit a new page.
+navigator.route(rootURL.appending(path: "foo"))
+
+// Pop the top controller off the stack.
+navigator.pop()
+
+// Pop the entire stack of controllers.
+navigator.clearAll()
+```
+
+Disable the animation via the optional `animated` parameter.
+
+```swift
+navigator.route(rootURL.appending(path: "foo"), animated: false)
+navigator.pop(animated: false)
+navigator.clearAll(animated: false)
+```
+
+### Android
+
+Inside of a `HotwireActivity` class:
+
+```kotlin
+val location = "https://..."
+val navigator = delegate.currentNavigator
+
+// Visit a new page.
+navigator?.route("$location/foo")
+
+// Pop the backstack to the previous destination.
+navigator?.pop()
+
+// Clear the navigation backstack to the start destination.
+navigator?.clearAll()
+```
