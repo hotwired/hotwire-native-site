@@ -11,7 +11,7 @@ Hotwire Native makes your mobile web content feel at home on Android and iOS by 
 Under the hood, it’s a glorified web browser. Hotwire Native displays whatever HTML and CSS your server renders. Here's an example from the demo iOS app. Only the blue content is native, everything else is from the web.
 
 <figure>
-  <img src="/assets/native-vs-web.jpg" width="1200" alt="Native vs. web">
+  <img src="/assets/native-vs-web-ios.jpg" width="1200" alt="Native vs. web">
   Demo Hotwire Native app on iOS
 </figure>
 
