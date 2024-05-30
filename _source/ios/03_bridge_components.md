@@ -11,9 +11,10 @@ Hotwire Native abstracts the integration with the bridge (formerly [Strada](http
 
 The component will add a native bar button item to the right side of the navigation bar. Tapping it will "click" the associated link in the HTML.
 
-<img src="/assets/bridge-ios-button.png" width="500" alt="Native button component on iOS">
-
-Native button component on iOS
+<figure>
+    <img src="/assets/bridge-ios-button.png" width="500" alt="Native button component on iOS">
+    Native button component on iOS
+</figure>
 
 Components are made of three parts: the HTML markup, a Stimulus controller, and the native code. The HTML configures Stimulus which passes messages to Swift.
 
