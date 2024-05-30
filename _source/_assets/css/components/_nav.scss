@@ -40,7 +40,8 @@
 
   @media(hover: hover) {
 
-    &:hover path {
+    &:hover path,
+    &:hover rect {
       fill: $color-accent;
     }
 
