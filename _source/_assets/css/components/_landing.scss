@@ -24,9 +24,29 @@
   position: relative;
   margin: -4em 0 0 0;
 
+  &::before {
+    content: "";
+    display: block;
+    width: 110%;
+    height: 90%;
+    position: absolute;
+    z-index: -1;
+    left: -5%;
+    top: 2%;
+    background: url('/assets/waves-pattern-4.svg') center no-repeat;
+    background-size: 100% 100%;
+  }
+
   @include media(medium) {
     display: flex;
     justify-content: space-between;
+
+    &::before {
+      width: 124%;
+      height: 80%;
+      left: -12%;
+      top: 12%;
+    }
   }
 }
 
