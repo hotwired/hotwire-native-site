@@ -1,0 +1,70 @@
+.color-white { color: $color-white !important; }
+.color-black { color: $color-black !important; }
+.color-accent { color: $color-accent !important; }
+.color-tint { color: $color-tint !important; }
+.color-brand-turbo { color: $color-brand-turbo !important; }
+.color-brand-stimulus { color: $color-brand-stimulus !important; }
+.color-brand-strada { color: $color-brand-strada !important; }
+.color-brand-native { color: $color-brand-native !important; }
+.color-brand { color: $color-brand !important; }
+
+.hover\:color-white:hover { color: $color-white !important; }
+.hover\:color-black:hover { color: $color-black !important; }
+.hover\:color-accent:hover { color: $color-accent !important; }
+.hover\:color-tint:hover { color: $color-tint !important; }
+.hover\:color-brand-turbo:hover { color: $color-brand-turbo !important; }
+.hover\:color-brand-stimulus:hover { color: $color-brand-stimulus !important; }
+.hover\:color-brand-strada:hover { color: $color-brand-strada !important; }
+.hover\:color-brand-native:hover { color: $color-brand-native !important; }
+.hover\:color-brand:hover { color: $color-brand !important; }
+
+.bg-white { background-color: $color-white !important; }
+.bg-black { background-color: $color-black !important; }
+.bg-accent { background-color: $color-accent !important; }
+.bg-tint { background-color: $color-tint !important; }
+.bg-brand-turbo { background-color: $color-brand-turbo !important; }
+.bg-brand-stimulus { background-color: $color-brand-stimulus !important; }
+.bg-brand-strada { background-color: $color-brand-strada !important; }
+.bg-brand-native { background-color: $color-brand-native !important; }
+.bg-brand { background-color: $color-brand !important; }
+
+.hover\:bg-white:hover { background-color: $color-white !important; }
+.hover\:bg-black:hover { background-color: $color-black !important; }
+.hover\:bg-accent:hover { background-color: $color-accent !important; }
+.hover\:bg-tint:hover { background-color: $color-tint !important; }
+.hover\:bg-brand-turbo:hover { background-color: $color-brand-turbo !important; }
+.hover\:bg-brand-stimulus:hover { background-color: $color-brand-stimulus !important; }
+.hover\:bg-brand-strada:hover { background-color: $color-brand-strada !important; }
+.hover\:bg-brand-native:hover { background-color: $color-brand-native !important; }
+.hover\:bg-brand:hover { background-color: $color-brand !important; }
+
+._placeholder,
+._placeholder-s {
+  position: relative;
+
+  &::after {
+    content: "[placeholder]";
+    display: block;
+    position: absolute;
+    z-index: 100;
+    left: 50%;
+    top: 50%;
+    background: $color-white;
+    color: $color-black;
+    font-family: $mono-stack;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: 0;
+    line-height: 1;
+    white-space: nowrap;
+    transform: translate(-50%, -50%) rotate(-12deg);
+    mix-blend-mode: difference;
+  }
+}
+
+._placeholder-s {
+  &::after {
+    font-size: 1rem;
+  }
+}
