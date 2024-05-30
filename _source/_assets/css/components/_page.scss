@@ -13,15 +13,15 @@
 
   @include media(medium) {
     &:before {
-      background: url('/assets/pattern.svg') center top no-repeat;
-      background-size: cover;
+      background: url('/assets/waves-pattern-6.svg') top left no-repeat;
+      background-size: 100% 230%;
       content: '';
-      height: 100%;
-      left: 0;
+      width: 50%;
+      height: 50%;
       position: absolute;
-      top: 0;
-      width: 110%;
       z-index: -1;
+      left: 65%;
+      top: 50%;
     }
   }
 }
