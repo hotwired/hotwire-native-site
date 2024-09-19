@@ -20,11 +20,6 @@ The *path configuration* is broken down into two top-level objects: settings and
 
 App-level configuration belongs in `settings`. This is useful when you have a remote configuration file, since you can add your own custom settings and use them as remote feature-flags.
 
-### Android-specific settings
-
-* `screenshots_enabled` — Whether or not transitional web screenshots should be used during navigation which gives the appearance of a more smooth experience. 
-	* Optional. Possible values: `true`, `false`. Defaults to `true`.
-
 ## Rules
 
 The `rules` array defines how different URL path patterns should behave. Each rule consists of the `patterns` to match and the `properties` to apply.

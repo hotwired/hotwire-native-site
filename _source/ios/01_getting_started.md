@@ -15,15 +15,26 @@ First, download and install [Xcode 15+](https://developer.apple.com/xcode/).
 
 Open Xcode and create a new iOS app via File → New → Project... and choose the default iOS "App" template.
 
-<img src="/assets/new-xcode-project.png" class="border" width="600" alt="New Xcode project" />
+<img src="/assets/xcode-choose-template.png" class="border" width="600" alt="New Xcode project" />
 
-Then select "Swift" under "Language", and "Storyboard" under "Interface" in the project creation dialog.
+In the project creation dialog, enter a product name, then select “Swift” under “Language”, and “Storyboard” under “Interface” and click Next.
 
-<img src="/assets/xcode-project-options.png" class="border" width="600" alt="Configure Xcode project" />
+<img src="/assets/xcode-project-options.png" class="border" width="600" alt="Configure Xcode project" />  
+
+Select where to save the project and click Create. 
+
+<img src="/assets/xcode-project-location.png" class="border" width="600" alt="Configure Xcode project" />
 
 ## Integrate Hotwire Native
 
-Next, add the Hotwire Native package via File → Add Packages Dependencies... and enter `https://github.com/hotwired/hotwire-native-ios`.
+Next, add the Hotwire Native package via File → Add Packages Dependencies... and enter `https://github.com/hotwired/hotwire-native-ios` in the search field.
+Make sure the “Dependency Rule“ is set to “Branch“ pointing to main and your project is correctly set under “Add to Project“ and click Add Package.
+
+<img src="/assets/xcode-search-package.png" class="border" width="600" alt="Configure Xcode project" />
+
+Once the package has been downloaded, select your app name under “Add to Target“ and click Add Package.
+
+<img src="/assets/xcode-add-package.png" class="border" width="600" alt="Configure Xcode project" />
 
 Finally, open `SceneDelegate` and replace the entire file with this code:
 
@@ -47,7 +58,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 ## Run!
 
-Click Product → Run to launch the app in the simulator.
+Click Product → Run to launch the app in the simulator. You should see the following screen in the simulator.
+
+<img src="/assets/iphone-hotwire-native-demo.png" class="border" width="600" alt="Configure Xcode project" />
 
 This example only touches on the core requirements of creating a `Navigator` and routing the root URL. Feel free to change the URL used for the initial visit to point to your web app.
 

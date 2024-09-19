@@ -1,8 +1,91 @@
 ---
 permalink: /android/getting-started.html
+order: 01
+title: "Getting Started"
 description: "How to create a new Hotwire Native app on Android."
 ---
 
 # Getting Started
 
-> Coming soon...
+Follow these steps to create a minimal Hotwire Native application on Android with support for basic back/forward navigation and error handling.
+
+## New Project
+
+First, download and install [Android Studio](https://developer.android.com/studio).
+
+Open Android Studio and create a new Android app via File → New → New Project... and choose the "Empty Views Activity" template.
+
+<img src="/assets/new-android-studio-project.png" class="border" width="600" alt="New Android Studio project" />
+
+Then select API 28 or higher for the minimum SDK and Kotlin DSL for the build configuration language.
+
+<img src="/assets/android-studio-project-options.png" class="border" width="600" alt="Configure Android Studio project" />
+
+## Integrate Hotwire Native
+
+Add the Hotwire Native dependency to your app's module (not top-level) `build.gradle.kts` file:
+
+```kotlin
+dependencies {
+    implementation("dev.hotwire:core:<latest-version>")
+}
+```
+
+Enable internet access for the app by opening `AndroidManifest.xml` and adding the following above the `<application>` node:
+
+```xml
+<uses-permission android:name="android.permission.INTERNET"/>
+```
+
+Set up the app's layout by opening `activity_main.xml` and replace the entire file with the following:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/main_nav_host"
+        android:name="dev.hotwire.core.navigation.navigator.NavigatorHost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="false" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+Finally, open `MainActivity.kt` and replace the entire file with this code:
+
+```kotlin
+package com.example.myapplication
+
+import android.os.Bundle
+import dev.hotwire.core.navigation.activities.HotwireActivity
+import dev.hotwire.core.navigation.navigator.NavigatorConfiguration
+
+class MainActivity : HotwireActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+
+    override fun navigatorConfigurations() = listOf(
+        NavigatorConfiguration(
+            name = "main",
+            startLocation = "https://turbo-native-demo.glitch.me",
+            navigatorHostId = R.id.main_nav_host
+        )
+    )
+}
+```
+
+## Run!
+
+Click Run → Run 'app' to launch the app in the emulator.
+
+This example only touches on the core requirements of creating a `HotwireActivity` and routing start location. Feel free to change the URL used for the initial visit to point to your web app.
+
+And note that we are pointing to a demo application server that expects a bit more native functionality. Some of the links, like native controls, won't work out of the box. Check out the [Hotwire Native Android demo app](https://github.com/hotwired/hotwire-native-android/tree/main/demo) for examples on how to add bridge components, native screens, and more.
