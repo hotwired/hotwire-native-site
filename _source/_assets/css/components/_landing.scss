@@ -9,7 +9,7 @@
 .landing-intro__text {
   position: relative;
   z-index: 1;
-  margin: 1.75em 0 2em 0;
+  margin: 1.25em 0 2.25em 0;
   text-align: center;
   color: $color-black;
   font-weight: 800;
@@ -17,6 +17,53 @@
 
   @include media(medium) {
     font-size: $font-xxxx-large;
+  }
+}
+
+.landing-hero {
+  position: relative;
+  margin: -4em 0 0 0;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 110%;
+    height: 90%;
+    position: absolute;
+    z-index: -1;
+    left: -5%;
+    top: 2%;
+    background: url('/assets/waves-pattern-4.svg') center no-repeat;
+    background-size: 100% 100%;
+  }
+
+  @include media(medium) {
+    display: flex;
+    justify-content: space-between;
+
+    &::before {
+      width: 124%;
+      height: 80%;
+      left: -12%;
+      top: 12%;
+    }
+  }
+}
+
+.landing-hero__step {
+  overflow: hidden;
+  aspect-ratio: 2/1;
+  position: relative;
+  width: 100%;
+  margin-bottom: 2em;
+  background-color: $color-tint;
+  border: 0.25em solid $color-white;
+  box-shadow: 0 0 2em rgba(0,0,0, 0.1);
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 }
 
@@ -32,26 +79,25 @@
 }
 
 .landing-version {
-  grid-column: 2/5;
+  padding: 1.5em 2em;
   position: relative;
-  padding: 0;
-  margin: -2em 0 5em 0;
-  font-family: $sans-stack;
+  margin: 0 0 5em 0;
   font-weight: 600;
   font-style: italic;
   font-size: $font-small;
-  text-align: center;
 
-  > span {
-    background-color: $color-brand;
-    color: $color-white;
-    clip-path: polygon(5% 10%, 46% 1%, 46% 10%, 100% 0, 95% 90%, 31% 100%, 31% 90%, 0% 100%);
-    display: inline-block;
-    padding: 1em 2em;
+  em {
+    text-decoration: underline;
+  }
 
-    a {
-      color: inherit;
+  &:hover {
+    em {
+      text-decoration-color: $color-brand;
     }
+  }
+
+  @include media(medium) {
+    margin-top: -4em;
   }
 }
 
@@ -61,15 +107,13 @@
 
   @include media(medium) {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: stretch;
   }
 }
 
 .landing-actions__item {
   display: block;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
   margin-bottom: 1em;
   padding: 1.5em 1em;
   font-family: $sans-stack;

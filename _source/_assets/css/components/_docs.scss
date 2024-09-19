@@ -25,6 +25,24 @@
     min-width: 15em;
   }
 
+  figure {
+    margin-bottom: 2em;
+    color: $color-gray;
+    text-align: center;
+
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.5em;
+  }
+
   img.border {
     border: 0.5px solid rgba(0, 0, 0, 0.1);
     border-radius: 0.5em;

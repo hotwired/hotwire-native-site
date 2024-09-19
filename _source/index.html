@@ -11,14 +11,20 @@ layout: default
   </h1>
 </div>
 
-<div class="landing-versions grid__item grid__item--span-12">
-  <p class="landing-version">
-    <span>Current iOS version: <a href="{{ ios_release.url }}">{{ ios_release.tag_name }}</a> &mdash; released {{ ios_release.created_at | date: "%b %e, %Y" }}</span>
-  </p>
+<div class="landing-hero grid__item grid__item--span-12">
+  <div class="landing-hero__step">
+    <img src="/assets/native-vs-web.jpg" alt="Native + web">
+  </div>
+</div>
 
-  <p class="landing-version">
-    <span>Current Android version: <a href="{{ android_release.url }}">{{ android_release.tag_name }}</a> &mdash; released {{ android_release.created_at | date: "%b %e, %Y" }}</span>
-  </p>
+<div class="landing-versions">
+  <a class="landing-version button" href="{{ ios_release.url }}">
+    Current iOS version: <em>{{ ios_release.tag_name }}</em> &mdash; released {{ ios_release.created_at | date: "%b %e, %Y" }}
+  </a>
+
+  <a class="landing-version button" href="{{ android_release.url }}">
+    Current Android version: <em>{{ android_release.tag_name }}</em> &mdash; released {{ android_release.created_at | date: "%b %e, %Y" }}
+  </a>
 </div>
 
 <section class="landing-summary">
@@ -57,7 +63,7 @@ layout: default
   </p>
 </section>
 
-<div class="landing-actions grid__item--span-10">
+<div class="landing-actions">
   <a class="landing-actions__item" href="/overview/how-it-works">
     <div class="landing-actions__icon landing-actions__icon--guide" aria-hidden="true"></div>
     Overview

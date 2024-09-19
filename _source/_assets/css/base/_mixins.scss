@@ -21,9 +21,14 @@ $font-xxxx-large: 3em;
 
 $color-white: #FFF;
 $color-black: #000;
+$color-gray: #666;
 $color-accent: #FFE801;
 $color-tint: #FBF7F0;
-$color-brand: #A855F7;
+$color-brand-turbo: #5CD8E5;
+$color-brand-stimulus: #77E8B9;
+$color-brand-strada: #E76057;
+$color-brand-native: #C18BF4;
+$color-brand: $color-brand-native;
 
 @mixin border-box {
   -webkit-box-sizing: border-box;
