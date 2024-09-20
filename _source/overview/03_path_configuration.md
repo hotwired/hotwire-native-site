@@ -7,7 +7,7 @@ description: "Customize app behavior remotely via the path configuration."
 
 # Path Configuration
 
-Hotwire Native apps can be configured via a JSON file called the *path configuration*. The *path configuration* is broken down into two top-level objects: settings and rules. An empty path configuration requires both keys, as follows:
+Hotwire Native apps can be configured via a JSON file called the *path configuration*. The *path configuration* is broken down into two top-level objects: `settings` and `rules`. An empty path configuration requires both keys, as follows:
 
 ```json
 {
