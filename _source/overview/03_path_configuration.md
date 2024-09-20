@@ -18,6 +18,8 @@ Hotwire Native apps can be configured via a JSON file called the *path configura
 
 App-level configuration belongs in `settings`. These settings can be read when the *path configuration* is first loaded; common use cases include feature-flags, ActionCable configuration, or custom app information.
 
+All navigation within the Hotwire app is based on the `rules` array. Each entry in `rules` defines navigation behavior based on regex identification – for example, all URLs that match regex `/new$` open up in a modal screen instead of being pushed into the navigation stack.
+
 ```json
 {
   "settings": {
@@ -28,15 +30,6 @@ App-level configuration belongs in `settings`. These settings can be read when t
         }
       ]
   },
-  "rules": []
-}
-```
-
-All navigation within the Hotwire app is based on the `rules` array. Each entry in `rules` defines navigation behavior based on regex identification – for example, all URLs that match regex `/new$` open up in a modal screen instead of being pushed into the navigation stack.
-
-```json
-{
-  "settings": {},
   "rules": [
     {
       "patterns": [
