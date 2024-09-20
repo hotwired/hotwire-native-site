@@ -7,13 +7,7 @@ description: "Customize app behavior remotely via the path configuration."
 
 # Path Configuration
 
-Hotwire Native apps can be configured via a JSON file called the *path configuration*.
-
-The file can be bundled with your app's binary and/or live on your server. Hosting it remotely allows you to change configuration without needing an app update. It is recommended to include both as the local file ensures a smooth initial launch.
-
-The *path configuration* is broken down into two top-level objects: settings and rules. App-level configuration belongs in `settings`, like feature flags. The `rules` array configures how different URL path patterns should behave.
-
-An empty path configuration requires both keys, as follows.
+Hotwire Native apps can be configured via a JSON file called the *path configuration*. The *path configuration* is broken down into two top-level objects: settings and rules. An empty path configuration requires both keys, as follows:
 
 ```json
 {
@@ -21,6 +15,42 @@ An empty path configuration requires both keys, as follows.
   "rules": []
 }
 ```
+
+App-level configuration belongs in `settings`. These settings can be read when the *path configuration* is first loaded; common use cases include feature-flags, ActionCable configuration, or custom app information.
+
+```json
+{
+  "settings": {
+    "feature_flags": [
+        {
+          "name": "new_onboarding_flow",
+          "enabled": true
+        }
+      ]
+  },
+  "rules": []
+}
+```
+
+All navigation within the Hotwire app is based on the `rules` array. Each entry in `rules` defines navigation behavior based on regex identification – for example, all URLs that match regex `/new$` open up in a modal screen instead of being pushed into the navigation stack.
+
+```json
+{
+  "settings": {},
+  "rules": [
+    {
+      "patterns": [
+        "/new$"
+      ],
+      "properties": {
+        "context": "modal"
+      }
+    },
+  ]
+}
+```
+
+It's recommended that the *path configuration* file exists both locally (bundled with your app's binary) and remotely (on your server). The local *path configuration* ensures a smooth initial launch, while the remote *path configuration* unlocks a powerful perk: you can change the app's behavior without needing to publish a new app update.
 
 ## Versioning
 
