@@ -15,6 +15,15 @@ Building on the [overview of path configuration](/overview/path-configuration), 
   "rules": [
     {
       "patterns": [
+        ".*"
+      ],
+      "properties": {
+        "context": "default",
+        "pull_to_refresh_enabled": true
+      }
+    },
+    {
+      "patterns": [
         "/new$"
       ],
       "properties": {
@@ -26,7 +35,12 @@ Building on the [overview of path configuration](/overview/path-configuration), 
 }
 ```
 
-This configuration overrides URL path patterns *ending* in `/new` to be presented as a modal with pull-to-refresh disabled. It is helpful to disable pull-to-refresh in modals so it doesn't interfere with the dismiss gesture.
+This configuration does two things:
+
+1. Sets *all* URL path patterns with pull-to-refresh enabled.
+1. Overrides URL path patterns *ending* in `/new` to be presented as a modal with pull-to-refresh disabled. It is helpful to disable pull-to-refresh in modals so it doesn't interfere with the dismiss gesture.
+
+The [path configuration reference](/reference/path-configuration) provides more information including all the behavior Hotwire Native provides out of the box.
 
 ## Sources
 
