@@ -9,7 +9,7 @@ description: "How to navigate between pages in Hotwire Native."
 
 The main interaction in Hotwire Native apps is tapping on links. Like the web, every page can link to another.
 
-1. Click a link.
+1. Tap a link.
 1. A new screen is pushed onto the navigation stack with a native animation.
 1. A spinner appears indicating the page is loading.
 1. The page contents render inside the web view.
@@ -18,7 +18,7 @@ The main interaction in Hotwire Native apps is tapping on links. Like the web, e
 
 ## Replacing Screens
 
-By default, every clicked link _pushes_ a new screen onto the stack. Hotwire Native uses platform-specific animations to ensure the interaction feels like a native app.
+By default, every tapped link _pushes_ a new screen onto the stack. Hotwire Native uses platform-specific animations to ensure the interaction feels like a native app.
 
 The framework also applies a few sane defaults. Navigating to the _current_ page's URL path (again) will _replace_ the screen on the stack. And navigating to the _previous_ page's URL path will _pop_ the screen off the stack back to the previous screen.
 
@@ -30,7 +30,7 @@ Tapping the native "back" button instantly shows a snapshot of the previous page
 
 ## External Links
 
-Note that if the URL of a tapped link is _not_ on the same domain as the current page it is considered _external_. External links are not routed through Hotwire Native. They instead open via an in-app web browser, iOS uses a [`SFSafariViewController`](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) and [Custom Tabs](https://developer.chrome.com/docs/android/custom-tabs) on Android.
+Note that if the URL of a tapped link is _not_ on the same domain as the current page it is considered _external_. External links are not routed through Hotwire Native. They instead open via an in-app web browser, iOS uses an [`SFSafariViewController`](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) and Android uses [Custom Tabs](https://developer.chrome.com/docs/android/custom-tabs).
 
 ## Advanced Navigation
 
