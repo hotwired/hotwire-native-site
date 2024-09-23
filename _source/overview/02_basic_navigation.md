@@ -7,7 +7,7 @@ description: "How to navigate between pages in Hotwire Native."
 
 # Basic Navigation
 
-Being a web-first framework means Hotwire Native adapts to your web content and how users interact with it: via links. Like the web, every page can link to another. Hotwire Native intercepts link taps and hands them over to its native counterpart which presents them natively – with platform-specific animations.
+Being a web-first framework means Hotwire Native adapts to your web content and how users navigate between screens: via links. Like the web, every page can link to another. Hotwire Native intercepts link taps and hands them over to its native counterpart which presents them natively – with platform-specific animations.
 
 When a user taps on a link, here's what's happening:
 
