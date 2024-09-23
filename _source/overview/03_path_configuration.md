@@ -52,7 +52,7 @@ It is recommended to version your path configuration file names and use a unique
 * `/configurations/ios_v1.json`
 * `/configurations/android_v1.json`
 
-This allows forward and backward compatibility with new app versions that you release. If you make breaking changes in a new version of your app, point to `*_v2.json` for the new build. Keep old versions available so older clients can continue to work properly until the user's app is updated on their device.
+This allows forward and backward compatibility with new app versions that you release. If you make breaking changes in a new version of your app, point to `*_v2.json` for the new build. Keep old versions available on your server so older clients can continue to work properly until the user's app is updated on their device.
 
 See the [iOS](/ios/path-configuration)- and [Android](/android/path-configuration)-specific pages on path configuration for more details and examples.
 
