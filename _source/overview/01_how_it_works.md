@@ -20,3 +20,5 @@ If the user navigates "back" to a previous screen Hotwire Native will use cached
 Yet, the core of Hotwire Native is still a web browser which makes adding new screens as straightforward as building new pages in your web app. Your Android and iOS clients see updates as soon as you deploy. All without new submissions to the app stores.
 
 This web-first approach means upgrading to native isn’t an all-or-nothing decision. You are free to choose specific screens or even specific *components* to migrate when you’re ready. It truly is progressive enhancement.
+
+Let's get started with the heart of Hotwire Native: link interception.
