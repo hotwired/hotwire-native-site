@@ -6,19 +6,17 @@ description: "How Hotwire Native renders web content in a native app."
 
 # How it works
 
-Hotwire Native makes your mobile web content feel at home on Android and iOS by using standard, platform-specific components and animations. Even the most tech-savvy users will have a hard time believing it's not a fully native app.
-
-Under the hood, it’s a glorified web browser. Hotwire Native displays whatever HTML and CSS your server renders. Here's an example from the demo iOS app. Only the purple content is native, everything else is from the web.
+Hotwire Native displays whatever HTML and CSS your server renders and will react to intercepted link taps. This makes your mobile web content feel at home on Android and iOS by using standard, platform-specific components and animations.
 
 <figure>
   <img src="/assets/native-vs-web-ios.jpg" width="1200" alt="Native vs. web">
-  Demo Hotwire Native app on iOS
-</figure>
+  Content is all web. Interactions are all native.
+</figure> 
 
-At its core, Hotwire Native intercepts link taps and passes control off to a native adapter. This layer then pushes (or presents) new screens on the native stack with default, platform-specific animation. The request is then loaded and rendered via the web view.
+Hotwire Native intercepts link taps and passes control off to a native adapter. This adapter makes sure the experience is seamless: it screenshots the current page before pushing (or presenting) new screens on the native stack with default, platform-specific animation. It will then request the web content for this new screen and render it via the web view.
 
-Every time a new link is tapped a screenshot of the current page is captured. This ensures instant loading when a user navigates "back" to a previous screen. And because we are using native navigation controls, interactive pop gestures work exactly as expected.
+If the user navigates "back" to a previous screen Hotwire Native will use cached screenshots, and because we are using native navigation controls, interactive pop gestures work exactly as expected. Even the most tech-savvy users will have a hard time believing it's not a fully native app!
 
-Adding new screens is as straightforward as building new pages in your web app. Your Android and iOS clients see updates as soon as you deploy. All without new submissions to the app stores.
+Yet, the core of Hotwire Native is still a web browser which makes adding new screens as straightforward as building new pages in your web app. Your Android and iOS clients see updates as soon as you deploy. All without new submissions to the app stores.
 
-And upgrading to native isn’t an all-or-nothing decision. You are free to choose specific screens or even specific *components* to migrate when you’re ready. It truly is progressive enhancement.
+This web-first approach means upgrading to native isn’t an all-or-nothing decision. You are free to choose specific screens or even specific *components* to migrate when you’re ready. It truly is progressive enhancement.
