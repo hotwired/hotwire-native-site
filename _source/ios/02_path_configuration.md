@@ -40,8 +40,6 @@ This configuration does two things:
 1. Sets *all* URL path patterns with pull-to-refresh enabled.
 1. Overrides URL path patterns *ending* in `/new` to be presented as a modal with pull-to-refresh disabled. It is helpful to disable pull-to-refresh in modals so it doesn't interfere with the dismiss gesture.
 
-The [path configuration reference](/reference/path-configuration) provides more information including all the behavior Hotwire Native provides out of the box.
-
 ## Sources
 
 Path configuration has an array of `sources`. You can configure the source to be a locally bundled file, a remote file available from your server, or both. We recommend always including a bundled version even when loading remotely, so it will be available in case your app is offline.
