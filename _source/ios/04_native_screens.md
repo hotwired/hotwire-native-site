@@ -7,9 +7,23 @@ description: "Integrate fully native Swift screens in your Hotiwre Native app."
 
 # Native Screens
 
-To render a native screen on iOS you need match an identifier in the [path configuration](/overview/path-configuration) with your `UIViewController`.
+If you need to go fully native, we've got you covered: it's easy to integrate native screens to Hotwire Native's navigation flow. Even though you may be tempted to get a reference to Hotwire Native's navigation controller and push/present yourself, we strongly advice against it. It's better to leverage the power of Hotwire Native's [Path Configuration](/ios/path-configuration), even for native screens.
 
-First, match a URL path pattern and set the `view_controller` property. This path configuration routes all URLs ending in `/numbers`.
+First, conform your controller to `PathConfigurationIdentifiable` and provide a matching `pathConfigurationIdentifier`. This identifier is used so you can easily identify that a native view controller was requested after a link interception.
+
+```swift
+class NumbersViewController: UITableViewController, PathConfigurationIdentifiable {
+    static var pathConfigurationIdentifier: String { "numbers" }
+
+    init(url: URL) {
+        self.url = url
+    }
+
+    // ...
+}
+```
+
+Next, match a URL path pattern and set the `view_controller` property. This path configuration routes all URLs ending in `/numbers`.
 
 ```json
 {
@@ -27,21 +41,9 @@ First, match a URL path pattern and set the `view_controller` property. This pat
 }
 ```
 
-Then, conform your controller to `PathConfigurationIdentifiable` and provide a matching `pathConfigurationIdentifier`.
+When a link is intercepted by Hotwire Native, it will go through it's usual process of matching the link's URL path to all rules in the app's Path Configuration. When it matches the above rule, it will create a `VisitProposal` and will set this `view_controller` property to `"numbers"`. 
 
-```swift
-class NumbersViewController: UITableViewController, PathConfigurationIdentifiable {
-    static var pathConfigurationIdentifier: String { "numbers" }
-
-    init(url: URL) {
-        self.url = url
-    }
-
-    // ...
-}
-```
-
-Finally, tell Hotwire Native to use this new controller when the property matches.
+You can inspect this property when `handle(proposal:)` is called on `Navigator`'s delegate and create your own view controller there. That's it! Hotwire Native will handle presentation (push/replace and animations) as if it were a web view controller.
 
 ```swift
 class SceneDelegate: UIResponder {
@@ -54,11 +56,34 @@ extension SceneDelegate: NavigatorDelegate {
     func handle(proposal: VisitProposal) -> ProposalResult {
         switch proposal.viewController {
         case NumbersViewController.pathConfigurationIdentifier:
-            return .acceptCustom(NumbersViewController(url: proposal.url))
+            let numbersViewController = NumbersViewController(url: proposal.url)
+            return .acceptCustom(numbersViewController)
         default:
             return .accept
         }
     }
+}
+```
+
+## Progressive Rollout
+
+In a purely native app, if a new screen presented an issue you'd be unable to react immediately. The usual process would be to rush out bug fixes and pray you get a quick review. If the bug was severe or your team needed more time to fix a critical issue, you'd have to rollback to a previous app version and submit that to the App Store, probably with an expedited review.
+
+Since even native screens are routed through Hotwire Native, the Path Configuration is a powerful ally when it comes to rolling out your native screens. If you were to find a critical issue with your native screen, you could easily update your Path Configuration and either point to your web-content so users don't lose functionality, or immediately disable the screen altogether – no app review required for these measures.
+
+Simply remove the `"view_controller"` property and Hotwire Native will stop using your native screen, instead presenting a web view controller which loads `"/numbers"`: a web page you fully control.
+
+```json
+{
+  "settings": {},
+  "rules": [
+    {
+      "patterns": [
+        "/numbers$"
+      ],
+      "properties": { }
+    }
+  ]
 }
 ```
 
