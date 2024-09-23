@@ -7,7 +7,7 @@ description: "Bridge the gap with native bridge components driven by the web on 
 
 # Bridge Components
 
-Hotwire Native abstracts the integration with the bridge (formerly [Strada](https://strada.hotwired.dev)), making it even faster to get started. Let's walk through how to create a new component on iOS. This assumes you've already installed [the Strada JavaScript package](https://strada.hotwired.dev/handbook/installing) on your server.
+Hotwire Native abstracts the integration between the OS and JavaScript using Bridge Components, making it even faster to get started. Let's walk through how to create a new component on iOS. This assumes you've already installed [the Strada JavaScript package](https://strada.hotwired.dev/handbook/installing) on your server.
 
 The component will add a native bar button item to the right side of the navigation bar. Tapping it will "click" the associated link in the HTML.
 
