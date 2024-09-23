@@ -7,11 +7,17 @@ description: "Build HTML-driven native bridge components."
 
 # Bridge Components
 
-Hotwire Native apps seamlessly display your mobile web content in a native container with fully native animations and behaviors. If we were to use this binary approach exclusively, we'd quickly run into a major limitation: there’s no way for the native app to know what’s happening within the web view and adapt to the content that it’s displaying. 
+Hotwire Native apps seamlessly display your mobile web content within a native container with fully native animations and behaviors. If we were to use this siloed web content approach exclusively, we'd quickly run into a major limitation: there’s no way for the native app to know what’s happening within the web view and adapt to the content that it’s displaying.
 
 To overcome this gap in communication, your app can use Bridge Components.
 
-A Bridge Component is made up of two parts: a _web_ component (Stimulus) and a _native_ counterpart (Swift/Kotlin). Your web code and your native app code communicate through Hotwire Native's component-based framework that abstracts away the complexity of communicating with JavaScript code in a web view and native code in your app.
+*Note: Bridge Components were formerly called [Strada](https://dev.37signals.com/announcing-strada/) components and work exactly as they did before. However, the framework is now included out-of-the-box in Hotwire Native and doesn't require additional dependencies or integrations in your app*.
+
+A Bridge Component is made up of two parts:
+- A __web component__ controller that leverages [Stimulus](https://stimulus.hotwired.dev/)
+- A __native component__ counterpart built in Swift or Kotlin.
+
+Your web code and your native app code communicate through Hotwire Native's component-based framework that abstracts away the complexity of communicating with JavaScript code in a web view and native code in your app.
 
 <figure>
     <img src="/assets/bridge-ios-button.png" width="500" alt="Native button component on iOS">
@@ -27,6 +33,6 @@ Example components include native buttons to submit forms, web dialogs rendered 
     Web content displayed natively as your app needs it.
 </figure>
 
-Being web-first means that _you_ get to decide which parts of your web-app become native. You can choose to quickly ship a purely web screen and then iterate natively. Maybe some features require a more responsive interface so you use Bridge Components. Yet, in rare cases, you should go fully native. 
+Being web-first means that _you_ get to decide which parts of your web-app become native. You can choose to quickly ship a purely web screen and then progressively enhance specific features natively. Sometimes a feature requires a more responsive interaction and Bridge Components are the perfect solution. And other times a screen requires a fully native implementation for a high fidelity experience.
 
 If that's the case, integrating fully native code is easy too.
