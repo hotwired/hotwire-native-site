@@ -40,7 +40,7 @@ Building on the [overview of path configuration](/overview/path-configuration), 
 This configuration does two things:
 
 1. Sets *all* URL path patterns to render the default fragment with a `turbo://fragment/web` URI with pull-to-refresh enabled.
-1. Overrides URL path patterns *ending* in `/new` to be presented as a modal with pull-to-refresh disabled.
+1. Overrides URL path patterns *ending* in `/new` to be presented as a modal with pull-to-refresh disabled. It is helpful to disable pull-to-refresh in modals so it doesn't interfere with the dismiss gesture or clear form data that a user may have entered.
 
 The [path configuration reference](/reference/path-configuration) provides more information including all the behavior Hotwire Native provides out of the box.
 

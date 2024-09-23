@@ -26,7 +26,7 @@ Building on the [overview of path configuration](/overview/path-configuration), 
 }
 ```
 
-This configuration overrides URL path patterns *ending* in `/new` to be presented as a modal with pull-to-refresh disabled. It is helpful to disable pull-to-refresh in modals so it doesn't interfere with the dismiss gesture.
+This configuration overrides URL path patterns *ending* in `/new` to be presented as a modal with pull-to-refresh disabled. It is helpful to disable pull-to-refresh in modals so it doesn't interfere with the dismiss gesture or clear form data that a user may have entered.
 
 ## Sources
 
