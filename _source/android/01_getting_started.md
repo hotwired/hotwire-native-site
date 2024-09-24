@@ -84,7 +84,9 @@ class MainActivity : HotwireActivity() {
 
 ## Run!
 
-Click Run → Run 'app' to launch the app in the emulator.
+Click Run → Run 'app' to launch the app in the emulator. You should see the following screen in the emulator:
+
+<img src="/assets/android-hotwire-native-demo.png" class="border" width="600" alt="Hotwire Native demo app" />
 
 This example only touches on the core requirements of creating a `HotwireActivity` and routing start location. Feel free to change the URL used for the initial visit to point to your web app.
 
