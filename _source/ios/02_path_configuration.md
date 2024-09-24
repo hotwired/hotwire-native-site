@@ -15,6 +15,15 @@ Building on the [overview of path configuration](/overview/path-configuration), 
   "rules": [
     {
       "patterns": [
+        ".*"
+      ],
+      "properties": {
+        "context": "default",
+        "pull_to_refresh_enabled": true
+      }
+    },
+    {
+      "patterns": [
         "/new$"
       ],
       "properties": {
@@ -26,22 +35,34 @@ Building on the [overview of path configuration](/overview/path-configuration), 
 }
 ```
 
-This configuration overrides URL path patterns *ending* in `/new` to be presented as a modal with pull-to-refresh disabled. It is helpful to disable pull-to-refresh in modals so it doesn't interfere with the dismiss gesture.
+This configuration does two things:
+
+1. Sets *all* URL path patterns with pull-to-refresh enabled.
+1. Overrides URL path patterns *ending* in `/new` to be presented as a modal with pull-to-refresh disabled. It is helpful to disable pull-to-refresh in modals so it doesn't interfere with the dismiss gesture or clear form data that a user may have entered.
 
 ## Sources
 
 Path configuration has an array of `sources`. You can configure the source to be a locally bundled file, a remote file available from your server, or both. We recommend always including a bundled version even when loading remotely, so it will be available in case your app is offline.
 
-Providing a bundled file and a server location will cause the path configuration to immediately load from the bundled version and then download the server version. When downloading from a server, it will also cache that latest version locally, and attempt to load it before making the network request. That way you have a chain of configurations available, always using the latest version when available, but falling back to cache or bundle as needed.
-
 ```swift
+let localPathConfigURL = Bundle.main.url(forResource: "path-configuration", withExtension: "json")!
+let remotePathConfigURL = URL(string: "https://example.com/your-path-config.json")!
+
 let pathConfiguration = PathConfiguration(sources: [
-  .file(Bundle.main.url(forResource: "path-configuration", withExtension: "json")!),
-  .server(URL(string: "https://example.com/your-path-config.json")!)
+  .file(localPathConfigURL),
+  .server(remotePathConfigURL)
 ])
 
 let navigator = Navigator(pathConfiguration: pathConfiguration)
 ```
+
+`PathConfiguration` will always load locally available configurations first. When providing both a bundled file and a server location, load order is as follows:
+
+1. The bundled file
+2. The cached server file (if a successful download has previously occurred)
+3. The downloaded server file
+
+Providing a bundled file and a server location will cause the path configuration to immediately load from the bundled version and – if it exists – a cached version of the server file. Then it will begin downloading the server file. Once the server file is successfully downloaded, it is loaded and cached for further use.
 
 ## Query String Matching
 
