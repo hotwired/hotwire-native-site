@@ -19,9 +19,9 @@ Open Xcode and create a new iOS app via File → New → Project... and choose t
 
 In the project creation dialog, enter a product name, then select “Swift” under “Language”, and “Storyboard” under “Interface” and click Next.
 
-<img src="/assets/xcode-project-options.png" class="border" width="600" alt="Configure Xcode project" />  
+<img src="/assets/xcode-project-options.png" class="border" width="600" alt="Configure Xcode project" />
 
-Select where to save the project and click Create. 
+Select where to save the project and click Create.
 
 <img src="/assets/xcode-project-location.png" class="border" width="600" alt="Configure Xcode project" />
 
@@ -42,7 +42,7 @@ Finally, open `SceneDelegate` and replace the entire file with this code:
 import HotwireNative
 import UIKit
 
-let rootURL = URL(string: "https://turbo-native-demo.glitch.me")!
+let rootURL = URL(string: "https://hotwire-native-demo.dev")!
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?

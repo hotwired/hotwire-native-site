@@ -75,7 +75,7 @@ class MainActivity : HotwireActivity() {
     override fun navigatorConfigurations() = listOf(
         NavigatorConfiguration(
             name = "main",
-            startLocation = "https://turbo-native-demo.glitch.me",
+            startLocation = "https://hotwire-native-demo.dev",
             navigatorHostId = R.id.main_nav_host
         )
     )
