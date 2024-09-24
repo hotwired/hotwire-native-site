@@ -7,9 +7,9 @@ description: "Integrate fully native Kotlin and Swift screens in your Hotiwre Na
 
 # Native Screens
 
-Even though we love the web, there are times where neither web-based content nor [bridge components](/overview/bridge-components) are enough. Times where you need maximum fidelity or interaction with native SDKs and APIs. For these, you can build fully native screens in Kotlin and Swift.
+There are times where neither web-based content nor [bridge components](/overview/bridge-components) are enough. Times where you need maximum fidelity or interaction with native SDKs and APIs. For these, you can build fully native screens in Kotlin and Swift.
 
-There are a few caveats:
+There are a few things to note:
 
 - It's strongly encouraged that these native screens have a URL identifier, so it's easier to integrate them into Hotwire Native's navigation.
 - Purely native screens will likely take specialized experience from iOS and Android developers.

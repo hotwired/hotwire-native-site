@@ -41,7 +41,7 @@ Next, match a URL path pattern and set the `view_controller` property. This path
 }
 ```
 
-When a link is intercepted by Hotwire Native, it will go through it's usual process of matching the link's URL path to all rules in the app's Path Configuration. When it matches the above rule, it will create a `VisitProposal` and will set this `view_controller` property to `"numbers"`. 
+When a link is intercepted by Hotwire Native, it will go through its usual process of matching the link's URL path to all rules in the app's Path Configuration. When it matches the above rule, it will create a `VisitProposal` and will set this `view_controller` property to `"numbers"`.
 
 You can inspect this property when `handle(proposal:)` is called on `Navigator`'s delegate and create your own view controller there. That's it! Hotwire Native will handle presentation (push/replace and animations) as if it were a web view controller.
 
@@ -67,9 +67,9 @@ extension SceneDelegate: NavigatorDelegate {
 
 ## Progressive Rollout
 
-In a purely native app, if a new screen presented an issue you'd be unable to react immediately. The usual process would be to rush out bug fixes and pray you get a quick review. If the bug was severe or your team needed more time to fix a critical issue, you'd have to rollback to a previous app version and submit that to the App Store, probably with an expedited review.
+In a purely native app, if a new screen presented an issue you'd be unable to react immediately. The usual process would be to rush out bug fixes and hope for a quick review. If the bug was severe or your team needed more time to fix a critical issue, you'd have to rollback to a previous app version and submit that to the App Store, probably with an expedited review.
 
-Since even native screens are routed through Hotwire Native, the Path Configuration is a powerful ally when it comes to rolling out your native screens. If you were to find a critical issue with your native screen, you could easily update your Path Configuration and either point to your web-content so users don't lose functionality, or immediately disable the screen altogether – no app review required for these measures.
+Since even native screens are routed through Hotwire Native, the Path Configuration is a powerful ally when it comes to rolling out your native screens. If you were to find a critical issue with your native screen, you could easily update your remote Path Configuration and either point to your web-content so users don't lose functionality, or immediately disable the screen altogether – no app review required for these measures.
 
 Simply remove the `"view_controller"` property and Hotwire Native will stop using your native screen, instead presenting a web view controller which loads `"/numbers"`: a web page you fully control.
 

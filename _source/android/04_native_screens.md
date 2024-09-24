@@ -20,18 +20,20 @@ First, match a URL path pattern and set the `uri` property. This path configurat
         "/numbers$"
       ],
       "properties": {
-        "uri": "turbo://fragment/numbers",
-         "title": "Numbers"
+        "uri": "hotwire://fragment/numbers",
+        "title": "Numbers"
       }
     }
   ]
 }
 ```
 
-Then, create a new fragment and provide a matching `HotwireDestination`.
+When a link is intercepted by Hotwire Native, it will go through its usual process of matching the link's URL path to all rules in the app's Path Configuration. When it matches the above rule, it will propose a `visit` and will find the matching `HotwireDestination` whose `uri` matches `"hotwire://fragment/numbers"`.
+
+Create a new fragment and provide a matching `HotwireDestination` annotation.
 
 ```kotlin
-@HotwireDestination(uri = "turbo://fragment/numbers")
+@HotwireDestination(uri = "hotwire://fragment/numbers")
 class NumbersFragment : HotwireFragment() {
     // ...
 }
@@ -43,6 +45,28 @@ Finally, register this fragment with Hotwire Native to use it when the URL path 
 Hotwire.registerFragmentDestinations(listOf(
     NumbersFragment::class
 ))
+```
+
+## Progressive Rollout
+
+In a purely native app, if a new screen presented an issue you'd be unable to react immediately. The usual process would be to rush out bug fixes and hope for a quick review. If the bug was severe or your team needed more time to fix a critical issue, you'd have to rollback to a previous app version and submit that to the Play Store for review.
+
+Since even native screens are routed through Hotwire Native, the Path Configuration is a powerful ally when it comes to rolling out your native screens. If you were to find a critical issue with your native screen, you could easily update your remote Path Configuration and either point to your web-content so users don't lose functionality, or immediately disable the screen altogether – no app review required for these measures.
+
+Simply remove the `"uri"` property and Hotwire Native will stop using your native screen, instead presenting a web view controller which loads `"/numbers"`: a web page you fully control.
+
+```json
+{
+  "settings": {},
+  "rules": [
+    {
+      "patterns": [
+        "/numbers$"
+      ],
+      "properties": { }
+    }
+  ]
+}
 ```
 
 Check out the [demo app](https://github.com/hotwired/hotwire-native-android/tree/main/demo) to see how everything is wired up and for more complex examples.
