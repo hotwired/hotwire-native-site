@@ -19,7 +19,7 @@ Building on the [overview of path configuration](/overview/path-configuration), 
       ],
       "properties": {
         "context": "default",
-        "uri": "turbo://fragment/web",
+        "uri": "hotwire://fragment/web",
         "pull_to_refresh_enabled": true
       }
     },
@@ -29,7 +29,7 @@ Building on the [overview of path configuration](/overview/path-configuration), 
       ],
       "properties": {
         "context": "modal",
-        "uri": "turbo://fragment/web/modal/sheet",
+        "uri": "hotwire://fragment/web/modal/sheet",
         "pull_to_refresh_enabled": false
       }
     }
@@ -39,7 +39,7 @@ Building on the [overview of path configuration](/overview/path-configuration), 
 
 This configuration does two things:
 
-1. Sets *all* URL path patterns to render the default fragment with a `turbo://fragment/web` URI with pull-to-refresh enabled.
+1. Sets *all* URL path patterns to render the default fragment with a `hotwire://fragment/web` URI with pull-to-refresh enabled.
 1. Overrides URL path patterns *ending* in `/new` to be presented as a modal with pull-to-refresh disabled. It is helpful to disable pull-to-refresh in modals so it doesn't interfere with the dismiss gesture or clear form data that a user may have entered.
 
 ## Location
