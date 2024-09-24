@@ -143,7 +143,7 @@ Set `context` or `presentation` to a [path configuration](/reference/path-config
 
 ### Server-Driven Routing in Rails
 
-If you're using Ruby on Rails, the [turbo-rails](https://github.com/hotwired/turbo-rails) gem provides the following additional routes. Use these to customize the behavior for Turbo Native apps but falling back to redirecting elsewhere.
+If you're using Ruby on Rails, the [turbo-rails](https://github.com/hotwired/turbo-rails) gem provides the following additional routes. Use these to customize the behavior for Hotwire Native apps but falling back to redirecting elsewhere.
 
 * `recede_or_redirect_to(url, **options)` - Pops the visible screen off of the navigation stack. If a modal is presented on iOS, the modal is dismissed instead.
 * `resume_or_redirect_to(url **options)` - No action is taken.
