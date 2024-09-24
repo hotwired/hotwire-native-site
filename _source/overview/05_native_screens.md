@@ -11,7 +11,7 @@ There are times where neither web-based content nor [bridge components](/overvie
 
 There are a few things to note:
 
-- It's strongly encouraged that these native screens have a URL identifier, so it's easier to integrate them into Hotwire Native's navigation.
+- It's strongly encouraged that each native screen has a corresponding URL, so it's easier to integrate into Hotwire Native's built-in navigation.
 - Purely native screens will likely take specialized experience from iOS and Android developers.
 - You'll need to write a version for every platform and go through the app store review process for any future changes
 
