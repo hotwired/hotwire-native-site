@@ -7,47 +7,6 @@ description: "How to customize a Hotwire Native Android app."
 
 # Configuration
 
-Enable debugging in debug builds:
-
-```kotlin
-Hotwire.config.debugLoggingEnabled = BuildConfig.DEBUG
-Hotwire.config.webViewDebuggingEnabled = BuildConfig.DEBUG
-```
-
-Set the default fragment destination:
-
-```kotlin
-Hotwire.defaultFragmentDestination = WebFragment::class
-```
-
-Register fragment destinations:
-
-```kotlin
-Hotwire.registerFragmentDestinations(listOf(
-    MyCustomFragment::class
-))
-```
-
-Register bridge components, where the first argument is the component name to match in Stimulus:
-
-```kotlin
-Hotwire.registerBridgeComponents(listOf(
-    BridgeComponentFactory("my-custom", ::MyCustomComponent)
-))
-```
-
-Set the JSON converter used for bridge components:
-
-```kotlin
-Hotwire.config.jsonConverter = KotlinXJsonConverter()
-```
-
-Customize the user agent:
-
-```kotlin
-Hotwire.config.userAgent = "Hotwire Demo; ${Hotwire.config.userAgentSubstring()}"
-```
-
 ## Create an Application Instance
 
 Customize your app by configuring options before your `HotwireActivity` instance is created by the system. We recommend using an `Application` instance to place the configuration code.
@@ -70,4 +29,47 @@ p
 <application android:name=".MyApplication">
     <!-- ... -->
 </application>
+```
+
+## Options
+
+Enable debugging in debug builds:
+
+```kotlin
+Hotwire.config.debugLoggingEnabled = BuildConfig.DEBUG
+Hotwire.config.webViewDebuggingEnabled = BuildConfig.DEBUG
+```
+
+Set the default fragment destination:
+
+```kotlin
+Hotwire.defaultFragmentDestination = WebFragment::class
+```
+
+Register fragment destinations:
+
+```kotlin
+Hotwire.registerFragmentDestinations(
+    MyCustomFragment::class
+)
+```
+
+Register bridge components, where the first argument is the component name to match in Stimulus:
+
+```kotlin
+Hotwire.registerBridgeComponents(
+    BridgeComponentFactory("my-custom", ::MyCustomComponent)
+)
+```
+
+Set the JSON converter used for bridge components:
+
+```kotlin
+Hotwire.config.jsonConverter = KotlinXJsonConverter()
+```
+
+Customize the user agent:
+
+```kotlin
+Hotwire.config.userAgent = "My Application; ${Hotwire.config.userAgentSubstring()}"
 ```

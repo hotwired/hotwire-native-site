@@ -42,9 +42,9 @@ class NumbersFragment : HotwireFragment() {
 Finally, register this fragment with Hotwire Native to use it when the URL path matches. See the [configuration](/android/configuration) docs for a recommendation on where to register fragments in your code.
 
 ```kotlin
-Hotwire.registerFragmentDestinations(listOf(
+Hotwire.registerFragmentDestinations(
     NumbersFragment::class
-))
+)
 ```
 
 ## Progressive Rollout

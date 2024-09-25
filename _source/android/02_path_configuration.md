@@ -51,7 +51,7 @@ Hotwire.loadPathConfiguration(
     context = this,
     location = PathConfiguration.Location(
         assetFilePath = "json/configuration.json",
-        remoteFileUrl = "https://example.com/your-path-config.json"
+        remoteFileUrl = "https://example.com/configurations/android_v1.json"
     )
 )
 ```
