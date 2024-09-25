@@ -7,7 +7,9 @@ description: "Bridge the gap with native bridge components driven by the web on 
 
 # Bridge Components
 
-Hotwire Native abstracts the integration with the bridge (formerly [Strada](https://strada.hotwired.dev)), making it even faster to get started. Let's walk through how to create a new component on iOS. This assumes you've already installed [the Strada JavaScript package](https://strada.hotwired.dev/handbook/installing) on your server.
+Hotwire Native abstracts the integration with its corresponding web bridge (formerly [Strada](https://dev.37signals.com/announcing-strada/)), making it even faster to get started. This assumes you've already installed the [Hotwire Native Bridge javaScript package](/reference/bridge-installation) on your server.
+
+Let's walk through how to create a new component on iOS.
 
 The component will add a native bar button item to the right side of the navigation bar. Tapping it will "click" the associated link in the HTML.
 
@@ -16,7 +18,7 @@ The component will add a native bar button item to the right side of the navigat
     Native button component on iOS
 </figure>
 
-Components are made of three parts: the HTML markup, a Stimulus controller, and the native code. The HTML configures Stimulus which passes messages to Swift.
+Components are made of three parts: the HTML markup, a `BridgeComponent` [Stimulus](https://stimulus.hotwired.dev) controller, and the native code. The HTML configures Stimulus which passes messages to Swift.
 
 ## Stimulus Controller
 
@@ -28,10 +30,10 @@ On your server, add the data attributes needed to wire up the Stimulus controlle
 </a>
 ```
 
-Then, create a new JavaScript component/controller with the following.
+Then, create a new JavaScript `BridgeComponent` controller with the following.
 
 ```javascript
-import { BridgeComponent } from "@hotwired/strada"
+import { BridgeComponent } from "@hotwired/hotwire-native-bridge"
 
 export default class extends BridgeComponent {
   static component = "button"
@@ -48,9 +50,9 @@ export default class extends BridgeComponent {
 }
 ```
 
-This component identifies itself as `"button"` via the static `component` property. It will pass all messages to a bridge component identified with the same name.
+This component identifies itself as `"button"` via the static `component` property. It will pass all messages to a native bridge component identified with the same name.
 
-When `data-controller="button"` is found in the DOM then `connect()` is fired. This function calls `send()` which passes the title of the button to the bridge component.
+When `data-controller="button"` is found in the DOM then `connect()` is fired. This function calls `send()` which passes the `title` of the button in JSON to its native bridge component counterpart.
 
 The third parameter of send, the callback block, is executed when the bridge component replies back to the message, which is explained below. Here, the button is clicked.
 
