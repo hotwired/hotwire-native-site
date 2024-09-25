@@ -23,11 +23,12 @@ Then select API 28 or higher for the minimum SDK and Kotlin DSL for the build co
 
 ## Integrate Hotwire Native
 
-Add the Hotwire Native dependency to your app's module (not top-level) `build.gradle.kts` file:
+Add the Hotwire Native dependencies to your app's module (not top-level) `build.gradle.kts` file:
 
 ```kotlin
 dependencies {
     implementation("dev.hotwire:core:<latest-version>")
+    implementation("dev.hotwire:navigation-fragments:<latest-version>")
 }
 ```
 
@@ -49,7 +50,7 @@ Set up the app's layout by opening `activity_main.xml` and replace the entire fi
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_nav_host"
-        android:name="dev.hotwire.core.navigation.navigator.NavigatorHost"
+        android:name="dev.hotwire.navigation.navigator.NavigatorHost"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="false" />
@@ -60,12 +61,6 @@ Set up the app's layout by opening `activity_main.xml` and replace the entire fi
 Finally, open `MainActivity.kt` and replace the entire file with this code:
 
 ```kotlin
-package com.example.myapplication
-
-import android.os.Bundle
-import dev.hotwire.core.navigation.activities.HotwireActivity
-import dev.hotwire.core.navigation.navigator.NavigatorConfiguration
-
 class MainActivity : HotwireActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,7 +71,7 @@ class MainActivity : HotwireActivity() {
         NavigatorConfiguration(
             name = "main",
             startLocation = "https://hotwire-native-demo.dev",
-            navigatorHostId = R.id.main_nav_host
+            navigatorHostId = R.id.main_navigator_host
         )
     )
 }

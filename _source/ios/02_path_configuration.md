@@ -46,7 +46,7 @@ Path configuration has an array of `sources`. You can configure the source to be
 
 ```swift
 let localPathConfigURL = Bundle.main.url(forResource: "path-configuration", withExtension: "json")!
-let remotePathConfigURL = URL(string: "https://example.com/your-path-config.json")!
+let remotePathConfigURL = URL(string: "https://example.com/configurations/ios_v1.json")!
 
 let pathConfiguration = PathConfiguration(sources: [
   .file(localPathConfigURL),

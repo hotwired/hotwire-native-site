@@ -216,3 +216,18 @@ navigator?.pop()
 // Clear the navigation backstack to the start destination.
 navigator?.clearAll()
 ```
+
+Inside of a `HotwireFragment` class:
+
+```kotlin
+val location = "https://..."
+
+// Visit a new page.
+navigator.route("$location/foo")
+
+// Pop the backstack to the previous destination.
+navigator.pop()
+
+// Clear the navigation backstack to the start destination.
+navigator.clearAll()
+```
