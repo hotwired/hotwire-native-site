@@ -105,3 +105,18 @@ Hotwire.registerBridgeComponents([
     ButtonComponent.self
 ])
 ```
+
+## Add CSS to Hide Bridged Elements
+
+We've now set up `"button"` components in the web and native apps. Whenever a native app supports the `"button"` component, it'll receive a message from the web component and display its native button.
+
+There's one final piece to finish. We want to hide the web button when a native button is being displayed in the native app. It's easy to write scoped css that is only applied if:
+- A particular version of the native app supports the `"button"` component
+- A particular element in your app is connected to a `"button"` component
+
+```css
+[data-bridge-components~="button"]
+[data-controller~="button"] {
+  display: none;
+}
+```
