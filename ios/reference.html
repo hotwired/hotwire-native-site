@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Hotwire Native iOS: Reference</title>
+  <meta name="description" content="An reference guide to the Hotwire Native iOS library.">
+  <link rel="canonical" href="https://native.hotwired.dev/ios/reference">
+
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="mask-icon" href="/assets/favicon.svg" color="#000000">
+  <link rel="apple-touch-icon" href="/assets/favicon-196x196.png">
+
+  <link rel="preload" href="/assets/fonts/Bitter-Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Bitter-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Jost-Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/RobotoMono-Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/RobotoMono-Italic.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/main.js" type="module"></script>
+
+  <script defer data-domain="native.hotwired.dev" src="https://plausible.io/js/script.js"></script>
+
+</head>
+
+
+  <body>
+
+    <a class="nav-skip" href="#content">Skip to content</a>
+
+<nav class="jump">
+  <ul class="jump__list">
+    <li><a class="jump__list-link jump__list-link--hotwire" href="https://hotwired.dev">Hotwire</a></li>
+    <li><a class="jump__list-link hover:color-brand-turbo" href="https://turbo.hotwired.dev">Turbo</a></li>
+    <li><a class="jump__list-link hover:color-brand-stimulus" href="https://stimulus.hotwired.dev">Stimulus</a></li>
+    <li><a class="jump__list-link hover:color-brand-turbo jump__list-link--active" href="https://native.hotwired.dev">Native</a></li>
+  </ul>
+</nav>
+
+
+    
+<div class="nav__github-corner">
+  <svg width="60" height="60" viewBox="0 0 250 250" version="1.1" xmlns="github-corner"
+	style="fill:#000000; color:#FFFFFF;"
+	aria-hidden="true">
+	<a href="https://github.com/hotwired/hotwire-native-site/blob/main/./_source/ios/06_reference.md" target="_blank" class="github-corner">
+		<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+		<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+			fill="#FFFFFF" style="transform-origin: 130px 106px;" class="octo-arm">
+		</path>
+		<path
+			d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="#FFFFFF" class="octo-body">
+		</path>
+	</a>
+</svg>
+
+</div>
+
+<main class="grid docs">
+
+  <header class="docs__index grid__custom-item">
+    <a class="nav-logo" href="/" aria-label="Hotwire Native">
+  <svg class="logo" width="290" height="60" viewBox="0 0 290 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_75_1510)">
+<path d="M79.2359 6.19995L70.9399 53.8H83.4859L87.3279 31.734L99.6019 53.8H109.496L117.792 6.19995H105.246L101.37 28.368L89.0619 6.19995H79.2359Z" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M112.316 53.8L135.742 6.19995H148.322L155.19 53.8H141.556L140.808 47.952H128.704L125.848 53.8H112.316ZM133.09 38.398H139.856L138.632 26.43L133.09 38.398Z" fill="black"/>
+<path d="M169.378 18.032L163.122 53.8H176.654L182.91 18.032H193.824L195.864 6.19995H160.504L158.464 18.032H169.378Z" fill="black"/>
+<path d="M191.178 53.8L199.474 6.19995H213.006L204.71 53.8H191.178Z" fill="black"/>
+<path d="M215.916 6.19995L223.26 53.8H233.732L257.464 6.19995H243.728L232.338 32.856L229.754 6.19995H215.916Z" fill="black"/>
+<path d="M260.22 6.19995L251.924 53.8H282.49L284.394 42.852H267.36L268.788 34.658H281.674L283.442 24.492H270.556L271.848 17.148H288.372L290.276 6.19995H260.22Z" fill="black"/>
+<path d="M60 50.852C60 50.3122 59.7835 49.7936 59.389 49.425C55.084 45.4031 49.8687 42.2528 44.0501 40.288C43.5744 40.1274 43.1945 40.7059 43.504 41.1013C47.458 46.1537 49.9206 52.7203 51.4118 59.2141C51.5171 59.6724 51.923 60.0001 52.3932 60.0001H58C59.1046 60.0001 60 59.1046 60 58.0001V50.852Z" fill="#C18BF4"/>
+<path d="M43.9965 60C44.6129 60 45.083 59.4476 44.9753 58.8407C43.6865 51.578 41.4054 44.5095 37.5067 39.1855C37.2072 38.7766 36.7538 38.5096 36.252 38.4385C34.2142 38.1497 32.1267 38 30 38C27.8733 38 25.7858 38.1497 23.748 38.4385C23.2462 38.5096 22.7928 38.7766 22.4933 39.1855C18.5946 44.5095 16.3135 51.578 15.0247 58.8407C14.917 59.4476 15.3871 60 16.0035 60H43.9965Z" fill="#C18BF4"/>
+<path d="M8.5882 59.2141C8.48295 59.6724 8.07703 60.0001 7.60682 60.0001H2C0.895432 60.0001 0 59.1046 0 58.0001V50.852C0 50.3122 0.216551 49.7936 0.61102 49.425C4.91604 45.4031 10.1313 42.2528 15.9499 40.288C16.4256 40.1274 16.8055 40.7059 16.4961 41.1013C12.542 46.1537 10.0795 52.7203 8.5882 59.2141Z" fill="#C18BF4"/>
+<path d="M37.9182 30.6004C38.2232 30.6471 38.5 30.4124 38.5 30.1038V20C38.5 19.1716 37.8284 18.5 37 18.5H23C22.1716 18.5 21.5 19.1716 21.5 20V30.1038C21.5 30.4124 21.7768 30.6471 22.0818 30.6004C24.6631 30.2052 27.308 30 30 30C32.692 30 35.3369 30.2052 37.9182 30.6004Z" fill="#C18BF4"/>
+<path d="M27 0C27.5523 0 28 0.447715 28 1V5C28 6.10457 28.8954 7 30 7C31.1046 7 32 6.10457 32 5V1C32 0.447715 32.4477 0 33 0H42.8723C43.274 0 43.5117 0.44992 43.2853 0.781811L39.348 6.55227C38.7254 7.46467 38.9604 8.70901 39.8728 9.33157C40.7852 9.95413 42.0295 9.71916 42.6521 8.80675L48.2145 0.654568C48.494 0.245008 48.9578 0 49.4536 0H58C59.1046 0 60 0.895431 60 2V4.72811C60 5.07166 59.8236 5.39117 59.5329 5.57426L47.2546 13.3076C46.32 13.8963 46.0395 15.1312 46.6282 16.0658C47.2168 17.0004 48.4517 17.2809 49.3864 16.6922L59.2335 10.4901C59.5665 10.2804 60 10.5197 60 10.9132V22C60 22.5523 59.5523 23 59 23H51C49.8954 23 49 23.8954 49 25C49 26.1046 49.8954 27 51 27H59C59.5523 27 60 27.4477 60 28V37.6469C60 38.4621 59.0732 38.9399 58.3937 38.4894C54.1069 35.6473 49.3393 33.4325 44.2389 31.9787C43.8039 31.8548 43.5 31.4598 43.5 31.0075V20C43.5 16.4101 40.5899 13.5 37 13.5H23C19.4101 13.5 16.5 16.4101 16.5 20V31.0075C16.5 31.4598 16.1961 31.8548 15.7611 31.9787C10.6607 33.4325 5.89308 35.6473 1.60631 38.4894C0.926837 38.9399 0 38.4621 0 37.6469V28C0 27.4477 0.447715 27 1 27H9C10.1046 27 11 26.1046 11 25C11 23.8954 10.1046 23 9 23H1C0.447715 23 0 22.5523 0 22V10.9133C0 10.5198 0.43351 10.2805 0.766469 10.4902L10.6136 16.6923C11.5483 17.281 12.7832 17.0005 13.3718 16.0659C13.9605 15.1312 13.68 13.8964 12.7454 13.3077L0.467061 5.57434C0.17636 5.39125 0 5.07175 0 4.72819V2C0 0.895432 0.895431 0 2 0H10.5465C11.0423 0 11.5061 0.245008 11.7855 0.654568L17.3479 8.80675C17.9705 9.71916 19.2148 9.95413 20.1272 9.33157C21.0397 8.70901 21.2746 7.46467 20.6521 6.55226L16.7148 0.781811C16.4883 0.44992 16.726 0 17.1278 0H27Z" fill="#C18BF4"/>
+</g>
+<defs>
+<clipPath id="clip0_75_1510">
+<rect width="290" height="60" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
+</a>
+
+<input type="checkbox" id="hamburger" class="nav-checkbox"/>
+<label class="nav-mobile-button" for="hamburger"><span></span> Menu</label>
+
+<nav class="nav">
+
+  <label class="nav-mobile-button nav-mobile-button--close" for="hamburger"><span></span> close</label>
+
+  <ul class="nav__list ">
+    <li>
+      <a class="nav__list-link" href="/overview/how-it-works">Overview</a>
+
+      <ul class="nav__sublist "><li>
+      <a class="nav__sublist-link" href="/overview/how-it-works">1: How it Works
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/overview/basic-navigation">2: Basic Navigation
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/overview/path-configuration">3: Path Configuration
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/overview/bridge-components">4: Bridge Components
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/overview/native-screens">5: Native Screens
+      </a>
+    </li></ul>
+
+    </li>
+    <li>
+      <a class="nav__list-link active" href="/ios/getting-started">iOS</a>
+
+      <ul class="nav__sublist  active"><li>
+      <a class="nav__sublist-link" href="/ios/getting-started">1: Getting Started
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/ios/path-configuration">2: Path Configuration
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/ios/bridge-components">3: Bridge Components
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/ios/native-screens">4: Native Screens
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/ios/configuration">5: Configuration
+      </a>
+    </li><li>
+      <a class="nav__sublist-link active" href="/ios/reference">6: Reference
+      </a>
+    </li></ul>
+
+    </li>
+    <li>
+      <a class="nav__list-link" href="/android/getting-started">Android</a>
+
+      <ul class="nav__sublist "><li>
+      <a class="nav__sublist-link" href="/android/getting-started">1: Getting Started
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/android/path-configuration">2: Path Configuration
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/android/bridge-components">3: Bridge Components
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/android/native-screens">4: Native Screens
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/android/configuration">5: Configuration
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/android/reference">6: Reference
+      </a>
+    </li></ul>
+
+    </li>
+    <li>
+      <a class="nav__list-link" href="/reference/navigation">Reference</a>
+
+      <ul class="nav__sublist "><li>
+      <a class="nav__sublist-link" href="/reference/navigation">Navigation
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/path-configuration">Path Configuration
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/bridge-installation">Bridge Installation
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/bridge-components">Bridge Components
+      </a>
+    </li></ul>
+
+    </li>
+    <li>
+      <a class="nav__list-link" href="https://discuss.hotwired.dev" title="Have a question? Connect with other developers on the Hotwire Discourse community forum.">Community</a>
+    </li>
+  </ul>
+
+</nav>
+
+  </header>
+
+  <section id="content" class="docs__content grid__custom-item">
+
+    <h1>Reference</h1>
+<p>There are a few main types in Hotwire Native iOS, most notably <code>Navigator</code> and <code>Visitable</code>.</p>
+<h2 id="navigator"><a class="anchor" href="#navigator">﹟</a> Navigator</h2>
+<p>The <code>Navigator</code> is the central coordinator in a Hotwire Native iOS application. Each <code>Navigator</code> manages the stack of screens via a <code>UINavigationController</code> with a single, shared <code>WKWebView</code> instance. It lets your app choose how to handle link taps, present view controllers, and deal with errors.</p>
+<h3 id="creating-a-navigator"><a class="anchor" href="#creating-a-navigator">﹟</a> Creating a <code>Navigator</code></h3>
+<p>Create with no parameters to use the default configuration:</p>
+<pre class="language-swift"><code class="language-swift"><span class="token keyword">let</span> navigator <span class="token operator">=</span> <span class="token class-name">Navigator</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Provide optional <a href="path-configuration">path configuration</a> to configure settings and path rules:</p>
+<pre class="language-swift"><code class="language-swift"><span class="token keyword">let</span> navigator <span class="token operator">=</span> <span class="token class-name">Navigator</span><span class="token punctuation">(</span>pathConfiguration<span class="token punctuation">:</span> pathConfiguration<span class="token punctuation">)</span></code></pre>
+<p>Provide an optional <a href="#navigatordelegate">delegate</a> to configure how different URLs, errors, and external links are handled:</p>
+<pre class="language-swift"><code class="language-swift"><span class="token keyword">let</span> navigator <span class="token operator">=</span> <span class="token class-name">Navigator</span><span class="token punctuation">(</span>delegate<span class="token punctuation">:</span> delegate<span class="token punctuation">)</span><br><br><span class="token keyword">extension</span> <span class="token class-name">SceneController</span><span class="token punctuation">:</span> <span class="token class-name">NavigatorDelgate</span> <span class="token punctuation">{</span><br>    <span class="token comment">// ...</span><br><span class="token punctuation">}</span></code></pre>
+<p>Customize the underlying <code>WKWebView</code> and configuration with a block. For example, to use a custom <code>WKProcessPool</code> to share cookies from web views outside of Hotwire Native:</p>
+<pre class="language-swift"><code class="language-swift"><span class="token class-name">Hotwire</span><span class="token punctuation">.</span>config<span class="token punctuation">.</span>makeCustomWebView <span class="token operator">=</span> <span class="token punctuation">{</span> config <span class="token keyword">in</span><br>    config<span class="token punctuation">.</span>processPool <span class="token operator">=</span> processPool<br>    <span class="token keyword">return</span> <span class="token class-name">WKWebView</span><span class="token punctuation">(</span>frame<span class="token punctuation">:</span> <span class="token punctuation">.</span>zero<span class="token punctuation">,</span> configuration<span class="token punctuation">:</span> config<span class="token punctuation">)</span><br><span class="token punctuation">}</span></code></pre>
+<h2 id="navigatordelegate"><a class="anchor" href="#navigatordelegate">﹟</a> <code>NavigatorDelegate</code></h2>
+<p>The delegate is an optional interface you can implement to customize behavior of the <code>Navigator</code>.</p>
+<h3 id="handling-proposals"><a class="anchor" href="#handling-proposals">﹟</a> Handling Proposals</h3>
+<p>Hotwire Native iOS calls the <code>handle(proposal:)</code> method before every visit, such as when you tap a Turbo-enabled link or call <code>Turbo.visit(...)</code> in your web application. Implement this function to choose how to handle the specified URL and action. This is called a <em>proposal</em> since your application is not required to complete the visit.</p>
+<p>Return one of the following three <code>ProposalResult</code> cases:</p>
+<ul>
+<li><code>accept</code>: Proposals are accepted and a new <a href="#hotwirewebviewcontroller"><code>HotwireWebViewController</code></a> is displayed.</li>
+<li><code>acceptCustom(UIViewController)</code>: Provide a custom view controller to be displayed.</li>
+<li><code>reject</code>: No changes to navigation occur, the visit is effectively cancelled.</li>
+</ul>
+<h3 id="handling-external-urls"><a class="anchor" href="#handling-external-urls">﹟</a> Handling External URLs</h3>
+<p>Implement <code>handle(externalURL:)</code> to customize the behavior when an external URL is visited. URLs are considered “external” if they do not match the same domain as the first visited link. By default, this will present a <a href="https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller"><code>SFSafariViewController</code></a> modally.</p>
+<h3 id="handling-errors"><a class="anchor" href="#handling-errors">﹟</a> Handling Errors</h3>
+<p>Network errors and responses with HTTP status codes outside of the 200 range are considered errors. By default a native screen with the error’s localized description and a Retry button is presented.</p>
+<p>Customize this behavior by implementing <code>visitableDidFailRequest(_:error:retryHandler:)</code>. Call <code>retryHandler()</code> to attempt the network request again.</p>
+<h2 id="hotwirewebviewcontroller"><a class="anchor" href="#hotwirewebviewcontroller">﹟</a> <code>HotwireWebViewController</code></h2>
+<p>A <code>HotwireWebViewController</code> is a <code>UIViewController</code> that can be visited by a <code>Navigator</code>. Each view controller provides a <code>VisitableView</code> instance, which acts as a container for the shared <code>WKWebView</code>. The <code>VisitableView</code> optionally has a pull-to-refresh control and an activity indicator. It also automatically displays a screenshot of its contents when the web view moves to another <code>VisitableView</code>.</p>
+<p>Most applications will probably need want to subclass <code>HotwireWebViewController</code> to customize its layout or add additional views. If your application’s design prevents you from subclassing <code>HotwireWebViewController</code>, you can implement the <code>Visitable</code> and <code>BridgeDestination</code> protocols yourself.</p>
+<p>Note: Custom <code>Visitable</code> view controllers must notify their delegate of their <code>viewWillAppear</code> and <code>viewDidAppear</code> methods through the <code>VisitableDelegate</code>’s <code>visitableViewWillAppear</code> and <code>visitableViewDidAppear</code> methods. The <code>Navigator</code> uses these hooks to know when it should move the <code>WKWebView</code> from one <code>VisitableView</code> to another.</p>
+</section>
+
+  <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
+
+    <footer class="footer">
+  <p class="footer__headline">Brought to you by the makers of:</p>
+  <ul class="footer__links">
+    <li><a href="https://basecamp.com" target="_blank" rel="noopener"><img width="253" height="56" src="/assets/logo-basecamp.svg" alt="Basecamp"></a></li>
+    <li><span>and</span></li>
+    <li><a href="https://hey.com" target="_blank" rel="noopener"><img width="122" height="56" src="/assets/logo-hey.svg" alt="HEY"></a></li>
+  </ul>
+  <p class="footer__copyright">&copy; 2024 <a href="https://37signals.com" target="_blank" rel="noopener">37signals</a></p>
+</footer>
+
+
+  </footer>
+
+</main>
+
+
+  </body>
+
+</html>
