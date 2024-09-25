@@ -26,7 +26,7 @@ Your web code and your native app code communicate through Hotwire Native's comp
 
 This component-based framework allows some web features to break out of the web view container and drive native features — whether it’s displaying native buttons in the top app bar, displaying native menu sheets, or calling native platform APIs. Bridge components enable you to do all of this and give you the flexibility to build components that are specific to your app’s needs.
 
-Example components include native buttons to submit forms, web dialogs rendered as a `UIActionSheet` on iOS or `BottomSheetDialog` on Android, and more. Check out the [iOS](/ios/bridge-components)- and [Android](/android/bridge-components)-specific pages for information and code snippets.
+Example components include native buttons to submit forms, web dialogs rendered as a `UIActionSheet` on iOS or `BottomSheetDialog` on Android, and more. Check out the [iOS](/ios/bridge-components)- and [Android](/android/bridge-components)-specific pages for information and code snippets. And there's a guide for [installing the web library](/reference/bridge-installation) on your server.
 
 <figure>
     <img src="/assets/bridge-examples.png" width="600" alt="Web and Native Components">
