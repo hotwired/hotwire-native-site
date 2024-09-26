@@ -205,14 +205,14 @@
 <h2 id="location"><a class="anchor" href="#location">﹟</a> Location</h2>
 <p>Path configuration has a <code>location</code> that can be loaded from your app. You can configure the <code>location</code> to be a locally bundled file, a remote file available from your server, or both. We recommend always including a bundled version even when loading remotely, so it will be available in case your app is offline.</p>
 <pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span><span class="token function">loadPathConfiguration</span><span class="token punctuation">(</span><br>    context <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">,</span><br>    location <span class="token operator">=</span> PathConfiguration<span class="token punctuation">.</span><span class="token function">Location</span><span class="token punctuation">(</span><br>        assetFilePath <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"json/configuration.json"</span></span><span class="token punctuation">,</span><br>        remoteFileUrl <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"https://example.com/configurations/android_v1.json"</span></span><br>    <span class="token punctuation">)</span><br><span class="token punctuation">)</span></code></pre>
-<p><code>Path Configuration</code> will always load locally available configurations first. When providing both a bundled file and a server location, load order is as follows:</p>
+<p>If you provide both a file and a server location, the path configuration will be loaded asynchronously in the following order:</p>
 <ol>
-<li>The bundled file</li>
-<li>The cached server file (if a successful download has previously occurred)</li>
-<li>The downloaded server file</li>
+<li>The local file bundled with your app.</li>
+<li>A locally cached copy of the server configuration (if a successful download occurred on a previous app launch).</li>
+<li>A newly downloaded copy of the server configuration. (Once this has downloaded successfully, it will be cached and used in step 2 on the next app launch.)</li>
 </ol>
 <p>Providing a bundled file and a server location will cause the path configuration to immediately load from the bundled version and – if it exists – a cached version of the server file. Then it will begin downloading the server file. Once the server file is successfully downloaded, it is loaded and cached for further use.</p>
-<p>The <a href="/reference/path-configuration">path configuration reference</a> provides more information including all the behavior Hotwire Native provides out of the box.</p>
+<p>The <a href="/reference/path-configuration">path configuration reference</a> provides more information, including all the behavior Hotwire Native provides out of the box.</p>
 <p><a class="button" href="/android/bridge-components">Next: Bridge Components</a></p></section>
 
   <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
