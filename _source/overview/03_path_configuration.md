@@ -18,7 +18,7 @@ Advanced navigation in Hotwire Native apps can be configured via a JSON file cal
 
 `settings` contains app-level configuration items. These settings can be read when the *path configuration* is first loaded; common use cases include feature-flags or custom app information that you want to control remotely.
 
-`rules` contains entries that define navigation within the Hotwire app. Each entry contains regex patterns used to identify URLs and then apply the specified behavior on navigation. In the following example, all URLs that match regex `/new$` will open up in a modal screen instead of being pushed onto the default navigation stack.
+`rules` contains entries that define navigation within the Hotwire app. Each entry contains regex patterns used to identify URLs and then apply the specified behavior on navigation. In the following example, all URLs matching the regex `/new$` will open up in a modal screen, rather than being pushed onto the default navigation stack:
 
 ```json
 {
