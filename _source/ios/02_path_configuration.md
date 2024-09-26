@@ -55,6 +55,7 @@ let pathConfiguration = PathConfiguration(sources: [
 
 let navigator = Navigator(pathConfiguration: pathConfiguration)
 ```
+
 If you provide both a file and a server location, the path configuration will be loaded asynchronously in the following order:
 1. The local file bundled with your app.
 2. A locally cached copy of the server configuration (if a successful download occurred on a previous app launch).

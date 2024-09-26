@@ -9,7 +9,7 @@ description: "Integrate fully native Swift screens in your Hotiwre Native app."
 
 If you need to go fully native, we've got you covered: it's easy to integrate native screens to Hotwire Native's navigation flow. Even though you may be tempted to get a reference to Hotwire Native's navigation controller and push/present yourself, we strongly advise against it. It's better to leverage the power of Hotwire Native's [Path Configuration](/ios/path-configuration), even for native screens.
 
-First, conform your view controller to `PathConfigurationIdentifiable` and provide a matching `pathConfigurationIdentifier`. When Hotwire Native intercepts a link, the identifier is used to quickly work out that a native view controller was requested.
+First, conform your view controller to `PathConfigurationIdentifiable` and provide a matching `pathConfigurationIdentifier`. When Hotwire Native intercepts a link, the identifier is used to resolve that a native view controller was requested.
 
 ```swift
 class NumbersViewController: UITableViewController, PathConfigurationIdentifiable {
