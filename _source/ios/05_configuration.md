@@ -18,7 +18,7 @@ Hotwire.config.debugLoggingEnabled = true
 ## General
 
 * `debugLoggingEnabled` - Enable or disable debug logging for Turbo visits and bridge elements connecting, disconnecting, receiving/sending messages, and more.
-* `userAgent` - Override to set a custom user agent for your app's requests. Make sure to include "Hotwire Native" or "Turbo Native" to use `turbo_native_app?` on your Rails server.
+* `userAgent` - Override to set a custom user agent for your app's requests. Make sure to include "Hotwire Native" or "Turbo Native" to use `turbo_native_app?` on your [Rails server](https://github.com/hotwired/turbo-rails/blob/1aa7ba9d38dee1e1b4078a74404131122b907176/app/controllers/turbo/native/navigation.rb#L14).
 * `showDoneButtonOnModals` - When enabled, adds a `UIBarButtonItem` of type `.done` to the left navigation bar button item on screens presented modally.
 * `backButtonDisplayMode` - Sets the back button display mode of `HotwireWebViewController`.
 

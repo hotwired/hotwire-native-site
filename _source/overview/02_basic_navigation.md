@@ -24,11 +24,11 @@ When a user taps on a link, here's what's happening:
 
 By default, every tapped link _pushes_ a new screen onto the native stack. Hotwire Native uses platform-specific animations and native components so interactions feel smooth. To users, it feels like a native app because it _is_ a native app!
 
-The framework also applies a few sane defaults. Navigating to the _current_ page's URL path (again) will _replace_ the screen on the stack. You can also manually trigger a _replace_ action by adding `data-turbo-action="replace"` to links and forms. This will cause the visited page to replace the current screen (not push a new one) and load the new contents.
+The framework also applies a few sane defaults. Navigating to the _current_ page's URL path (again) will _replace_ the screen on the stack. You can also manually trigger a _replace_ action by adding `data-turbo-action="replace"` to links and forms. This will cause the visited page to replace the current screen (rather than pushing a new one) and load the new contents.
 
 ## Caching
 
- Navigating to the _previous_ page's URL path will _pop_ the screen off the stack back to the previous screen. This animation uses a cached screenshot further blending the gap to native screens. On iOS, the interactive pop gesture - dragging your finger from the far left of the screen - is also supported and feels great.
+ Navigating to the _previous_ page's URL path will _pop_ the screen off the stack back to the previous screen. This animation uses a cached screenshot, further blending the gap to native screens. On iOS, the interactive pop gesture – dragging your finger from the far left of the screen – is also supported and feels great.
 
 ## External Links
 

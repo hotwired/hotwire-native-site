@@ -55,14 +55,10 @@ let pathConfiguration = PathConfiguration(sources: [
 
 let navigator = Navigator(pathConfiguration: pathConfiguration)
 ```
-
-`PathConfiguration` will always load locally available configurations first. When providing both a bundled file and a server location, load order is as follows:
-
-1. The bundled file
-2. The cached server file (if a successful download has previously occurred)
-3. The downloaded server file
-
-Providing a bundled file and a server location will cause the path configuration to immediately load from the bundled version and – if it exists – a cached version of the server file. Then it will begin downloading the server file. Once the server file is successfully downloaded, it is loaded and cached for further use.
+If you provide both a file and a server location, the path configuration will be loaded asynchronously in the following order:
+1. The local file bundled with your app.
+2. A locally cached copy of the server configuration (if a successful download occurred on a previous app launch).
+3. A newly downloaded copy of the server configuration. (Once this has downloaded successfully, it will be cached and used in step 2 on the next app launch.) 
 
 ## Query String Matching
 
@@ -85,4 +81,4 @@ Disable query string matching via:
 Hotwire.config.pathConfiguration.matchQueryStrings = false
 ```
 
-The [path configuration reference](/reference/path-configuration) provides more information including all the behavior Hotwire Native provides out of the box.
+The [path configuration reference](/reference/path-configuration) provides more information, including all the behavior Hotwire Native provides out of the box.

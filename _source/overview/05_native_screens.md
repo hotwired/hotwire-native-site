@@ -13,7 +13,7 @@ There are a few things to note:
 
 - It's strongly encouraged that each native screen has a corresponding URL, so it's easier to integrate into Hotwire Native's built-in navigation.
 - Purely native screens will likely take specialized experience from iOS and Android developers.
-- You'll need to write a version for every platform and go through the app store review process for any future changes
+- You'll need to write a version for every platform and go through the app store review process for any future changes.
 
 Leveraging Hotwire Native allows you to build full products with smaller development teams. You can focus on high fidelity native development where it matters most and leverage your existing web app for everything else.
 

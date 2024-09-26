@@ -28,7 +28,7 @@ Select where to save the project and click Create.
 ## Integrate Hotwire Native
 
 Next, add the Hotwire Native package via File → Add Packages Dependencies... and enter `https://github.com/hotwired/hotwire-native-ios` in the search field.
-Make sure the “Dependency Rule“ is set to “Branch“ pointing to main and your project is correctly set under “Add to Project“ and click Add Package.
+Make sure your project is correctly set under “Add to Project“ and click Add Package.
 
 <img src="/assets/xcode-search-package.png" class="border" width="600" alt="Configure Xcode project" />
 
