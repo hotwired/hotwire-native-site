@@ -61,6 +61,10 @@ Set up the app's layout by opening `activity_main.xml` and replace the entire fi
 Finally, open `MainActivity.kt` and replace the entire file with this code:
 
 ```kotlin
+import android.os.Bundle
+import dev.hotwire.navigation.activities.HotwireActivity
+import dev.hotwire.navigation.navigator.NavigatorConfiguration
+
 class MainActivity : HotwireActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,7 +75,7 @@ class MainActivity : HotwireActivity() {
         NavigatorConfiguration(
             name = "main",
             startLocation = "https://hotwire-native-demo.dev",
-            navigatorHostId = R.id.main_navigator_host
+            navigatorHostId = R.id.main_nav_host
         )
     )
 }
