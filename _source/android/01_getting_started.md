@@ -52,7 +52,7 @@ Set up the app's layout by opening `activity_main.xml` and replace the entire fi
     app:defaultNavHost="false" />
 ```
 
-Finally, open `MainActivity.kt` and replace the entire file with this code:
+Finally, open `MainActivity.kt` and replace the class with this code:
 
 ```kotlin
 class MainActivity : HotwireActivity() {
