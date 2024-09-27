@@ -23,7 +23,7 @@ Then select API 28 or higher for the minimum SDK and Kotlin DSL for the build co
 
 ## Integrate Hotwire Native
 
-Add the Hotwire Native dependencies to your app's module (not top-level) `build.gradle.kts` file. You can look up the version number from `https://github.com/orgs/hotwired/packages`.
+Add the Hotwire Native dependencies to your app's module (not top-level) `build.gradle.kts` file. You can look up the version number from [https://github.com/orgs/hotwired/packages](https://github.com/orgs/hotwired/packages).
 
 ```kotlin
 dependencies {
