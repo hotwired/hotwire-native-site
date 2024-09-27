@@ -16,7 +16,7 @@ The `Navigator` is the central coordinator in a Hotwire Native Android applicati
 You can customize and subclass the `HotwireWebView` class to provide custom behaviors in your app:
 
 ```kotlin
-Hotwire.config.makeCustomWebView = { context
+Hotwire.config.makeCustomWebView = { context ->
     MyCustomWebView(context, null)
 }
 ```

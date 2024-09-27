@@ -42,23 +42,17 @@ Set up the app's layout by opening `activity_main.xml` and replace the entire fi
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.fragment.app.FragmentContainerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_host"
+    android:name="dev.hotwire.navigation.navigator.NavigatorHost"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/main_nav_host"
-        android:name="dev.hotwire.navigation.navigator.NavigatorHost"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="false" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:layout_height="match_parent"
+    app:defaultNavHost="false" />
 ```
 
-Finally, open `MainActivity.kt` and replace the entire file with this code:
+Finally, open `MainActivity.kt` and replace the class with this code:
 
 ```kotlin
 import android.os.Bundle

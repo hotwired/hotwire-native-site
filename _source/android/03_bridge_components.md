@@ -82,7 +82,7 @@ class ButtonComponent(
         // incoming data.title to set the button title.
     }
 
-    private fun performButtonClick() {
+    private fun performButtonClick(): Boolean {
         return replyTo("connect")
     }
 
