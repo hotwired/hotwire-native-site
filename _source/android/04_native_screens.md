@@ -30,10 +30,10 @@ First, create a URL path pattern and set its `uri` property. This path configura
 
 When a link is intercepted by Hotwire Native, it will go through its usual process of matching the link's URL path to all rules in the app's Path Configuration. When it matches the above rule, it will propose a `visit` and resolve the matching `HotwireDestination` whose `uri` matches `"hotwire://fragment/numbers"`.
 
-Create a new fragment and provide a matching `HotwireDestination` annotation.
+Create a new fragment and provide a matching `HotwireDestinationDeepLink` annotation.
 
 ```kotlin
-@HotwireDestination(uri = "hotwire://fragment/numbers")
+@HotwireDestinationDeepLink(uri = "hotwire://fragment/numbers")
 class NumbersFragment : HotwireFragment() {
     // ...
 }
