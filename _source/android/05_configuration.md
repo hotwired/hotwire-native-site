@@ -43,7 +43,7 @@ Hotwire.config.webViewDebuggingEnabled = BuildConfig.DEBUG
 Set the default fragment destination:
 
 ```kotlin
-Hotwire.defaultFragmentDestination = WebFragment::class
+Hotwire.defaultFragmentDestination = HotwireWebFragment::class
 ```
 
 Register fragment destinations:
