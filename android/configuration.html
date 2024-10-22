@@ -205,7 +205,7 @@ p</p>
 <p>Enable debugging in debug builds:</p>
 <pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span>config<span class="token punctuation">.</span>debugLoggingEnabled <span class="token operator">=</span> BuildConfig<span class="token punctuation">.</span>DEBUG<br>Hotwire<span class="token punctuation">.</span>config<span class="token punctuation">.</span>webViewDebuggingEnabled <span class="token operator">=</span> BuildConfig<span class="token punctuation">.</span>DEBUG</code></pre>
 <p>Set the default fragment destination:</p>
-<pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span>defaultFragmentDestination <span class="token operator">=</span> WebFragment<span class="token operator">::</span><span class="token keyword">class</span></code></pre>
+<pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span>defaultFragmentDestination <span class="token operator">=</span> HotwireWebFragment<span class="token operator">::</span><span class="token keyword">class</span></code></pre>
 <p>Register fragment destinations:</p>
 <pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span><span class="token function">registerFragmentDestinations</span><span class="token punctuation">(</span><br>    MyCustomFragment<span class="token operator">::</span><span class="token keyword">class</span><br><span class="token punctuation">)</span></code></pre>
 <p>Register bridge components, where the first argument is the component name to match in Stimulus:</p>
