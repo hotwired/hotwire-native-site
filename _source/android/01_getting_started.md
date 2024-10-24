@@ -55,6 +55,9 @@ Set up the app's layout by opening `activity_main.xml` and replace the entire fi
 Finally, open `MainActivity.kt` and replace the class with this code:
 
 ```kotlin
+// use the namespace of your application as listed in the app-level `build.gradle.kts` under `android / namespace`:
+package com.example.myapplication
+
 import android.os.Bundle
 import dev.hotwire.navigation.activities.HotwireActivity
 import dev.hotwire.navigation.navigator.NavigatorConfiguration
