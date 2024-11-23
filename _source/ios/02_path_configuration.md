@@ -61,7 +61,7 @@ If you provide both a file and a server location, the path configuration will be
 2. A locally cached copy of the server configuration (if a successful download occurred on a previous app launch).
 3. A newly downloaded copy of the server configuration. (Once this has downloaded successfully, it will be cached and used in step 2 on the next app launch.) 
 
-The PathConfiguration must be passed into your Navigator, so if you followed the [getting started](/ios/getting-started) steps, this code should go into the `SceneDelegate` class.
+The `PathConfiguration` must be passed into your `Navigator`, so if you followed the [getting started](/ios/getting-started) steps, this code should go into the `SceneDelegate` class.
 
 ## Query String Matching
 
