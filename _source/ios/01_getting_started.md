@@ -50,6 +50,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private let navigator = Navigator()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let windowScene = scene as? UIWindowScene else { return }
+        window = UIWindow(windowScene: windowScene)
+        window?.makeKeyAndVisible()
+
         window?.rootViewController = navigator.rootViewController
         navigator.route(rootURL)
     }
