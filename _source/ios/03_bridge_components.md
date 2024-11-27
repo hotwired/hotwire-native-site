@@ -98,7 +98,7 @@ First, the component identifies itself as `"button"` via `name` to match the Sti
 
 `onReceive(message:)` is called when a message is received from Stimulus. Here, the `{title}` object is unpacked to add a native button to the right side of the screen. When it's tapped, the `UIAction` is fired, replying to the message and calling the callback block, clicking the button.
 
-Finally, register the component. If you followed the [getting started steps](/ios/getting-started) then this will go in `SceneDelegate.swift` before routing your first URL.
+Finally, register the component. If you followed the [getting started steps](/ios/getting-started) then this will go in `SceneDelegate.swift` before accessing the rootViewController of the navigatorL.
 
 ```swift
 Hotwire.registerBridgeComponents([
