@@ -7,7 +7,7 @@ description: "Advanced navigation via the path configuration."
 
 # Path Configuration
 
-The basics of *Path Configuration* are explained in the [overview](/overview/03-path-configuration). If you're ready to build your first Path Configuration, keep reading.
+The basics of *Path Configuration* are explained in the [overview](/overview/path-configuration). If you're ready to build your first Path Configuration, keep reading.
 
 ## Settings
 
