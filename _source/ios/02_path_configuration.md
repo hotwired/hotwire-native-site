@@ -44,16 +44,26 @@ This configuration does two things:
 
 Path configuration has an array of `sources`. You can configure the source to be a locally bundled file, a remote file available from your server, or both. We recommend always including a bundled version even when loading remotely, so it will be available in case your app is offline.
 
+Set up your path configuration in `AppDelegate.swift`. This ensures that Hotwire is configured before the first URL is routed.
+
 ```swift
-let localPathConfigURL = Bundle.main.url(forResource: "path-configuration", withExtension: "json")!
-let remotePathConfigURL = URL(string: "https://example.com/configurations/ios_v1.json")!
+import HotwireNative
+import UIKit
 
-let pathConfiguration = PathConfiguration(sources: [
-  .file(localPathConfigURL),
-  .server(remotePathConfigURL)
-])
+@main
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let localPathConfigURL = Bundle.main.url(forResource: "path-configuration", withExtension: "json")!
+        let remotePathConfigURL = URL(string: "https://example.com/configurations/ios_v1.json")!
 
-let navigator = Navigator(pathConfiguration: pathConfiguration)
+        Hotwire.loadPathConfiguration(from: [
+            .file(localPathConfigURL),
+            .server(remotePathConfigURL)
+        ])
+
+        return true
+    }
+}
 ```
 
 If you provide both a file and a server location, the path configuration will be loaded asynchronously in the following order:
