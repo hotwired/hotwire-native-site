@@ -71,5 +71,10 @@ Hotwire.config.jsonConverter = KotlinXJsonConverter()
 Customize the user agent:
 
 ```kotlin
-Hotwire.config.userAgent = "My Application; ${Hotwire.config.userAgentSubstring()}"
+Hotwire.config.applicationUserAgentPrefix = "My Application;"
 ```
+
+Set a custom user agent application prefix for every `WebView` instance. The library will automatically append a substring to your prefix which includes:
+* - "Hotwire Native Android; Turbo Native Android;"
+* - "bridge-components: [your bridge components];"
+* - The `WebView`'s default Chromium user agent string
