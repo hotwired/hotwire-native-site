@@ -136,3 +136,6 @@ You are free to add more properties as your app needs, but these are the ones th
         * [`full`](https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/fullscreen) — A full-screen modal, covering everything but the status bar.
         * [`page_sheet`](https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/pagesheet) — On iPads, presents a modal that partially covers the underlying content. On iPhones, uses the default system presentation style.
         * [`form_sheet`](https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/formsheet) — On iPads, presents a modal centered in the screen. On iPhones, uses the default system presentation style.
+* `modal_dismiss_gesture_enabled` — Whether or not swiping down (or tapping outside the content on iPads) on a modal will dismiss it.
+    * Optional.
+	* Possible values: `true`, `false`. Defaults to `true`.
