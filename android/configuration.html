@@ -212,8 +212,25 @@ p</p>
 <pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span><span class="token function">registerBridgeComponents</span><span class="token punctuation">(</span><br>    <span class="token function">BridgeComponentFactory</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"my-custom"</span></span><span class="token punctuation">,</span> <span class="token operator">::</span>MyCustomComponent<span class="token punctuation">)</span><br><span class="token punctuation">)</span></code></pre>
 <p>Set the JSON converter used for bridge components:</p>
 <pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span>config<span class="token punctuation">.</span>jsonConverter <span class="token operator">=</span> <span class="token function">KotlinXJsonConverter</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p>Customize the user agent:</p>
-<pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span>config<span class="token punctuation">.</span>userAgent <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"My Application; </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token expression">Hotwire<span class="token punctuation">.</span>config<span class="token punctuation">.</span><span class="token function">userAgentSubstring</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">"</span></span></code></pre>
+<p>Set a custom user agent application prefix for every <code>WebView</code> instance. The library will automatically append a substring to your prefix which includes:</p>
+<ul>
+<li>
+<ul>
+<li><code>&quot;Hotwire Native Android; Turbo Native Android;&quot;</code> - for <code>hotwire_native_app?</code> on your <a href="https://github.com/hotwired/turbo-rails/blob/1aa7ba9d38dee1e1b4078a74404131122b907176/app/controllers/turbo/native/navigation.rb#L14">Rails server</a></li>
+</ul>
+</li>
+<li>
+<ul>
+<li><code>&quot;bridge-components: [your bridge components];&quot;</code></li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The <code>WebView</code>’s default Chromium user agent string</li>
+</ul>
+</li>
+</ul>
+<pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span>config<span class="token punctuation">.</span>applicationUserAgentPrefix <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"My Application;"</span></span></code></pre>
 <p><a class="button" href="/android/reference">Next: Reference</a></p></section>
 
   <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">

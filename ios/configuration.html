@@ -199,7 +199,13 @@
 <h2 id="general"><a class="anchor" href="#general">﹟</a> General</h2>
 <ul>
 <li><code>Hotwire.config.debugLoggingEnabled</code> - Enable or disable debug logging for Turbo visits and bridge elements connecting, disconnecting, receiving/sending messages, and more.</li>
-<li><code>Hotwire.config.userAgent</code> - Override to set a custom user agent for your app’s requests. Make sure to include “Hotwire Native” or “Turbo Native” to use <code>turbo_native_app?</code> on your <a href="https://github.com/hotwired/turbo-rails/blob/1aa7ba9d38dee1e1b4078a74404131122b907176/app/controllers/turbo/native/navigation.rb#L14">Rails server</a>.</li>
+<li><code>Hotwire.config.applicationUserAgentPrefix</code> - Set a custom user agent application prefix for every <code>WKWebView</code> instance. The library will automatically append a substring to your prefix which includes:
+<ul>
+<li><code>&quot;Hotwire Native iOS; Turbo Native iOS;&quot;</code> - for <code>hotwire_native_app?</code> on your <a href="https://github.com/hotwired/turbo-rails/blob/1aa7ba9d38dee1e1b4078a74404131122b907176/app/controllers/turbo/native/navigation.rb#L14">Rails server</a></li>
+<li><code>&quot;bridge-components: [your bridge components];&quot;</code></li>
+<li><code>WKWebView</code>’s default user agent string (at the beginning of the user agent)</li>
+</ul>
+</li>
 <li><code>Hotwire.config.showDoneButtonOnModals</code> - When enabled, adds a <code>UIBarButtonItem</code> of type <code>.done</code> to the left navigation bar button item on screens presented modally.</li>
 <li><code>Hotwire.config.backButtonDisplayMode</code> - Sets the back button display mode of <code>HotwireWebViewController</code>.</li>
 </ul>
