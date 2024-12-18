@@ -273,6 +273,26 @@
 <li>No explicit value options. No default value.</li>
 </ul>
 </li>
+<li><code>modal_style</code> — Specifies how a modal should be presented. Make sure to set <code>context</code> to <code>modal</code>, too.
+<ul>
+<li>Optional.</li>
+<li>Possible values (defaults to <code>large</code>):
+<ul>
+<li><code>large</code> — The default system presentation style, <a href="https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/automatic"><em>automatic</em></a>.</li>
+<li><code>medium</code> — A half-sheet modal that can be expanded to full screen when dragged up, via <a href="https://developer.apple.com/documentation/uikit/uisheetpresentationcontroller/detents">detents</a>.</li>
+<li><a href="https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/fullscreen"><code>full</code></a> — A full-screen modal, covering everything but the status bar.</li>
+<li><a href="https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/pagesheet"><code>page_sheet</code></a> — On iPads, presents a modal that partially covers the underlying content. On iPhones, uses the default system presentation style.</li>
+<li><a href="https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/formsheet"><code>form_sheet</code></a> — On iPads, presents a modal centered in the screen. On iPhones, uses the default system presentation style.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>modal_dismiss_gesture_enabled</code> — Whether or not swiping down (or tapping outside the content on iPads) on a modal will dismiss it.
+<ul>
+<li>Optional.</li>
+<li>Possible values: <code>true</code>, <code>false</code>. Defaults to <code>true</code>.</li>
+</ul>
+</li>
 </ul>
 <p><a class="button" href="/reference/bridge-installation">Next: Bridge Installation</a></p></section>
 
