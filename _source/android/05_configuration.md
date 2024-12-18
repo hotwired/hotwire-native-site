@@ -69,8 +69,8 @@ Hotwire.config.jsonConverter = KotlinXJsonConverter()
 ```
 
 Set a custom user agent application prefix for every `WebView` instance. The library will automatically append a substring to your prefix which includes:
-* - "Hotwire Native Android; Turbo Native Android;"
-* - "bridge-components: [your bridge components];"
+* - `"Hotwire Native Android; Turbo Native Android;"` - for `hotwire_native_app?` on your [Rails server](https://github.com/hotwired/turbo-rails/blob/1aa7ba9d38dee1e1b4078a74404131122b907176/app/controllers/turbo/native/navigation.rb#L14)
+* - `"bridge-components: [your bridge components];"`
 * - The `WebView`'s default Chromium user agent string
 
 ```kotlin
