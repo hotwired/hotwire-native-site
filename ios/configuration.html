@@ -195,31 +195,33 @@
   <section id="content" class="docs__content grid__custom-item">
 
     <h1>Configuration</h1>
-<p><code>HotwireConfig</code> provides a few options to customize your Hotwire Native iOS app. We recommend making all configuration changes <em>before</em> instantiating a <code>Navigator</code>, ideally in <code>AppDelegate</code> or <code>SceneDelegate</code>.</p>
-<p>Append the following options to <code>Hotwire.config</code> to change the global configuration. For example, to enable debug logging call:</p>
-<pre class="language-swift"><code class="language-swift"><span class="token class-name">Hotwire</span><span class="token punctuation">.</span>config<span class="token punctuation">.</span>debugLoggingEnabled <span class="token operator">=</span> <span class="token boolean">true</span></code></pre>
+<p>Hotwire Native provides a few options to customize your iOS app. We recommend making all configuration changes <em>before</em> instantiating a <code>Navigator</code>, ideally in <code>AppDelegate.swift</code>.</p>
 <h2 id="general"><a class="anchor" href="#general">﹟</a> General</h2>
 <ul>
-<li><code>debugLoggingEnabled</code> - Enable or disable debug logging for Turbo visits and bridge elements connecting, disconnecting, receiving/sending messages, and more.</li>
-<li><code>userAgent</code> - Override to set a custom user agent for your app’s requests. Make sure to include “Hotwire Native” or “Turbo Native” to use <code>turbo_native_app?</code> on your <a href="https://github.com/hotwired/turbo-rails/blob/1aa7ba9d38dee1e1b4078a74404131122b907176/app/controllers/turbo/native/navigation.rb#L14">Rails server</a>.</li>
-<li><code>showDoneButtonOnModals</code> - When enabled, adds a <code>UIBarButtonItem</code> of type <code>.done</code> to the left navigation bar button item on screens presented modally.</li>
-<li><code>backButtonDisplayMode</code> - Sets the back button display mode of <code>HotwireWebViewController</code>.</li>
+<li><code>Hotwire.config.debugLoggingEnabled</code> - Enable or disable debug logging for Turbo visits and bridge elements connecting, disconnecting, receiving/sending messages, and more.</li>
+<li><code>Hotwire.config.userAgent</code> - Override to set a custom user agent for your app’s requests. Make sure to include “Hotwire Native” or “Turbo Native” to use <code>turbo_native_app?</code> on your <a href="https://github.com/hotwired/turbo-rails/blob/1aa7ba9d38dee1e1b4078a74404131122b907176/app/controllers/turbo/native/navigation.rb#L14">Rails server</a>.</li>
+<li><code>Hotwire.config.showDoneButtonOnModals</code> - When enabled, adds a <code>UIBarButtonItem</code> of type <code>.done</code> to the left navigation bar button item on screens presented modally.</li>
+<li><code>Hotwire.config.backButtonDisplayMode</code> - Sets the back button display mode of <code>HotwireWebViewController</code>.</li>
 </ul>
 <h2 id="turbo"><a class="anchor" href="#turbo">﹟</a> Turbo</h2>
 <ul>
-<li><code>defaultViewController</code> - The view controller used in <code>Navigator</code> for web requests. Must be a <code>VisitableViewController</code> or subclass.</li>
-<li><code>defaultNavigationController</code> - The navigation controller used in <code>Navigator</code> for the main and modal stacks. Must be a <code>UINavigationController</code> or subclass.</li>
-<li><code>makeCustomWebView</code> - Optionally customize the web views used by each Turbo Session. Ensure you return a new instance each time.</li>
+<li><code>Hotwire.config.defaultViewController</code> - The view controller used in <code>Navigator</code> for web requests. Must be a <code>VisitableViewController</code> or subclass.</li>
+<li><code>Hotwire.config.defaultNavigationController</code> - The navigation controller used in <code>Navigator</code> for the main and modal stacks. Must be a <code>UINavigationController</code> or subclass.</li>
+<li><code>Hotwire.config.makeCustomWebView</code> - Optionally customize the web views used by each Turbo Session. Ensure you return a new instance each time.</li>
 </ul>
 <h2 id="path-configuration"><a class="anchor" href="#path-configuration">﹟</a> Path Configuration</h2>
 <ul>
-<li><code>pathConfiguration.matchQueryStrings</code> - Enable to match the query string when applying rules in addition to the path.</li>
+<li><code>Hotwire.config.pathConfiguration.matchQueryStrings</code> - Enable to match the query string when applying rules in addition to the path.</li>
 </ul>
+<p>Load path configuration with <code>Hotwire.loadPathConfiguration(from:)</code>, like so:</p>
+<pre class="language-swift"><code class="language-swift"><span class="token keyword">let</span> localPathConfigURL <span class="token operator">=</span> <span class="token class-name">Bundle</span><span class="token punctuation">.</span>main<span class="token punctuation">.</span><span class="token function">url</span><span class="token punctuation">(</span>forResource<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"path-configuration"</span></span><span class="token punctuation">,</span> withExtension<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"json"</span></span><span class="token punctuation">)</span><span class="token operator">!</span><br><span class="token keyword">let</span> remotePathConfigURL <span class="token operator">=</span> <span class="token function">URL</span><span class="token punctuation">(</span>string<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"https://example.com/configurations/ios_v1.json"</span></span><span class="token punctuation">)</span><span class="token operator">!</span><br><br><span class="token class-name">Hotwire</span><span class="token punctuation">.</span><span class="token function">loadPathConfiguration</span><span class="token punctuation">(</span>from<span class="token punctuation">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">.</span><span class="token function">file</span><span class="token punctuation">(</span>localPathConfigURL<span class="token punctuation">)</span><span class="token punctuation">,</span><br>    <span class="token punctuation">.</span><span class="token function">server</span><span class="token punctuation">(</span>remotePathConfigURL<span class="token punctuation">)</span><br><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 <h2 id="bridge"><a class="anchor" href="#bridge">﹟</a> Bridge</h2>
 <ul>
-<li><code>jsonEncoder</code> - Set a custom JSON encoder when parsing bridge payloads. The custom encoder can be useful when you need to apply specific encoding strategies, like snake case vs. camel case.</li>
-<li><code>jsonDecoder</code> - Set a custom JSON decoder when parsing bridge payloads. The custom decoder can be useful when you need to apply specific decoding strategies, like snake case vs. camel case.</li>
+<li><code>Hotwire.config.jsonEncoder</code> - Set a custom JSON encoder when parsing bridge payloads. The custom encoder can be useful when you need to apply specific encoding strategies, like snake case vs. camel case.</li>
+<li><code>Hotwire.config.jsonDecoder</code> - Set a custom JSON decoder when parsing bridge payloads. The custom decoder can be useful when you need to apply specific decoding strategies, like snake case vs. camel case.</li>
 </ul>
+<p>Register bridge components with <code>Hotwire.registerBridgeComponents()</code>, like so:</p>
+<pre class="language-swift"><code class="language-swift"><span class="token class-name">Hotwire</span><span class="token punctuation">.</span><span class="token function">registerBridgeComponents</span><span class="token punctuation">(</span><span class="token punctuation">[</span><br>    <span class="token class-name">FormComponent</span><span class="token punctuation">.</span><span class="token keyword">self</span><span class="token punctuation">,</span><br>    <span class="token class-name">MenuComponent</span><span class="token punctuation">.</span><span class="token keyword">self</span><span class="token punctuation">,</span><br>    <span class="token class-name">OverflowMenuComponent</span><span class="token punctuation">.</span><span class="token keyword">self</span><span class="token punctuation">,</span><br>    <span class="token comment">// ...</span><br><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 <p><a class="button" href="/ios/reference">Next: Reference</a></p></section>
 
   <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
