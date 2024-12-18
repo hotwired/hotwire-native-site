@@ -7,7 +7,7 @@ description: "Advanced navigation via the path configuration."
 
 # Path Configuration
 
-The basics of *Path Configuration* are explained in the [overview](/overview/03-path-configuration). If you're ready to build your first Path Configuration, keep reading.
+The basics of *Path Configuration* are explained in the [overview](/overview/path-configuration). If you're ready to build your first Path Configuration, keep reading.
 
 ## Settings
 
@@ -128,3 +128,14 @@ You are free to add more properties as your app needs, but these are the ones th
 * `view_controller` — The identifier for a native `UIViewController` to navigate to. Conform your custom controller to `PathConfigurationIdentifiable` to it to this identifier.
     * Optional.
     * No explicit value options. No default value.
+* `modal_style` — Specifies how a modal should be presented. Make sure to set `context` to `modal`, too.
+    * Optional.
+    * Possible values (defaults to `large`):
+        * `large` — The default system presentation style, [*automatic*](https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/automatic).
+        * `medium` — A half-sheet modal that can be expanded to full screen when dragged up, via [detents](https://developer.apple.com/documentation/uikit/uisheetpresentationcontroller/detents).
+        * [`full`](https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/fullscreen) — A full-screen modal, covering everything but the status bar.
+        * [`page_sheet`](https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/pagesheet) — On iPads, presents a modal that partially covers the underlying content. On iPhones, uses the default system presentation style.
+        * [`form_sheet`](https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/formsheet) — On iPads, presents a modal centered in the screen. On iPhones, uses the default system presentation style.
+* `modal_dismiss_gesture_enabled` — Whether or not swiping down (or tapping outside the content on iPads) on a modal will dismiss it.
+    * Optional.
+	* Possible values: `true`, `false`. Defaults to `true`.
