@@ -139,3 +139,6 @@ You are free to add more properties as your app needs, but these are the ones th
 * `modal_dismiss_gesture_enabled` — Whether or not swiping down (or tapping outside the content on iPads) on a modal will dismiss it.
     * Optional.
 	* Possible values: `true`, `false`. Defaults to `true`.
+* `animated` — Specifies whether the navigation should be animated when pushing, popping, or presenting.
+    * Optional.
+	* Possible values: `true`, `false`. Defaults to `true`.
