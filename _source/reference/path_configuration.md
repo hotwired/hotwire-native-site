@@ -11,7 +11,7 @@ The basics of *Path Configuration* are explained in the [overview](/overview/pat
 
 ## Settings
 
-`settings` is your sandbox for App-level configuration. As explained in the overview, common use cases include feature flags or any additional information that your app may use to configure itself. Feel free to add or modify any objects or arrays here, always remembering to [version](/overview/03-path-configuration) your path configuration if you make breaking changes.
+`settings` is your sandbox for App-level configuration. As explained in the overview, common use cases include feature flags or any additional information that your app may use to configure itself. Feel free to add or modify any objects or arrays here, always remembering to [version](/overview/path-configuration#versioning) your path configuration if you make breaking changes.
 
 ```json
 {
