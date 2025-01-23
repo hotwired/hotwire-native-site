@@ -52,6 +52,14 @@ Set up the app's layout by opening `activity_main.xml` and replace the entire fi
     app:defaultNavHost="false" />
 ```
 
+If you don't have such a file in your project, create it under `app/src/main/res/layout`, you might also need to create the layout directory first as an `Android Resource Directory` with Resource type `layout`
+
+Replace the default theme in `themes.xml` by changing the parent attribute so it matches the following node:
+
+```xml
+<style name="Theme.<your-app-name>" parent="Theme.AppCompat.NoActionBar" />
+```
+
 Finally, open `MainActivity.kt` and replace the class with this code:
 
 ```kotlin
