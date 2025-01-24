@@ -113,7 +113,7 @@ You are free to add more properties as your app needs, but these are the ones th
 
 ### Android-specific properties
 
-* `uri` — The target destination URI to navigate to. Must map to an Activity or Fragment that has implemented the [`TurboNavGraphDestination`](../turbo/src/main/kotlin/dev/hotwire/turbo/nav/TurboNavGraphDestination.kt) annotation with a matching `uri` value.
+* `uri` — The target destination URI to navigate to. Must map to an Activity or Fragment that has implemented the [`HotwireDestinationDeepLink`](https://github.com/hotwired/hotwire-native-android/blob/main/navigation-fragments/src/main/java/dev/hotwire/navigation/destinations/HotwireDestinationDeepLink.kt) annotation with a matching `uri` value.
 	* **Required**. 
 	* No explicit value options. No default value.
 * `fallback_uri` — Provides a fallback URI in case a destination cannot be found that maps to the `uri`. Can be useful in cases when pointing to a new `uri` that may not be available yet in older versions of the app.
