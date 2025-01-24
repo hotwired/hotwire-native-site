@@ -61,7 +61,7 @@ export default class extends BridgeComponent {
 
 _Note: It's recommended to place your bridge components in a `/bridge` subdirectory where your Stimulus controllers live to make them easily identifiable and isolated from your other Stimulus controllers._
 
-# Bridge Elements
+## Bridge Elements
 
 The `BridgeElement` class lets you easily use bridge-specific data and behaviors on elements in your components. You can wrap any element in a `new BridgeElement(myElement)` within your bridge components to access the following:
 
