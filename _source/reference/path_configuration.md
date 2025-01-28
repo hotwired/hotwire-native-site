@@ -86,7 +86,7 @@ However, when navigation is requested to `"/new"`:
 1. *Path Configuration* matches `"/new"` to the first rule `".*"`
 2. *Path Configuration* sets `pull_to_refresh_enabled = true`
 3. *Path Configuration* matches `"/new"` to the second rule `"/new$"`
-4. *Path Configuration* sets `pull_to_refresh_enabled = fase`
+4. *Path Configuration* sets `pull_to_refresh_enabled = false`
 
 A rule earlier in the array can be overwritten by rules further down the array.
 
