@@ -8,7 +8,7 @@
     "@11ty/eleventy-cache-assets": "^2.3.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.2.2",
     "del-cli": "^3.0.1",
-    "esbuild": "^0.11.23",
+    "esbuild": "^0.25.0",
     "markdown-it": "^12.3.2",
     "markdown-it-anchor": "^7.1.0",
     "markdown-it-toc-done-right": "^4.2.0",
