@@ -58,6 +58,7 @@ Finally, open `MainActivity.kt` and replace the class with this code:
 package com.example.myapplication // update to match your project
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
