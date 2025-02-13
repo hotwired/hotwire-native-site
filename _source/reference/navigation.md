@@ -115,7 +115,7 @@ Set `context` or `presentation` to a [path configuration](/reference/path-config
     <tr>
       <td>(any)</td>
       <td>(any)</td>
-      <td><code>clearAll</code></td>
+      <td><code>clear_all</code></td>
       <td>
         Dismiss if modal screen then<br>
         Pop to root then<br>
@@ -125,7 +125,7 @@ Set `context` or `presentation` to a [path configuration](/reference/path-config
     <tr>
       <td>(any)</td>
       <td>(any)</td>
-      <td><code>replaceRoot</code></td>
+      <td><code>replace_root</code></td>
       <td>
         Dismiss if modal screen then<br>
         Pop to root then<br>
