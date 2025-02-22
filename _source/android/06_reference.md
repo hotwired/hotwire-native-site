@@ -38,3 +38,7 @@ Hotwire.registerRouteDecisionHandlers(
 ```
 
 You can also implement your own `Router.RouteDecisionHandler` classes and register them the same way.
+
+## Custom HTML data attributes
+
+- `data-native-prevent-pull-to-refresh`: Apply to any element in your web app whose touch events conflict with the native pull-to-refresh behavior in the `WebView`. By default, scrollable elements prevent pull-to-refresh, but you may need to apply this custom attribute to elements that have draggable or swipeable behaviors.
