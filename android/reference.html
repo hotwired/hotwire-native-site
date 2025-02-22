@@ -210,6 +210,10 @@
 <p>If you’d like to customize this behavior, it’s easy to do. For example, if you’d like to route external urls to Custom Tabs instead of the default browser, you can register the relevant decision handlers in order of importance:</p>
 <pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span><span class="token function">registerRouteDecisionHandlers</span><span class="token punctuation">(</span><br>    <span class="token function">AppNavigationRouteDecisionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>    <span class="token function">BrowserTabRouteDecisionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><span class="token punctuation">)</span></code></pre>
 <p>You can also implement your own <code>Router.RouteDecisionHandler</code> classes and register them the same way.</p>
+<h2 id="custom-html-data-attributes"><a class="anchor" href="#custom-html-data-attributes">﹟</a> Custom HTML data attributes</h2>
+<ul>
+<li><code>data-native-prevent-pull-to-refresh</code>: Apply to any element in your web app whose touch events conflict with the native pull-to-refresh behavior in the <code>WebView</code>. By default, scrollable elements prevent pull-to-refresh, but you may need to apply this custom attribute to elements that have draggable or swipeable behaviors.</li>
+</ul>
 </section>
 
   <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
