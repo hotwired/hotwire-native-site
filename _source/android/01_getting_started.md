@@ -55,14 +55,21 @@ Set up the app's layout by opening `activity_main.xml` and replace the entire fi
 Finally, open `MainActivity.kt` and replace the class with this code:
 
 ```kotlin
+package com.example.myapplication // update to match your project
+
 import android.os.Bundle
+import android.view.View
+import androidx.activity.enableEdgeToEdge
 import dev.hotwire.navigation.activities.HotwireActivity
 import dev.hotwire.navigation.navigator.NavigatorConfiguration
+import dev.hotwire.navigation.util.applyDefaultWindowInsets
 
 class MainActivity : HotwireActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        findViewById<View>(R.id.main_nav_host).applyDefaultImeWindowInsets()
     }
 
     override fun navigatorConfigurations() = listOf(
