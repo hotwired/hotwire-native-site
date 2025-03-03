@@ -62,7 +62,7 @@ import android.view.View
 import androidx.activity.enableEdgeToEdge
 import dev.hotwire.navigation.activities.HotwireActivity
 import dev.hotwire.navigation.navigator.NavigatorConfiguration
-import dev.hotwire.navigation.util.applyDefaultWindowInsets
+import dev.hotwire.navigation.util.applyDefaultImeWindowInsets
 
 class MainActivity : HotwireActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
