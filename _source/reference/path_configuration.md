@@ -108,7 +108,10 @@ The `properties` hash contains a handful of key/value pairs that Hotwire Native 
 * `pull_to_refresh_enabled` — Whether or not pull-to-refresh should be enabled.
 	* Optional.
 	* Possible values: `true`, `false`. Defaults to `false` on Android and `true` on iOS.
-
+* `animated` — Specifies whether the navigation should be animated when pushing, popping, or presenting.
+    * Optional.
+	* Possible values: `true`, `false`. Defaults to `true`.
+  
 You are free to add more properties as your app needs, but these are the ones the framework is aware of and will handle automatically.
 
 ### Android-specific properties
@@ -137,8 +140,5 @@ You are free to add more properties as your app needs, but these are the ones th
         * [`page_sheet`](https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/pagesheet) — On iPads, presents a modal that partially covers the underlying content. On iPhones, uses the default system presentation style.
         * [`form_sheet`](https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/formsheet) — On iPads, presents a modal centered in the screen. On iPhones, uses the default system presentation style.
 * `modal_dismiss_gesture_enabled` — Whether or not swiping down (or tapping outside the content on iPads) on a modal will dismiss it.
-    * Optional.
-	* Possible values: `true`, `false`. Defaults to `true`.
-* `animated` — Specifies whether the navigation should be animated when pushing, popping, or presenting.
     * Optional.
 	* Possible values: `true`, `false`. Defaults to `true`.
