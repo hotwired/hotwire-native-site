@@ -40,8 +40,8 @@ The basics of *Path Configuration* are explained in the [overview](/overview/pat
   "settings": {},
   "rules": [
     {
-      patterns: "",
-      properties: {}
+      "patterns": "",
+      "properties": {}
     }
   ]
 }
