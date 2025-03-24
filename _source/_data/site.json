@@ -2,7 +2,6 @@
   "title": "Hotwire Native",
   "description": "Build high-fidelity hybrid apps with native navigation and a single shared web view.",
   "url": "https://native.hotwired.dev",
-  "discourse_url": "https://discuss.hotwired.dev",
   "android_github_url": "https://github.com/hotwired/hotwire-native-android",
   "ios_github_url": "https://github.com/hotwired/hotwire-native-ios",
   "hotwire_native_site_github_main_branch_url": "https://github.com/hotwired/hotwire-native-site/blob/main"

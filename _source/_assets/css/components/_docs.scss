@@ -88,3 +88,55 @@
   border-radius: 5px;
   box-shadow: 0 0 1em rgba($color-black, 0.1);
 }
+
+.docs-actions {
+  grid-column: 2/3;
+  margin: 0;
+
+  @include media(medium) {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+}
+
+.docs-actions__item {
+  display: block;
+  margin-bottom: 1em;
+  padding: 1.5em 1em;
+  font-family: $sans-stack;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.25;
+  background-color: $color-white;
+  box-shadow: 0 0 2em rgba($color-black, 0.075);
+  border-radius: 0.5em;
+
+  @include media(small) {
+    max-width: 20em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include media(medium) {
+    width: 49%;
+    margin-bottom: 0;
+  }
+}
+
+.docs-actions__icon {
+  display: block;
+  width: 3.75em;
+  height: 3.75em;
+  margin: 0 auto 1em auto;
+  background-color: $color-brand;
+
+  .docs-actions__item:hover & {
+    background-color: $color-accent;
+  }
+}
+
+.docs-actions__icon--github {
+  -webkit-mask: url('/assets/icon-github.svg') center / 100% no-repeat;
+  mask: url('/assets/icon-github.svg') center / 100% no-repeat;
+}

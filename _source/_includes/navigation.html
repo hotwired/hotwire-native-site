@@ -31,7 +31,9 @@
       {% include section-nav.html, section: "reference" %}
     </li>
     <li>
-      <a class="nav__list-link" href="{{ site.discourse_url }}" title="Have a question? Connect with other developers on the Hotwire Discourse community forum.">Community</a>
+      <a class="nav__list-link{% if section_title == "Community" %} active{% endif %}" href="/community/discussions">Community</a>
+
+      {% include section-nav.html, section: "community" %}
     </li>
   </ul>
 
