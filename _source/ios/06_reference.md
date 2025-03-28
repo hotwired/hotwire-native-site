@@ -73,6 +73,6 @@ Customize this behavior by implementing `visitableDidFailRequest(_:error:retryHa
 
 A `HotwireWebViewController` is a `UIViewController` that can be visited by a `Navigator`. Each view controller provides a `VisitableView` instance, which acts as a container for the shared `WKWebView`. The `VisitableView` optionally has a pull-to-refresh control and an activity indicator. It also automatically displays a screenshot of its contents when the web view moves to another `VisitableView`.
 
-Most applications will probably need want to subclass `HotwireWebViewController` to customize its layout or add additional views. If your application’s design prevents you from subclassing `HotwireWebViewController`, you can implement the `Visitable` and `BridgeDestination` protocols yourself.
+Most applications will probably want to subclass `HotwireWebViewController` to customize its layout or add additional views. If your application’s design prevents you from subclassing `HotwireWebViewController`, you can implement the `Visitable` and `BridgeDestination` protocols yourself.
 
 Note: Custom `Visitable` view controllers must notify their delegate of their `viewWillAppear` and `viewDidAppear` methods through the `VisitableDelegate`'s `visitableViewWillAppear` and `visitableViewDidAppear` methods. The `Navigator` uses these hooks to know when it should move the `WKWebView` from one `VisitableView` to another.
