@@ -156,15 +156,15 @@ Add the following to your path configuration to apply the presentation logic.
   "settings": {},
   "rules": [
     {
-      "patterns": ["/turbo_recede_historical_location_url"],
+      "patterns": ["/recede_historical_location"],
       "properties": {"presentation": "pop"}
     },
     {
-      "patterns": ["/turbo_resume_historical_location_url"],
+      "patterns": ["/resume_historical_location"],
       "properties": {"presentation": "none"}
     },
     {
-      "patterns": ["/turbo_refresh_historical_location_url"],
+      "patterns": ["/refresh_historical_location"],
       "properties": {"presentation": "refresh"}
     }
   ]
