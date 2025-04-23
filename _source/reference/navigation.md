@@ -143,7 +143,7 @@ Set `context` or `presentation` to a [path configuration](/reference/path-config
 
 ### Server-Driven Routing in Rails
 
-If you're using Ruby on Rails, the [turbo-rails](https://github.com/hotwired/turbo-rails) gem provides the following additional historical location routes. Use these to manipulate the navigation stack for Hotwire Native apps, and falling back to redirecting elsewhere.
+If you're using Ruby on Rails, the [turbo-rails](https://github.com/hotwired/turbo-rails) gem provides the following additional historical location routes. Use these to manipulate the navigation stack for Hotwire Native apps, falling back to redirecting elsewhere.
 
 * `recede_or_redirect_to(url, **options)` - First, pops any modal screen (if present) off the navigation stack. Then, pops the visible screen off of the navigation stack.
 * `refresh_or_redirect_to(url, **options)` - First, pops any modal screen (if present) off the navigation stack. Then, reloads the visible screen by performing a new web request and invalidating the cache.
