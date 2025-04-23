@@ -151,6 +151,23 @@ If you're using Ruby on Rails, the [turbo-rails](https://github.com/hotwired/tur
 
 The iOS and Android frameworks (starting in version `1.2.0`) automatically support these these historical location urls.
 
+## Route Decision Handlers
+
+By default, all external urls outside of your app's domain open externally. The specific behavior can be customized, though. Out-of-the-box, Hotwire Native registers these route decision handlers to control how urls are routed:
+- `AppNavigationRouteDecisionHandler`: Routes all internal urls on your app's domain through your app.
+- `SafariViewControllerRouteDecisionHandler`: **(iOS Only)** Routes all external `http`/`https` urls to a [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) in your app.
+- `BrowserTabRouteDecisionHandler`: **(Android Only)** Routes all external `http`/`https` urls to a [Custom Tab](https://developer.chrome.com/docs/android/custom-tabs) in your app.
+- `SystemNavigationRouteDecisionHandler`: Routes all remaining external urls (such as `sms:` or `mailto:`) through device's system navigation.
+
+If you'd like to customize this behavior, it's easy to do. You can subclass the `RouteDecisionHandler` class in your app to provide your own implementation(s). Register your app's decision handlers in order of importance:
+
+```kotlin
+Hotwire.registerRouteDecisionHandlers(
+    AppNavigationRouteDecisionHandler(),
+    MyCustomExternalRouteDecisionHandler()
+)
+```
+
 ## Manual Navigation
 
 `Navigator` can be used to navigate from a [native screen](/overview/native-screens) to another native screen or back to a web context.

@@ -21,24 +21,6 @@ Hotwire.config.makeCustomWebView = { context ->
 }
 ```
 
-## Handling URL routes
-
-By default, all external urls outside of your app's domain are opened in the default browser on the device. This is easily customizable, though. Out-of-the-box, Hotwire Native provides three route decision handlers for you to use to control how urls are routed:
-- `AppNavigationRouteDecisionHandler`: Routes all internal urls through your app (enabled by default).
-- `BrowserRouteDecisionHandler`: Routes all external urls to the device's default browser (enabled by default).
-- `BrowserTabRouteDecisionHandler`: Routes all external urls to a [Custom Tab](https://developer.chrome.com/docs/android/custom-tabs) in your app (disabled by default).
-
-If you'd like to customize this behavior, it's easy to do. For example, if you'd like to route external urls to Custom Tabs instead of the default browser, you can register the relevant decision handlers in order of importance:
-
-```kotlin
-Hotwire.registerRouteDecisionHandlers(
-    AppNavigationRouteDecisionHandler(),
-    BrowserTabRouteDecisionHandler()
-)
-```
-
-You can also implement your own `Router.RouteDecisionHandler` classes and register them the same way.
-
 ## Custom HTML data attributes
 
 - `data-native-prevent-pull-to-refresh`: Apply to any element in your web app whose touch events conflict with the native pull-to-refresh behavior in the `WebView`. By default, scrollable elements prevent pull-to-refresh, but you may need to apply this custom attribute to elements that have draggable or swipeable behaviors.
