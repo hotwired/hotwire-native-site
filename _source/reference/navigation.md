@@ -159,7 +159,7 @@ By default, all external urls outside of your app's domain open externally. The 
 - `BrowserTabRouteDecisionHandler`: **(Android Only)** Routes all external `http`/`https` urls to a [Custom Tab](https://developer.chrome.com/docs/android/custom-tabs) in your app.
 - `SystemNavigationRouteDecisionHandler`: Routes all remaining external urls (such as `sms:` or `mailto:`) through device's system navigation.
 
-If you'd like to customize this behavior, it's easy to do. You can subclass the `RouteDecisionHandler` class in your app to provide your own implementation(s). Register your app's decision handlers in order of importance:
+If you'd like to customize this behavior you can subclass the `RouteDecisionHandler` class in your app to provide your own implementation(s). Register your app's decision handlers in order of importance:
 
 ```kotlin
 Hotwire.registerRouteDecisionHandlers(
