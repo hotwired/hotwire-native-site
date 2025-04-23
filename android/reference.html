@@ -206,16 +206,6 @@
 <h2 id="custom-webview"><a class="anchor" href="#custom-webview">﹟</a> Custom WebView</h2>
 <p>You can customize and subclass the <code>HotwireWebView</code> class to provide custom behaviors in your app:</p>
 <pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span>config<span class="token punctuation">.</span>makeCustomWebView <span class="token operator">=</span> <span class="token punctuation">{</span> context <span class="token operator">-></span><br>    <span class="token function">MyCustomWebView</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><br><span class="token punctuation">}</span></code></pre>
-<h2 id="handling-url-routes"><a class="anchor" href="#handling-url-routes">﹟</a> Handling URL routes</h2>
-<p>By default, all external urls outside of your app’s domain are opened in the default browser on the device. This is easily customizable, though. Out-of-the-box, Hotwire Native provides three route decision handlers for you to use to control how urls are routed:</p>
-<ul>
-<li><code>AppNavigationRouteDecisionHandler</code>: Routes all internal urls through your app (enabled by default).</li>
-<li><code>BrowserRouteDecisionHandler</code>: Routes all external urls to the device’s default browser (enabled by default).</li>
-<li><code>BrowserTabRouteDecisionHandler</code>: Routes all external urls to a <a href="https://developer.chrome.com/docs/android/custom-tabs">Custom Tab</a> in your app (disabled by default).</li>
-</ul>
-<p>If you’d like to customize this behavior, it’s easy to do. For example, if you’d like to route external urls to Custom Tabs instead of the default browser, you can register the relevant decision handlers in order of importance:</p>
-<pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span><span class="token function">registerRouteDecisionHandlers</span><span class="token punctuation">(</span><br>    <span class="token function">AppNavigationRouteDecisionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>    <span class="token function">BrowserTabRouteDecisionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><span class="token punctuation">)</span></code></pre>
-<p>You can also implement your own <code>Router.RouteDecisionHandler</code> classes and register them the same way.</p>
 <h2 id="custom-html-data-attributes"><a class="anchor" href="#custom-html-data-attributes">﹟</a> Custom HTML data attributes</h2>
 <ul>
 <li><code>data-native-prevent-pull-to-refresh</code>: Apply to any element in your web app whose touch events conflict with the native pull-to-refresh behavior in the <code>WebView</code>. By default, scrollable elements prevent pull-to-refresh, but you may need to apply this custom attribute to elements that have draggable or swipeable behaviors.</li>
