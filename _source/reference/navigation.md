@@ -143,32 +143,38 @@ Set `context` or `presentation` to a [path configuration](/reference/path-config
 
 ### Server-Driven Routing in Rails
 
-If you're using Ruby on Rails, the [turbo-rails](https://github.com/hotwired/turbo-rails) gem provides the following additional routes. Use these to customize the behavior for Hotwire Native apps but falling back to redirecting elsewhere.
+If you're using Ruby on Rails, the [turbo-rails](https://github.com/hotwired/turbo-rails) gem provides the following additional historical location routes. Use these to manipulate the navigation stack for Hotwire Native apps, falling back to redirecting elsewhere.
 
-* `recede_or_redirect_to(url, **options)` - Pops the visible screen off of the navigation stack. If a modal is presented on iOS, the modal is dismissed instead.
-* `resume_or_redirect_to(url **options)` - No action is taken.
-* `refresh_or_redirect_to(url, **options)` - Reloads the visible screen by performing a new web request and invalidating the cache.
+* `recede_or_redirect_to(url, **options)` - First, pops any modal screen (if present) off the navigation stack. Then, pops the visible screen off of the navigation stack.
+* `refresh_or_redirect_to(url, **options)` - First, pops any modal screen (if present) off the navigation stack. Then, reloads the visible screen by performing a new web request and invalidating the cache.
+* `resume_or_redirect_to(url **options)` - Pops any modal screen (if present) off the navigation stack. No further action is taken.
 
-Add the following to your path configuration to apply the presentation logic.
+The iOS and Android frameworks (starting in version `1.2.0`) automatically support these these historical location urls.
 
-```json
-{
-  "settings": {},
-  "rules": [
-    {
-      "patterns": ["/turbo_recede_historical_location_url"],
-      "properties": {"presentation": "pop"}
-    },
-    {
-      "patterns": ["/turbo_resume_historical_location_url"],
-      "properties": {"presentation": "none"}
-    },
-    {
-      "patterns": ["/turbo_refresh_historical_location_url"],
-      "properties": {"presentation": "refresh"}
-    }
-  ]
-}
+## Route Decision Handlers
+
+By default, all external urls outside of your app's domain open externally. The specific behavior can be customized, though. Out-of-the-box, Hotwire Native registers these route decision handlers to control how urls are routed:
+- `AppNavigationRouteDecisionHandler`: Routes all internal urls on your app's domain through your app.
+- `SafariViewControllerRouteDecisionHandler`: **(iOS Only)** Routes all external `http`/`https` urls to a [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) in your app.
+- `BrowserTabRouteDecisionHandler`: **(Android Only)** Routes all external `http`/`https` urls to a [Custom Tab](https://developer.chrome.com/docs/android/custom-tabs) in your app.
+- `SystemNavigationRouteDecisionHandler`: Routes all remaining external urls (such as `sms:` or `mailto:`) through device's system navigation.
+
+If you'd like to customize this behavior you can subclass the `RouteDecisionHandler` class in your app to provide your own implementation(s). Register your app's decision handlers in order of importance. To decide how a url should be routed, the registered `RouteDecisionHandler` instances are called in order. When a matching `RouteDecisionHandler` is found for a given url, its `handle()` function is called and no other `RouteDecisionHandler` instances will be subsequently called.
+
+**Example for iOS:**
+```swift
+Hotwire.registerRouteDecisionHandlers([
+    AppNavigationRouteDecisionHandler(),
+    MyCustomExternalRouteDecisionHandler()
+])
+```
+
+**Example for Android:**
+```kotlin
+Hotwire.registerRouteDecisionHandlers(
+    AppNavigationRouteDecisionHandler(),
+    MyCustomExternalRouteDecisionHandler()
+)
 ```
 
 ## Manual Navigation

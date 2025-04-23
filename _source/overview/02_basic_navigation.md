@@ -34,6 +34,8 @@ The framework also applies a few sane defaults. Navigating to the _current_ page
 
 Note that if the URL of a tapped link is _not_ on the same domain as the current page it is considered _external_. External links are not routed through Hotwire Native. They instead open via an in-app web browser. iOS uses an [`SFSafariViewController`](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) and Android uses [Custom Tabs](https://developer.chrome.com/docs/android/custom-tabs).
 
+See the <a href="/reference/navigation#route-decision-handlers">Route Decision Handler</a> documentation to learn how urls are routed and how to customize the default behavior.
+
 ## Advanced Navigation
 
 Hotwire Native supports a bunch of other navigation patterns like popping the entire stack and manually refreshing the current page. But individually decorating each link would create a maintenance nightmare.
