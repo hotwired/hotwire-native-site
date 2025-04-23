@@ -161,6 +161,15 @@ By default, all external urls outside of your app's domain open externally. The 
 
 If you'd like to customize this behavior you can subclass the `RouteDecisionHandler` class in your app to provide your own implementation(s). Register your app's decision handlers in order of importance. To decide how a url should be routed, the registered `RouteDecisionHandler` instances are called in order. When a matching `RouteDecisionHandler` is found for a given url, its `handle()` function is called and no other `RouteDecisionHandler` instances will be subsequently called.
 
+**Example for iOS:**
+```swift
+Hotwire.registerRouteDecisionHandlers([
+    AppNavigationRouteDecisionHandler(),
+    MyCustomExternalRouteDecisionHandler()
+])
+```
+
+**Example for Android:**
 ```kotlin
 Hotwire.registerRouteDecisionHandlers(
     AppNavigationRouteDecisionHandler(),
