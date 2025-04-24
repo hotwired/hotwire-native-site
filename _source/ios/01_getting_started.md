@@ -61,7 +61,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 Click Product → Run to launch the app in the simulator. You should see the following screen in the simulator.
 
 <figure>
-    <img src="/assets/iphone-hotwire-native-demo.png" class="border" width="400" alt="Hotwire Native demo app" />
+    <img src="/assets/iphone-hotwire-native-demo.png" width="400" alt="Hotwire Native demo app" />
 </figure>
 
 This example only touches on the core requirements of creating a `Navigator` and routing the root URL. Feel free to change the URL used for the initial visit to point to your web app.
