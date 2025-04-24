@@ -89,6 +89,13 @@ module.exports = function(eleventyConfig) {
     })
   );
 
+  // overview collection - bake in ordering by 'order' front matter value
+  eleventyConfig.addCollection("overview", function(collectionApi) {
+    return collectionApi.getFilteredByTag("overview").sort((a, b) =>  {
+      return a.data.order - b.data.order;
+    });
+  });
+
   // reference collection - bake in ordering by 'order' front matter value
   eleventyConfig.addCollection("reference", function(collectionApi) {
     return collectionApi.getFilteredByTag("reference").sort((a, b) =>  {
