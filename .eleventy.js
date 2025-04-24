@@ -80,18 +80,23 @@ module.exports = function(eleventyConfig) {
   11ty settings
   -------------------------------------------------------------------------- */
 
-  // handbook collection - bake in ordering by file slug
-  eleventyConfig.addCollection("handbook", (collectionApi) =>
-    collectionApi.getFilteredByTag("handbook").sort((a, b) => {
-      if (a.fileSlug < b.fileSlug) return -1;
-      else if (a.fileSlug > b.fileSlug) return 1;
-      else return 0;
-    })
-  );
-
   // overview collection - bake in ordering by 'order' front matter value
   eleventyConfig.addCollection("overview", function(collectionApi) {
     return collectionApi.getFilteredByTag("overview").sort((a, b) =>  {
+      return a.data.order - b.data.order;
+    });
+  });
+
+  // ios collection - bake in ordering by 'order' front matter value
+  eleventyConfig.addCollection("ios", function(collectionApi) {
+    return collectionApi.getFilteredByTag("ios").sort((a, b) =>  {
+      return a.data.order - b.data.order;
+    });
+  });
+
+  // android collection - bake in ordering by 'order' front matter value
+  eleventyConfig.addCollection("android", function(collectionApi) {
+    return collectionApi.getFilteredByTag("android").sort((a, b) =>  {
       return a.data.order - b.data.order;
     });
   });
