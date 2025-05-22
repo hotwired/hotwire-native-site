@@ -47,13 +47,13 @@ You can inspect this property when `handle(proposal:)` is called on `Navigator`'
 
 ```swift
 class SceneDelegate: UIResponder {
-    private lazy var navigator = Navigator(delegate: self)
+    private lazy var navigator = Navigator(configuration: …, delegate: self)
 
     // ...
 }
 
 extension SceneDelegate: NavigatorDelegate {
-    func handle(proposal: VisitProposal) -> ProposalResult {
+    func handle(proposal: VisitProposal, from navigator: Navigator) -> ProposalResult {
         switch proposal.viewController {
         case NumbersViewController.pathConfigurationIdentifier:
             let numbersViewController = NumbersViewController(url: proposal.url)
