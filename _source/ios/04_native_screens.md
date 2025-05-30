@@ -47,7 +47,10 @@ You can inspect this property when `handle(proposal:)` is called on `Navigator`'
 
 ```swift
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    private lazy var navigator = Navigator(configuration: …, delegate: self)
+    private lazy var navigator = Navigator(
+        configuration: .init(name: "main", startLocation: rootURL),
+        delegate: self
+    )
 
     // ...
 }
