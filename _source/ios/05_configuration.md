@@ -21,8 +21,22 @@ Hotwire Native provides a few options to customize your iOS app. We recommend ma
 
 ## Turbo
 
-* `Hotwire.config.defaultViewController` - The view controller used in `Navigator` for web requests. Must be a `VisitableViewController` or subclass.
-* `Hotwire.config.defaultNavigationController` - The navigation controller used in `Navigator` for the main and modal stacks. Must be a `UINavigationController` or subclass.
+* `Hotwire.config.defaultViewController` - The view controller used in `Navigator` for web requests. Must be a [`VisitableViewController`](https://github.com/hotwired/hotwire-native-ios/blob/main/Source/Turbo/Visitable/VisitableViewController.swift) or subclass. Defaults to an instance of [`HotwireWebViewController`](https://github.com/hotwired/hotwire-native-ios/blob/main/Source/Turbo/ViewControllers/HotwireWebViewController.swift).
+
+```swift
+Hotwire.config.defaultViewController = { url in
+    CustomViewController(url: url)
+}
+```
+
+* `Hotwire.config.defaultNavigationController` - The navigation controller used in `Navigator` for the main and modal stacks. Must be a [`UINavigationController`](https://developer.apple.com/documentation/uikit/uinavigationcontroller) or subclass. Defaults to an instance of [`HotwireNavigationController`](https://github.com/hotwired/hotwire-native-ios/blob/main/Source/Turbo/ViewControllers/HotwireNavigationController.swift).
+
+```swift
+Hotwire.config.defaultNavigationController = { in
+    CustomNavigationController()
+}
+```
+
 * `Hotwire.config.makeCustomWebView` - Optionally customize the web views used by each Turbo Session. Ensure you return a new instance each time.
 
 ## Path Configuration
