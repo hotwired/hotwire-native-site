@@ -46,14 +46,17 @@ When a link is intercepted by Hotwire Native, it will go through its usual proce
 You can inspect this property when `handle(proposal:)` is called on `Navigator`'s delegate and instantiate your own view controller there. That's it! Hotwire Native will handle presentation (push/replace and animations) as if it were a web view controller.
 
 ```swift
-class SceneDelegate: UIResponder {
-    private lazy var navigator = Navigator(delegate: self)
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    private lazy var navigator = Navigator(
+        configuration: .init(name: "main", startLocation: rootURL),
+        delegate: self
+    )
 
     // ...
 }
 
 extension SceneDelegate: NavigatorDelegate {
-    func handle(proposal: VisitProposal) -> ProposalResult {
+    func handle(proposal: VisitProposal, from navigator: Navigator) -> ProposalResult {
         switch proposal.viewController {
         case NumbersViewController.pathConfigurationIdentifier:
             let numbersViewController = NumbersViewController(url: proposal.url)
