@@ -50,6 +50,7 @@ Register fragment destinations:
 
 ```kotlin
 Hotwire.registerFragmentDestinations(
+    HotwireWebFragment::class, // Don't forget to register this for regular destinations
     MyCustomFragment::class
 )
 ```
