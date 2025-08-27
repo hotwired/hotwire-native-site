@@ -11,7 +11,7 @@ Hotwire Native provides a few options to customize your iOS app. We recommend ma
 
 ## General
 
-* `Hotwire.config.debugLoggingEnabled` - Enable or disable debug logging for Turbo visits and bridge elements connecting, disconnecting, receiving/sending messages, and more.
+* `Hotwire.config.logger` - Set a custom logger conforming to the [HotwireLogger](https://github.com/hotwired/hotwire-native-ios/blob/main/Source/Logging.swift) protocol to receive all Hotwire log messages and customize logging behavior for your app. If no custom logger is provided, Hotwire will send logs to Xcode's console and the system Console app using OSLog.
 * `Hotwire.config.applicationUserAgentPrefix` - Set a custom user agent application prefix for every `WKWebView` instance. The library will automatically append a substring to your prefix which includes:
     * `"Hotwire Native iOS; Turbo Native iOS;"` - for `hotwire_native_app?` on your [Rails server](https://github.com/hotwired/turbo-rails/blob/1aa7ba9d38dee1e1b4078a74404131122b907176/app/controllers/turbo/native/navigation.rb#L14)
     * `"bridge-components: [your bridge components];"`
