@@ -1,6 +1,6 @@
 ---
 permalink: /ios/configuration.html
-order: 05
+order: 06
 title: "Configuration"
 description: "How to customize a Hotwire Native iOS app."
 ---
