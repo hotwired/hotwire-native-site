@@ -149,7 +149,7 @@ If you're using Ruby on Rails, the [turbo-rails](https://github.com/hotwired/tur
 * `refresh_or_redirect_to(url, **options)` - First, pops any modal screen (if present) off the navigation stack. Then, reloads the visible screen by performing a new web request and invalidating the cache.
 * `resume_or_redirect_to(url **options)` - Pops any modal screen (if present) off the navigation stack. No further action is taken.
 
-The iOS and Android frameworks (starting in version `1.2.0`) automatically support these these historical location urls.
+The iOS and Android frameworks (starting in version `1.2.0`) automatically support these historical location urls.
 
 ## Route Decision Handlers
 
