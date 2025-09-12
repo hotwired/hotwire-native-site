@@ -1,6 +1,6 @@
 ---
 permalink: /ios/bridge-components.html
-order: 03
+order: 04
 title: "Bridge Components"
 description: "Bridge the gap with native bridge components driven by the web on iOS."
 ---
