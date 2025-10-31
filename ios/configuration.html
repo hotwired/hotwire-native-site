@@ -223,7 +223,7 @@
 <ul>
 <li><code>Hotwire.config.defaultNavigationController</code> - The navigation controller used in <code>Navigator</code> for the main and modal stacks. Must be a <a href="https://developer.apple.com/documentation/uikit/uinavigationcontroller"><code>UINavigationController</code></a> or subclass. Defaults to an instance of <a href="https://github.com/hotwired/hotwire-native-ios/blob/main/Source/Turbo/ViewControllers/HotwireNavigationController.swift"><code>HotwireNavigationController</code></a>.</li>
 </ul>
-<pre class="language-swift"><code class="language-swift"><span class="token class-name">Hotwire</span><span class="token punctuation">.</span>config<span class="token punctuation">.</span>defaultNavigationController <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token keyword">in</span><br>    <span class="token class-name">CustomNavigationController</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-swift"><code class="language-swift"><span class="token class-name">Hotwire</span><span class="token punctuation">.</span>config<span class="token punctuation">.</span>defaultNavigationController <span class="token operator">=</span> <span class="token punctuation">{</span><br>    <span class="token class-name">CustomNavigationController</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><span class="token punctuation">}</span></code></pre>
 <ul>
 <li><code>Hotwire.config.makeCustomWebView</code> - Optionally customize the web views used by each Turbo Session. Ensure you return a new instance each time.</li>
 </ul>
