@@ -32,7 +32,7 @@ Hotwire.config.defaultViewController = { url in
 * `Hotwire.config.defaultNavigationController` - The navigation controller used in `Navigator` for the main and modal stacks. Must be a [`UINavigationController`](https://developer.apple.com/documentation/uikit/uinavigationcontroller) or subclass. Defaults to an instance of [`HotwireNavigationController`](https://github.com/hotwired/hotwire-native-ios/blob/main/Source/Turbo/ViewControllers/HotwireNavigationController.swift).
 
 ```swift
-Hotwire.config.defaultNavigationController = { in
+Hotwire.config.defaultNavigationController = {
     CustomNavigationController()
 }
 ```
