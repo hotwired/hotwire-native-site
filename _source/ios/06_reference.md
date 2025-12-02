@@ -76,3 +76,7 @@ A `HotwireWebViewController` is a `UIViewController` that can be visited by a `N
 Most applications will probably want to subclass `HotwireWebViewController` to customize its layout or add additional views. If your application’s design prevents you from subclassing `HotwireWebViewController`, you can implement the `Visitable` and `BridgeDestination` protocols yourself.
 
 Note: Custom `Visitable` view controllers must notify their delegate of their `viewWillAppear` and `viewDidAppear` methods through the `VisitableDelegate`'s `visitableViewWillAppear` and `visitableViewDidAppear` methods. The `Navigator` uses these hooks to know when it should move the `WKWebView` from one `VisitableView` to another.
+
+## Enable camera access
+
+To enable camera access via `<input type="file">`, add the `NSCameraUsageDescription` key to your app’s `Info.plist` with a `String` value explaining why your app needs access to the camera. Add `NSMicrophoneUsageDescription` as well to allow recording audio when capturing video. Without adding these, your app will crash when you try to use the camera.
