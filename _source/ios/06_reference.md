@@ -79,4 +79,4 @@ Note: Custom `Visitable` view controllers must notify their delegate of their `v
 
 ## Enable camera access
 
-To enable camera access via `<input type="file">`, add the (`NSCameraUsageDescription`)[https://developer.apple.com/documentation/bundleresources/information-property-list/nscamerausagedescription] key to your app’s `Info.plist` with a `String` value explaining why your app needs access to the camera. Add `NSMicrophoneUsageDescription` as well to allow recording audio when capturing video. Without adding these, your app will crash when you try to use the camera.
+To enable camera access via `<input type="file">`, add the [`NSCameraUsageDescription`](https://developer.apple.com/documentation/bundleresources/information-property-list/nscamerausagedescription) key to your app’s `Info.plist` with a `String` value explaining why your app needs access to the camera. Add [`NSMicrophoneUsageDescription`](https://developer.apple.com/documentation/bundleresources/information-property-list/nsmicrophoneusagedescription) as well to allow recording audio when capturing video. Without adding these, your app will crash when you try to use the camera.
