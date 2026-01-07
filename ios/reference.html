@@ -232,6 +232,8 @@
 <p>A <code>HotwireWebViewController</code> is a <code>UIViewController</code> that can be visited by a <code>Navigator</code>. Each view controller provides a <code>VisitableView</code> instance, which acts as a container for the shared <code>WKWebView</code>. The <code>VisitableView</code> optionally has a pull-to-refresh control and an activity indicator. It also automatically displays a screenshot of its contents when the web view moves to another <code>VisitableView</code>.</p>
 <p>Most applications will probably want to subclass <code>HotwireWebViewController</code> to customize its layout or add additional views. If your application’s design prevents you from subclassing <code>HotwireWebViewController</code>, you can implement the <code>Visitable</code> and <code>BridgeDestination</code> protocols yourself.</p>
 <p>Note: Custom <code>Visitable</code> view controllers must notify their delegate of their <code>viewWillAppear</code> and <code>viewDidAppear</code> methods through the <code>VisitableDelegate</code>’s <code>visitableViewWillAppear</code> and <code>visitableViewDidAppear</code> methods. The <code>Navigator</code> uses these hooks to know when it should move the <code>WKWebView</code> from one <code>VisitableView</code> to another.</p>
+<h2 id="enable-camera-access"><a class="anchor" href="#enable-camera-access">﹟</a> Enable camera access</h2>
+<p>To enable camera access via <code>&lt;input type=&quot;file&quot;&gt;</code>, add the <a href="https://developer.apple.com/documentation/bundleresources/information-property-list/nscamerausagedescription"><code>NSCameraUsageDescription</code></a> key to your app’s <code>Info.plist</code> with a <code>String</code> value explaining why your app needs access to the camera. Add <a href="https://developer.apple.com/documentation/bundleresources/information-property-list/nsmicrophoneusagedescription"><code>NSMicrophoneUsageDescription</code></a> as well to allow recording audio when capturing video. Without adding these, your app will crash when you try to use the camera.</p>
 </section>
 
   <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
@@ -243,7 +245,7 @@
     <li><a href="https://hey.com" target="_blank" rel="noopener"><img width="123" height="57" src="/assets/logo-hey.svg" alt="HEY"></a></li>
     <li><a href="https://once.com" target="_blank" rel="noopener"><img width="72" height="72" src="/assets/logo-once.svg" alt="ONCE"></a></li>
   </ul>
-  <p class="footer__copyright">&copy; 2025 <a href="https://37signals.com" target="_blank" rel="noopener">37signals</a></p>
+  <p class="footer__copyright">&copy; 2026 <a href="https://37signals.com" target="_blank" rel="noopener">37signals</a></p>
 </footer>
 
 
