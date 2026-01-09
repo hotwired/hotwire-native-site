@@ -46,6 +46,29 @@ Hotwire.config.makeCustomWebView = { config in
 }
 ```
 
+Customize the native error view with a block, making sure to wrap your custom `View` in `AnyView`:
+
+```swift
+Hotwire.config.makeCustomErrorView = { error, handler in
+    AnyView(ExampleErrorView(error: error, handler: handler))
+}
+
+import SwiftUI
+
+struct ExampleErrorView: View {
+    let error: Error
+    let handler: ErrorPresenter.Handler?
+
+    var body: some View {
+        Text(error.localizedDescription)
+
+        if let handler {
+            Button("Retry", action: handler)
+        }
+    }
+}
+```
+
 ## `NavigatorDelegate`
 
 The delegate is an optional interface you can implement to customize behavior of the `Navigator`.
