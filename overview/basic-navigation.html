@@ -212,15 +212,15 @@
   <img src="/assets/basic-navigation.png" width="800" alt="Basic navigation">
   Hotwire Native coordinates web-to-native navigation including gestures and animations.
 </figure>
-<h2 id="replacing-screens"><a class="anchor" href="#replacing-screens">﹟</a> Replacing Screens</h2>
+<h2 id="replacing-screens" tabindex="-1"><a class="anchor" href="#replacing-screens">﹟</a> Replacing Screens</h2>
 <p>By default, every tapped link <em>pushes</em> a new screen onto the native stack. Hotwire Native uses platform-specific animations and native components so interactions feel smooth. To users, it feels like a native app because it <em>is</em> a native app!</p>
 <p>The framework also applies a few sane defaults. Navigating to the <em>current</em> page’s URL path (again) will <em>replace</em> the screen on the stack. You can also manually trigger a <em>replace</em> action by adding <code>data-turbo-action=&quot;replace&quot;</code> to links and forms. This will cause the visited page to replace the current screen (rather than pushing a new one) and load the new contents.</p>
-<h2 id="caching"><a class="anchor" href="#caching">﹟</a> Caching</h2>
+<h2 id="caching" tabindex="-1"><a class="anchor" href="#caching">﹟</a> Caching</h2>
 <p>Navigating to the <em>previous</em> page’s URL path will <em>pop</em> the screen off the stack back to the previous screen. This animation uses a cached screenshot, further blending the gap to native screens. On iOS, the interactive pop gesture – dragging your finger from the far left of the screen – is also supported and feels great.</p>
-<h2 id="external-links"><a class="anchor" href="#external-links">﹟</a> External Links</h2>
+<h2 id="external-links" tabindex="-1"><a class="anchor" href="#external-links">﹟</a> External Links</h2>
 <p>Note that if the URL of a tapped link is <em>not</em> on the same domain as the current page it is considered <em>external</em>. External links are not routed through Hotwire Native. They instead open via an in-app web browser. iOS uses an <a href="https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller"><code>SFSafariViewController</code></a> and Android uses <a href="https://developer.chrome.com/docs/android/custom-tabs">Custom Tabs</a>.</p>
 <p>See the <a href="/reference/navigation#route-decision-handlers">Route Decision Handler</a> documentation to learn how urls are routed and how to customize the default behavior.</p>
-<h2 id="advanced-navigation"><a class="anchor" href="#advanced-navigation">﹟</a> Advanced Navigation</h2>
+<h2 id="advanced-navigation" tabindex="-1"><a class="anchor" href="#advanced-navigation">﹟</a> Advanced Navigation</h2>
 <p>Hotwire Native supports a bunch of other navigation patterns like popping the entire stack and manually refreshing the current page. But individually decorating each link would create a maintenance nightmare.</p>
 <p>So we’ve abstracted these <em>rules</em> into something called the <a href="/overview/path-configuration">Path Configuration</a>.</p>
 <p><a class="button" href="/overview/path-configuration">Next: Path Configuration</a></p></section>

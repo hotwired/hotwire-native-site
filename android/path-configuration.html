@@ -202,15 +202,45 @@
 
     <h1>Path Configuration</h1>
 <p>Building on the <a href="/overview/path-configuration">overview of path configuration</a>, here’s an example for an Android app.</p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"patterns"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token string">".*"</span><br>      <span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"context"</span><span class="token operator">:</span> <span class="token string">"default"</span><span class="token punctuation">,</span><br>        <span class="token property">"uri"</span><span class="token operator">:</span> <span class="token string">"hotwire://fragment/web"</span><span class="token punctuation">,</span><br>        <span class="token property">"pull_to_refresh_enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span><br>      <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"patterns"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token string">"/new$"</span><br>      <span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"context"</span><span class="token operator">:</span> <span class="token string">"modal"</span><span class="token punctuation">,</span><br>        <span class="token property">"uri"</span><span class="token operator">:</span> <span class="token string">"hotwire://fragment/web/modal/sheet"</span><span class="token punctuation">,</span><br>        <span class="token property">"pull_to_refresh_enabled"</span><span class="token operator">:</span> <span class="token boolean">false</span><br>      <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"patterns"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">".*"</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"context"</span><span class="token operator">:</span> <span class="token string">"default"</span><span class="token punctuation">,</span>
+        <span class="token property">"uri"</span><span class="token operator">:</span> <span class="token string">"hotwire://fragment/web"</span><span class="token punctuation">,</span>
+        <span class="token property">"pull_to_refresh_enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"patterns"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"/new$"</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"context"</span><span class="token operator">:</span> <span class="token string">"modal"</span><span class="token punctuation">,</span>
+        <span class="token property">"uri"</span><span class="token operator">:</span> <span class="token string">"hotwire://fragment/web/modal/sheet"</span><span class="token punctuation">,</span>
+        <span class="token property">"pull_to_refresh_enabled"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
 <p>This configuration does two things:</p>
 <ol>
 <li>Sets <em>all</em> URL path patterns to render the default fragment with a <code>hotwire://fragment/web</code> URI with pull-to-refresh enabled.</li>
 <li>Overrides URL path patterns <em>ending</em> in <code>/new</code> to be presented as a modal with pull-to-refresh disabled. It is helpful to disable pull-to-refresh in modals so it doesn’t interfere with the dismiss gesture or clear form data that a user may have entered.</li>
 </ol>
-<h2 id="location"><a class="anchor" href="#location">﹟</a> Location</h2>
+<h2 id="location" tabindex="-1"><a class="anchor" href="#location">﹟</a> Location</h2>
 <p>Path configuration has a <code>location</code> that can be loaded from your app. You can configure the <code>location</code> to be a locally bundled file, a remote file available from your server, or both. We recommend always including a bundled version even when loading remotely, so it will be available in case your app is offline.</p>
-<pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span><span class="token function">loadPathConfiguration</span><span class="token punctuation">(</span><br>    context <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">,</span><br>    location <span class="token operator">=</span> PathConfiguration<span class="token punctuation">.</span><span class="token function">Location</span><span class="token punctuation">(</span><br>        assetFilePath <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"json/configuration.json"</span></span><span class="token punctuation">,</span><br>        remoteFileUrl <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"https://example.com/configurations/android_v1.json"</span></span><br>    <span class="token punctuation">)</span><br><span class="token punctuation">)</span></code></pre>
+<pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span><span class="token function">loadPathConfiguration</span><span class="token punctuation">(</span>
+    context <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">,</span>
+    location <span class="token operator">=</span> PathConfiguration<span class="token punctuation">.</span><span class="token function">Location</span><span class="token punctuation">(</span>
+        assetFilePath <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"json/configuration.json"</span></span><span class="token punctuation">,</span>
+        remoteFileUrl <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"https://example.com/configurations/android_v1.json"</span></span>
+    <span class="token punctuation">)</span>
+<span class="token punctuation">)</span></code></pre>
 <p>If you provide both a file and a server location, the path configuration will be loaded asynchronously in the following order:</p>
 <ol>
 <li>The local file bundled with your app.</li>

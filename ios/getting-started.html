@@ -202,7 +202,7 @@
 
     <h1>Getting Started</h1>
 <p>Follow these steps to create a minimal Hotwire Native application on iOS with support for basic back/forward navigation and error handling.</p>
-<h2 id="new-project"><a class="anchor" href="#new-project">﹟</a> New Project</h2>
+<h2 id="new-project" tabindex="-1"><a class="anchor" href="#new-project">﹟</a> New Project</h2>
 <p>First, download and install <a href="https://developer.apple.com/xcode/">Xcode 15+</a>.</p>
 <p>Open Xcode and create a new iOS app via File → New → Project… and choose the default iOS “App” template.</p>
 <img src="/assets/xcode-choose-template.png" class="border" width="600" alt="New Xcode project" />
@@ -210,15 +210,32 @@
 <img src="/assets/xcode-project-options.png" class="border" width="600" alt="Configure Xcode project" />
 <p>Select where to save the project and click Create.</p>
 <img src="/assets/xcode-project-location.png" class="border" width="600" alt="Configure Xcode project" />
-<h2 id="integrate-hotwire-native"><a class="anchor" href="#integrate-hotwire-native">﹟</a> Integrate Hotwire Native</h2>
+<h2 id="integrate-hotwire-native" tabindex="-1"><a class="anchor" href="#integrate-hotwire-native">﹟</a> Integrate Hotwire Native</h2>
 <p>Next, add the Hotwire Native package via File → Add Packages Dependencies… and enter <code>https://github.com/hotwired/hotwire-native-ios</code> in the search field.
 Make sure your project is correctly set under “Add to Project“ and click Add Package.</p>
 <img src="/assets/xcode-search-package.png" class="border" width="600" alt="Configure Xcode project" />
 <p>Once the package has been downloaded, select your app name under “Add to Target“ and click Add Package.</p>
 <img src="/assets/xcode-add-package.png" class="border" width="600" alt="Configure Xcode project" />
 <p>Finally, open <code>SceneDelegate</code> and replace the entire file with this code:</p>
-<pre class="language-swift"><code class="language-swift"><span class="token keyword">import</span> <span class="token class-name">HotwireNative</span><br><span class="token keyword">import</span> <span class="token class-name">UIKit</span><br><br><span class="token keyword">let</span> rootURL <span class="token operator">=</span> <span class="token function">URL</span><span class="token punctuation">(</span>string<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"https://hotwire-native-demo.dev"</span></span><span class="token punctuation">)</span><span class="token operator">!</span><br><br><span class="token keyword">class</span> <span class="token class-name">SceneDelegate</span><span class="token punctuation">:</span> <span class="token class-name">UIResponder</span><span class="token punctuation">,</span> <span class="token class-name">UIWindowSceneDelegate</span> <span class="token punctuation">{</span><br>    <span class="token keyword">var</span> window<span class="token punctuation">:</span> <span class="token class-name">UIWindow</span><span class="token operator">?</span><br><br>    <span class="token keyword">private</span> <span class="token keyword">let</span> navigator <span class="token operator">=</span> <span class="token class-name">Navigator</span><span class="token punctuation">(</span>configuration<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token keyword">init</span><span class="token punctuation">(</span><br>        name<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"main"</span></span><span class="token punctuation">,</span><br>        startLocation<span class="token punctuation">:</span> rootURL<br>    <span class="token punctuation">)</span><span class="token punctuation">)</span><br><br>    <span class="token keyword">func</span> <span class="token function-definition function">scene</span><span class="token punctuation">(</span><span class="token omit keyword">_</span> scene<span class="token punctuation">:</span> <span class="token class-name">UIScene</span><span class="token punctuation">,</span> willConnectTo session<span class="token punctuation">:</span> <span class="token class-name">UISceneSession</span><span class="token punctuation">,</span> options connectionOptions<span class="token punctuation">:</span> <span class="token class-name">UIScene</span><span class="token punctuation">.</span><span class="token class-name">ConnectionOptions</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        window<span class="token operator">?</span><span class="token punctuation">.</span>rootViewController <span class="token operator">=</span> navigator<span class="token punctuation">.</span>rootViewController<br>        navigator<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
-<h2 id="run!"><a class="anchor" href="#run!">﹟</a> Run!</h2>
+<pre class="language-swift"><code class="language-swift"><span class="token keyword">import</span> <span class="token class-name">HotwireNative</span>
+<span class="token keyword">import</span> <span class="token class-name">UIKit</span>
+
+<span class="token keyword">let</span> rootURL <span class="token operator">=</span> <span class="token function">URL</span><span class="token punctuation">(</span>string<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"https://hotwire-native-demo.dev"</span></span><span class="token punctuation">)</span><span class="token operator">!</span>
+
+<span class="token keyword">class</span> <span class="token class-name">SceneDelegate</span><span class="token punctuation">:</span> <span class="token class-name">UIResponder</span><span class="token punctuation">,</span> <span class="token class-name">UIWindowSceneDelegate</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> window<span class="token punctuation">:</span> <span class="token class-name">UIWindow</span><span class="token operator">?</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">let</span> navigator <span class="token operator">=</span> <span class="token class-name">Navigator</span><span class="token punctuation">(</span>configuration<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token keyword">init</span><span class="token punctuation">(</span>
+        name<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"main"</span></span><span class="token punctuation">,</span>
+        startLocation<span class="token punctuation">:</span> rootURL
+    <span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">func</span> <span class="token function-definition function">scene</span><span class="token punctuation">(</span><span class="token omit keyword">_</span> scene<span class="token punctuation">:</span> <span class="token class-name">UIScene</span><span class="token punctuation">,</span> willConnectTo session<span class="token punctuation">:</span> <span class="token class-name">UISceneSession</span><span class="token punctuation">,</span> options connectionOptions<span class="token punctuation">:</span> <span class="token class-name">UIScene</span><span class="token punctuation">.</span><span class="token class-name">ConnectionOptions</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        window<span class="token operator">?</span><span class="token punctuation">.</span>rootViewController <span class="token operator">=</span> navigator<span class="token punctuation">.</span>rootViewController
+        navigator<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="run!" tabindex="-1"><a class="anchor" href="#run!">﹟</a> Run!</h2>
 <p>Click Product → Run to launch the app in the simulator. You should see the following screen in the simulator.</p>
 <figure>
     <img src="/assets/iphone-hotwire-native-demo.png" width="400" alt="Hotwire Native demo app" />

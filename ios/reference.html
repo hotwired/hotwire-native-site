@@ -202,20 +202,27 @@
 
     <h1>Reference</h1>
 <p>There are a few main types in Hotwire Native iOS, most notably <code>Navigator</code> and <code>Visitable</code>.</p>
-<h2 id="navigator"><a class="anchor" href="#navigator">﹟</a> Navigator</h2>
+<h2 id="navigator" tabindex="-1"><a class="anchor" href="#navigator">﹟</a> Navigator</h2>
 <p>The <code>Navigator</code> is the central coordinator in a Hotwire Native iOS application. Each <code>Navigator</code> manages the stack of screens via a <code>UINavigationController</code> with a single, shared <code>WKWebView</code> instance. It lets your app choose how to handle link taps, present view controllers, and deal with errors.</p>
-<h3 id="creating-a-navigator"><a class="anchor" href="#creating-a-navigator">﹟</a> Creating a <code>Navigator</code></h3>
+<h3 id="creating-a-navigator" tabindex="-1"><a class="anchor" href="#creating-a-navigator">﹟</a> Creating a <code>Navigator</code></h3>
 <p>Create with no parameters to use the default configuration:</p>
 <pre class="language-swift"><code class="language-swift"><span class="token keyword">let</span> navigator <span class="token operator">=</span> <span class="token class-name">Navigator</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Provide optional <a href="path-configuration">path configuration</a> to configure settings and path rules:</p>
 <pre class="language-swift"><code class="language-swift"><span class="token keyword">let</span> navigator <span class="token operator">=</span> <span class="token class-name">Navigator</span><span class="token punctuation">(</span>pathConfiguration<span class="token punctuation">:</span> pathConfiguration<span class="token punctuation">)</span></code></pre>
 <p>Provide an optional <a href="#navigatordelegate">delegate</a> to configure how different URLs, errors, and external links are handled:</p>
-<pre class="language-swift"><code class="language-swift"><span class="token keyword">let</span> navigator <span class="token operator">=</span> <span class="token class-name">Navigator</span><span class="token punctuation">(</span>delegate<span class="token punctuation">:</span> delegate<span class="token punctuation">)</span><br><br><span class="token keyword">extension</span> <span class="token class-name">SceneController</span><span class="token punctuation">:</span> <span class="token class-name">NavigatorDelgate</span> <span class="token punctuation">{</span><br>    <span class="token comment">// ...</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-swift"><code class="language-swift"><span class="token keyword">let</span> navigator <span class="token operator">=</span> <span class="token class-name">Navigator</span><span class="token punctuation">(</span>delegate<span class="token punctuation">:</span> delegate<span class="token punctuation">)</span>
+
+<span class="token keyword">extension</span> <span class="token class-name">SceneController</span><span class="token punctuation">:</span> <span class="token class-name">NavigatorDelgate</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">}</span></code></pre>
 <p>Customize the underlying <code>WKWebView</code> and configuration with a block. For example, to use a custom <code>WKProcessPool</code> to share cookies from web views outside of Hotwire Native:</p>
-<pre class="language-swift"><code class="language-swift"><span class="token class-name">Hotwire</span><span class="token punctuation">.</span>config<span class="token punctuation">.</span>makeCustomWebView <span class="token operator">=</span> <span class="token punctuation">{</span> config <span class="token keyword">in</span><br>    config<span class="token punctuation">.</span>processPool <span class="token operator">=</span> processPool<br>    <span class="token keyword">return</span> <span class="token class-name">WKWebView</span><span class="token punctuation">(</span>frame<span class="token punctuation">:</span> <span class="token punctuation">.</span>zero<span class="token punctuation">,</span> configuration<span class="token punctuation">:</span> config<span class="token punctuation">)</span><br><span class="token punctuation">}</span></code></pre>
-<h2 id="navigatordelegate"><a class="anchor" href="#navigatordelegate">﹟</a> <code>NavigatorDelegate</code></h2>
+<pre class="language-swift"><code class="language-swift"><span class="token class-name">Hotwire</span><span class="token punctuation">.</span>config<span class="token punctuation">.</span>makeCustomWebView <span class="token operator">=</span> <span class="token punctuation">{</span> config <span class="token keyword">in</span>
+    config<span class="token punctuation">.</span>processPool <span class="token operator">=</span> processPool
+    <span class="token keyword">return</span> <span class="token class-name">WKWebView</span><span class="token punctuation">(</span>frame<span class="token punctuation">:</span> <span class="token punctuation">.</span>zero<span class="token punctuation">,</span> configuration<span class="token punctuation">:</span> config<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="navigatordelegate" tabindex="-1"><a class="anchor" href="#navigatordelegate">﹟</a> <code>NavigatorDelegate</code></h2>
 <p>The delegate is an optional interface you can implement to customize behavior of the <code>Navigator</code>.</p>
-<h3 id="handling-proposals"><a class="anchor" href="#handling-proposals">﹟</a> Handling Proposals</h3>
+<h3 id="handling-proposals" tabindex="-1"><a class="anchor" href="#handling-proposals">﹟</a> Handling Proposals</h3>
 <p>Hotwire Native iOS calls the <code>handle(proposal:)</code> method before every visit, such as when you tap a Turbo-enabled link or call <code>Turbo.visit(...)</code> in your web application. Implement this function to choose how to handle the specified URL and action. This is called a <em>proposal</em> since your application is not required to complete the visit.</p>
 <p>Return one of the following three <code>ProposalResult</code> cases:</p>
 <ul>
@@ -223,16 +230,16 @@
 <li><code>acceptCustom(UIViewController)</code>: Provide a custom view controller to be displayed.</li>
 <li><code>reject</code>: No changes to navigation occur, the visit is effectively cancelled.</li>
 </ul>
-<h3 id="handling-external-urls"><a class="anchor" href="#handling-external-urls">﹟</a> Handling External URLs</h3>
+<h3 id="handling-external-urls" tabindex="-1"><a class="anchor" href="#handling-external-urls">﹟</a> Handling External URLs</h3>
 <p>Implement <code>handle(externalURL:)</code> to customize the behavior when an external URL is visited. URLs are considered “external” if they do not match the same domain as the first visited link. By default, this will present a <a href="https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller"><code>SFSafariViewController</code></a> modally.</p>
-<h3 id="handling-errors"><a class="anchor" href="#handling-errors">﹟</a> Handling Errors</h3>
+<h3 id="handling-errors" tabindex="-1"><a class="anchor" href="#handling-errors">﹟</a> Handling Errors</h3>
 <p>Network errors and responses with HTTP status codes outside of the 200 range are considered errors. By default a native screen with the error’s localized description and a Retry button is presented.</p>
 <p>Customize this behavior by implementing <code>visitableDidFailRequest(_:error:retryHandler:)</code>. Call <code>retryHandler()</code> to attempt the network request again.</p>
-<h2 id="hotwirewebviewcontroller"><a class="anchor" href="#hotwirewebviewcontroller">﹟</a> <code>HotwireWebViewController</code></h2>
+<h2 id="hotwirewebviewcontroller" tabindex="-1"><a class="anchor" href="#hotwirewebviewcontroller">﹟</a> <code>HotwireWebViewController</code></h2>
 <p>A <code>HotwireWebViewController</code> is a <code>UIViewController</code> that can be visited by a <code>Navigator</code>. Each view controller provides a <code>VisitableView</code> instance, which acts as a container for the shared <code>WKWebView</code>. The <code>VisitableView</code> optionally has a pull-to-refresh control and an activity indicator. It also automatically displays a screenshot of its contents when the web view moves to another <code>VisitableView</code>.</p>
 <p>Most applications will probably want to subclass <code>HotwireWebViewController</code> to customize its layout or add additional views. If your application’s design prevents you from subclassing <code>HotwireWebViewController</code>, you can implement the <code>Visitable</code> and <code>BridgeDestination</code> protocols yourself.</p>
 <p>Note: Custom <code>Visitable</code> view controllers must notify their delegate of their <code>viewWillAppear</code> and <code>viewDidAppear</code> methods through the <code>VisitableDelegate</code>’s <code>visitableViewWillAppear</code> and <code>visitableViewDidAppear</code> methods. The <code>Navigator</code> uses these hooks to know when it should move the <code>WKWebView</code> from one <code>VisitableView</code> to another.</p>
-<h2 id="enable-camera-access"><a class="anchor" href="#enable-camera-access">﹟</a> Enable camera access</h2>
+<h2 id="enable-camera-access" tabindex="-1"><a class="anchor" href="#enable-camera-access">﹟</a> Enable camera access</h2>
 <p>To enable camera access via <code>&lt;input type=&quot;file&quot;&gt;</code>, add the <a href="https://developer.apple.com/documentation/bundleresources/information-property-list/nscamerausagedescription"><code>NSCameraUsageDescription</code></a> key to your app’s <code>Info.plist</code> with a <code>String</code> value explaining why your app needs access to the camera. Add <a href="https://developer.apple.com/documentation/bundleresources/information-property-list/nsmicrophoneusagedescription"><code>NSMicrophoneUsageDescription</code></a> as well to allow recording audio when capturing video. Without adding these, your app will crash when you try to use the camera.</p>
 </section>
 

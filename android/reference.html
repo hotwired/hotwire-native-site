@@ -201,12 +201,14 @@
   <section id="content" class="docs__content grid__custom-item">
 
     <h1>Reference</h1>
-<h2 id="navigator"><a class="anchor" href="#navigator">﹟</a> Navigator</h2>
+<h2 id="navigator" tabindex="-1"><a class="anchor" href="#navigator">﹟</a> Navigator</h2>
 <p>The <code>Navigator</code> is the central coordinator in a Hotwire Native Android application. Each <code>NavigatorHost</code> in your Activity maintains a <code>Navigator</code> instance, which manages the stack of <code>HotwireFragment</code> screens with a single, shared <code>WebView</code> instance. It lets your app choose how to handle link taps, present new screens, and deal with errors.</p>
-<h2 id="custom-webview"><a class="anchor" href="#custom-webview">﹟</a> Custom WebView</h2>
+<h2 id="custom-webview" tabindex="-1"><a class="anchor" href="#custom-webview">﹟</a> Custom WebView</h2>
 <p>You can customize and subclass the <code>HotwireWebView</code> class to provide custom behaviors in your app:</p>
-<pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span>config<span class="token punctuation">.</span>makeCustomWebView <span class="token operator">=</span> <span class="token punctuation">{</span> context <span class="token operator">-></span><br>    <span class="token function">MyCustomWebView</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><br><span class="token punctuation">}</span></code></pre>
-<h2 id="custom-html-data-attributes"><a class="anchor" href="#custom-html-data-attributes">﹟</a> Custom HTML data attributes</h2>
+<pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span>config<span class="token punctuation">.</span>makeCustomWebView <span class="token operator">=</span> <span class="token punctuation">{</span> context <span class="token operator">-></span>
+    <span class="token function">MyCustomWebView</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="custom-html-data-attributes" tabindex="-1"><a class="anchor" href="#custom-html-data-attributes">﹟</a> Custom HTML data attributes</h2>
 <ul>
 <li><code>data-native-prevent-pull-to-refresh</code>: Apply to any element in your web app whose touch events conflict with the native pull-to-refresh behavior in the <code>WebView</code>. By default, scrollable elements prevent pull-to-refresh, but you may need to apply this custom attribute to elements that have draggable or swipeable behaviors.</li>
 </ul>

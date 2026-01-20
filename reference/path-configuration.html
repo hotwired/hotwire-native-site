@@ -202,15 +202,59 @@
 
     <h1>Path Configuration</h1>
 <p>The basics of <em>Path Configuration</em> are explained in the <a href="/overview/path-configuration">overview</a>. If you’re ready to build your first Path Configuration, keep reading.</p>
-<h2 id="settings"><a class="anchor" href="#settings">﹟</a> Settings</h2>
+<h2 id="settings" tabindex="-1"><a class="anchor" href="#settings">﹟</a> Settings</h2>
 <p><code>settings</code> is your sandbox for App-level configuration. As explained in the overview, common use cases include feature flags or any additional information that your app may use to configure itself. Feel free to add or modify any objects or arrays here, always remembering to <a href="/overview/path-configuration#versioning">version</a> your path configuration if you make breaking changes.</p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token property">"use_local_db"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>    <span class="token property">"cable"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token property">"script_url"</span><span class="token operator">:</span> <span class="token string">"https://hotwire-native-demo.dev/configurations/action_cable.js"</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token property">"feature_flags"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token punctuation">{</span><br>          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"new_onboarding_flow"</span><span class="token punctuation">,</span><br>          <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span><br>        <span class="token punctuation">}</span><br>      <span class="token punctuation">]</span><br>  <span class="token punctuation">}</span><br>  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
-<h2 id="rules"><a class="anchor" href="#rules">﹟</a> Rules</h2>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"use_local_db"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"cable"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"script_url"</span><span class="token operator">:</span> <span class="token string">"https://hotwire-native-demo.dev/configurations/action_cable.js"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"feature_flags"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"new_onboarding_flow"</span><span class="token punctuation">,</span>
+          <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="rules" tabindex="-1"><a class="anchor" href="#rules">﹟</a> Rules</h2>
 <p><code>rules</code> contains individual entries that define how different URL path patterns should behave. Each rule consists of the <code>patterns</code> to match and the <code>properties</code> to apply.</p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"patterns"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span><br>      <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"patterns"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+      <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
 <p>Entries in <code>rules</code> are read sequentially and are applied to the caught URL (via path pattern regex matching) as they are read. This means that rules earlier in the array can be overwritten by rules further down the array. It’s recommended that the first rule should establish the default behavior for all patterns and subsequent rules can override this for specific behavior.</p>
 <p>The following <em>Path Configuration</em> shows how a rule further down the array can override properties set by previous rules. Notice property <code>pull_to_refresh_enabled</code> is <code>true</code> for all URLs but <code>false</code> for URL path patterns matching <code>&quot;/new$&quot;</code>.</p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"patterns"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token string">".*"</span><br>      <span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"context"</span><span class="token operator">:</span> <span class="token string">"default"</span><span class="token punctuation">,</span><br>        <span class="token property">"pull_to_refresh_enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span><br>      <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"patterns"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token string">"/new$"</span><br>      <span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"context"</span><span class="token operator">:</span> <span class="token string">"modal"</span><span class="token punctuation">,</span><br>        <span class="token property">"pull_to_refresh_enabled"</span><span class="token operator">:</span> <span class="token boolean">false</span><br>      <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"patterns"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">".*"</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"context"</span><span class="token operator">:</span> <span class="token string">"default"</span><span class="token punctuation">,</span>
+        <span class="token property">"pull_to_refresh_enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"patterns"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"/new$"</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"context"</span><span class="token operator">:</span> <span class="token string">"modal"</span><span class="token punctuation">,</span>
+        <span class="token property">"pull_to_refresh_enabled"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
 <p>Using the above Path Configuration, when a navigation is requested to <code>&quot;/&quot;</code>:</p>
 <ol>
 <li><em>Path Configuration</em> matches <code>&quot;/&quot;</code> to the first rule <code>&quot;.*&quot;</code></li>
@@ -225,9 +269,9 @@
 <li><em>Path Configuration</em> sets <code>pull_to_refresh_enabled = false</code></li>
 </ol>
 <p>A rule earlier in the array can be overwritten by rules further down the array.</p>
-<h3 id="patterns"><a class="anchor" href="#patterns">﹟</a> Patterns</h3>
+<h3 id="patterns" tabindex="-1"><a class="anchor" href="#patterns">﹟</a> Patterns</h3>
 <p>The <code>patterns</code> array defines regular expression patterns that will be used to match URL paths.</p>
-<h3 id="properties"><a class="anchor" href="#properties">﹟</a> Properties</h3>
+<h3 id="properties" tabindex="-1"><a class="anchor" href="#properties">﹟</a> Properties</h3>
 <p>The <code>properties</code> hash contains a handful of key/value pairs that Hotwire Native supports out of the box.</p>
 <ul>
 <li><code>context</code> — Specifies the presentation context in which the view should be displayed. Hotwire Native will determine what the navigation behavior should be based on this value and <code>presentation</code>.
@@ -256,7 +300,7 @@
 </li>
 </ul>
 <p>You are free to add more properties as your app needs, but these are the ones the framework is aware of and will handle automatically.</p>
-<h3 id="android-specific-properties"><a class="anchor" href="#android-specific-properties">﹟</a> Android-specific properties</h3>
+<h3 id="android-specific-properties" tabindex="-1"><a class="anchor" href="#android-specific-properties">﹟</a> Android-specific properties</h3>
 <ul>
 <li><code>uri</code> — The target destination URI to navigate to. Must map to an Activity or Fragment that has implemented the <a href="https://github.com/hotwired/hotwire-native-android/blob/main/navigation-fragments/src/main/java/dev/hotwire/navigation/destinations/HotwireDestinationDeepLink.kt"><code>HotwireDestinationDeepLink</code></a> annotation with a matching <code>uri</code> value.
 <ul>
@@ -277,7 +321,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="ios-specific-properties"><a class="anchor" href="#ios-specific-properties">﹟</a> iOS-specific properties</h3>
+<h3 id="ios-specific-properties" tabindex="-1"><a class="anchor" href="#ios-specific-properties">﹟</a> iOS-specific properties</h3>
 <ul>
 <li><code>view_controller</code> — The identifier for a native <code>UIViewController</code> to navigate to. Conform your custom controller to <code>PathConfigurationIdentifiable</code> to it to this identifier.
 <ul>
@@ -306,7 +350,7 @@
 </ul>
 </li>
 </ul>
-<p><a class="button" href="/reference/bridge-installation">Next: Bridge Installation</a></p></section>
+<p><a class="button" href="/reference/bridge-installation">Next: Installation</a></p></section>
 
   <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
 

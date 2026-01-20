@@ -202,7 +202,7 @@
 
     <h1>Navigation</h1>
 <p>Navigating between screens is a core concept of building Hotwire Native apps. By default, all screens will be pushed onto the main navigation stack with animation. You can customize the navigation behavior by providing path configuration rules or manually routing in Swift or Kotlin.</p>
-<h2 id="routing"><a class="anchor" href="#routing">﹟</a> Routing</h2>
+<h2 id="routing" tabindex="-1"><a class="anchor" href="#routing">﹟</a> Routing</h2>
 <p>Set <code>context</code> or <code>presentation</code> to a <a href="/reference/path-configuration">path configuration</a> rule to apply the logic in the following table.</p>
 <ul>
 <li><strong>State</strong> describes what state the app is currently in: <code>modal</code> if a modal is presented, <code>default</code> otherwise.</li>
@@ -332,7 +332,7 @@
     </tr>
   </tbody>
 </table>
-<h3 id="server-driven-routing-in-rails"><a class="anchor" href="#server-driven-routing-in-rails">﹟</a> Server-Driven Routing in Rails</h3>
+<h3 id="server-driven-routing-in-rails" tabindex="-1"><a class="anchor" href="#server-driven-routing-in-rails">﹟</a> Server-Driven Routing in Rails</h3>
 <p>If you’re using Ruby on Rails, the <a href="https://github.com/hotwired/turbo-rails">turbo-rails</a> gem provides the following additional historical location routes. Use these to manipulate the navigation stack for Hotwire Native apps, falling back to redirecting elsewhere.</p>
 <ul>
 <li><code>recede_or_redirect_to(url, **options)</code> - First, pops any modal screen (if present) off the navigation stack. Then, pops the visible screen off of the navigation stack.</li>
@@ -340,7 +340,7 @@
 <li><code>resume_or_redirect_to(url **options)</code> - Pops any modal screen (if present) off the navigation stack. No further action is taken.</li>
 </ul>
 <p>The iOS and Android frameworks (starting in version <code>1.2.0</code>) automatically support these historical location urls.</p>
-<h2 id="route-decision-handlers"><a class="anchor" href="#route-decision-handlers">﹟</a> Route Decision Handlers</h2>
+<h2 id="route-decision-handlers" tabindex="-1"><a class="anchor" href="#route-decision-handlers">﹟</a> Route Decision Handlers</h2>
 <p>By default, all external urls outside of your app’s domain open externally. The specific behavior can be customized, though. Out-of-the-box, Hotwire Native registers these route decision handlers to control how urls are routed:</p>
 <ul>
 <li><code>AppNavigationRouteDecisionHandler</code>: Routes all internal urls on your app’s domain through your app.</li>
@@ -350,20 +350,57 @@
 </ul>
 <p>If you’d like to customize this behavior you can subclass the <code>RouteDecisionHandler</code> class in your app to provide your own implementation(s). Register your app’s decision handlers in order of importance. To decide how a url should be routed, the registered <code>RouteDecisionHandler</code> instances are called in order. When a matching <code>RouteDecisionHandler</code> is found for a given url, its <code>handle()</code> function is called and no other <code>RouteDecisionHandler</code> instances will be subsequently called.</p>
 <p><strong>Example for iOS:</strong></p>
-<pre class="language-swift"><code class="language-swift"><span class="token class-name">Hotwire</span><span class="token punctuation">.</span><span class="token function">registerRouteDecisionHandlers</span><span class="token punctuation">(</span><span class="token punctuation">[</span><br>    <span class="token class-name">AppNavigationRouteDecisionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>    <span class="token class-name">MyCustomExternalRouteDecisionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<pre class="language-swift"><code class="language-swift"><span class="token class-name">Hotwire</span><span class="token punctuation">.</span><span class="token function">registerRouteDecisionHandlers</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token class-name">AppNavigationRouteDecisionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token class-name">MyCustomExternalRouteDecisionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 <p><strong>Example for Android:</strong></p>
-<pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span><span class="token function">registerRouteDecisionHandlers</span><span class="token punctuation">(</span><br>    <span class="token function">AppNavigationRouteDecisionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>    <span class="token function">MyCustomExternalRouteDecisionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><span class="token punctuation">)</span></code></pre>
-<h2 id="manual-navigation"><a class="anchor" href="#manual-navigation">﹟</a> Manual Navigation</h2>
+<pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span><span class="token function">registerRouteDecisionHandlers</span><span class="token punctuation">(</span>
+    <span class="token function">AppNavigationRouteDecisionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">MyCustomExternalRouteDecisionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span></code></pre>
+<h2 id="manual-navigation" tabindex="-1"><a class="anchor" href="#manual-navigation">﹟</a> Manual Navigation</h2>
 <p><code>Navigator</code> can be used to navigate from a <a href="/overview/native-screens">native screen</a> to another native screen or back to a web context.</p>
-<h3 id="ios"><a class="anchor" href="#ios">﹟</a> iOS</h3>
-<pre class="language-swift"><code class="language-swift"><span class="token keyword">let</span> rootURL <span class="token operator">=</span> <span class="token function">URL</span><span class="token punctuation">(</span>string<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"..."</span></span><span class="token punctuation">)</span><span class="token operator">!</span><br><span class="token keyword">let</span> navigator <span class="token operator">=</span> <span class="token class-name">Navigator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><br><span class="token comment">// Visit a new page.</span><br>navigator<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span>rootURL<span class="token punctuation">.</span><span class="token function">appending</span><span class="token punctuation">(</span>path<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"foo"</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><br><br><span class="token comment">// Pop the top controller off the stack.</span><br>navigator<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><br><span class="token comment">// Pop the entire stack of controllers.</span><br>navigator<span class="token punctuation">.</span><span class="token function">clearAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h3 id="ios" tabindex="-1"><a class="anchor" href="#ios">﹟</a> iOS</h3>
+<pre class="language-swift"><code class="language-swift"><span class="token keyword">let</span> rootURL <span class="token operator">=</span> <span class="token function">URL</span><span class="token punctuation">(</span>string<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"..."</span></span><span class="token punctuation">)</span><span class="token operator">!</span>
+<span class="token keyword">let</span> navigator <span class="token operator">=</span> <span class="token class-name">Navigator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Visit a new page.</span>
+navigator<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span>rootURL<span class="token punctuation">.</span><span class="token function">appending</span><span class="token punctuation">(</span>path<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"foo"</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Pop the top controller off the stack.</span>
+navigator<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Pop the entire stack of controllers.</span>
+navigator<span class="token punctuation">.</span><span class="token function">clearAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Disable the animation via the optional <code>animated</code> parameter.</p>
-<pre class="language-swift"><code class="language-swift">navigator<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span>rootURL<span class="token punctuation">.</span><span class="token function">appending</span><span class="token punctuation">(</span>path<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"foo"</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> animated<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">)</span><br>navigator<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span>animated<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">)</span><br>navigator<span class="token punctuation">.</span><span class="token function">clearAll</span><span class="token punctuation">(</span>animated<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">)</span></code></pre>
-<h3 id="android"><a class="anchor" href="#android">﹟</a> Android</h3>
+<pre class="language-swift"><code class="language-swift">navigator<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span>rootURL<span class="token punctuation">.</span><span class="token function">appending</span><span class="token punctuation">(</span>path<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"foo"</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> animated<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+navigator<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span>animated<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+navigator<span class="token punctuation">.</span><span class="token function">clearAll</span><span class="token punctuation">(</span>animated<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">)</span></code></pre>
+<h3 id="android" tabindex="-1"><a class="anchor" href="#android">﹟</a> Android</h3>
 <p>Inside of a <code>HotwireActivity</code> class:</p>
-<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> location <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"https://..."</span></span><br><span class="token keyword">val</span> navigator <span class="token operator">=</span> delegate<span class="token punctuation">.</span>currentNavigator<br><br><span class="token comment">// Visit a new page.</span><br>navigator<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">location</span></span><span class="token string">/foo"</span></span><span class="token punctuation">)</span><br><br><span class="token comment">// Pop the backstack to the previous destination.</span><br>navigator<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><br><span class="token comment">// Clear the navigation backstack to the start destination.</span><br>navigator<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">clearAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> location <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"https://..."</span></span>
+<span class="token keyword">val</span> navigator <span class="token operator">=</span> delegate<span class="token punctuation">.</span>currentNavigator
+
+<span class="token comment">// Visit a new page.</span>
+navigator<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">location</span></span><span class="token string">/foo"</span></span><span class="token punctuation">)</span>
+
+<span class="token comment">// Pop the backstack to the previous destination.</span>
+navigator<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Clear the navigation backstack to the start destination.</span>
+navigator<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">clearAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Inside of a <code>HotwireFragment</code> class:</p>
-<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> location <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"https://..."</span></span><br><br><span class="token comment">// Visit a new page.</span><br>navigator<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">location</span></span><span class="token string">/foo"</span></span><span class="token punctuation">)</span><br><br><span class="token comment">// Pop the backstack to the previous destination.</span><br>navigator<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><br><span class="token comment">// Clear the navigation backstack to the start destination.</span><br>navigator<span class="token punctuation">.</span><span class="token function">clearAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> location <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"https://..."</span></span>
+
+<span class="token comment">// Visit a new page.</span>
+navigator<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">location</span></span><span class="token string">/foo"</span></span><span class="token punctuation">)</span>
+
+<span class="token comment">// Pop the backstack to the previous destination.</span>
+navigator<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Clear the navigation backstack to the start destination.</span>
+navigator<span class="token punctuation">.</span><span class="token function">clearAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p><a class="button" href="/reference/path-configuration">Next: Path Configuration</a></p></section>
 
   <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
