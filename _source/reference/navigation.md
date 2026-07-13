@@ -159,7 +159,7 @@ By default, all external urls outside of your app's domain open externally. The 
 - `BrowserTabRouteDecisionHandler`: **(Android Only)** Routes all external `http`/`https` urls to a [Custom Tab](https://developer.chrome.com/docs/android/custom-tabs) in your app.
 - `SystemNavigationRouteDecisionHandler`: Routes all remaining external urls (such as `sms:` or `mailto:`) through device's system navigation.
 
-If you'd like to customize this behavior you can subclass the `RouteDecisionHandler` class in your app to provide your own implementation(s). Register your app's decision handlers in order of importance. To decide how a url should be routed, the registered `RouteDecisionHandler` instances are called in order. When a matching `RouteDecisionHandler` is found for a given url, its `handle()` function is called and no other `RouteDecisionHandler` instances will be subsequently called.
+If you'd like to customize this behavior you can implement the `RouteDecisionHandler` protocol (iOS) or interface (Android) in your app to provide your own implementation(s). Register your app's decision handlers in order of importance. To decide how a proposed visit should be routed, the registered `RouteDecisionHandler` instances are called in order. When a `RouteDecisionHandler` matching the proposal is found, its `handle()` function is called and no other `RouteDecisionHandler` instances will be subsequently called.
 
 **Example for iOS:**
 ```swift
@@ -175,6 +175,50 @@ Hotwire.registerRouteDecisionHandlers(
     AppNavigationRouteDecisionHandler(),
     MyCustomExternalRouteDecisionHandler()
 )
+```
+
+Each decision handler receives the full `VisitProposal`, so you can match on the proposed visit's location, visit options, or path configuration properties:
+
+**Example for iOS:**
+```swift
+class MyCustomExternalRouteDecisionHandler: RouteDecisionHandler {
+    let name = "my-custom-external"
+
+    func matches(proposal: VisitProposal,
+                 configuration: Navigator.Configuration) -> Bool {
+        proposal.url.host() == "external.example.com"
+    }
+
+    func handle(proposal: VisitProposal,
+                configuration: Navigator.Configuration,
+                navigator: Navigating) -> Router.Decision {
+        // Route the url however you like, then cancel the in-app navigation.
+        return .cancel
+    }
+}
+```
+
+**Example for Android:**
+```kotlin
+class MyCustomExternalRouteDecisionHandler : Router.RouteDecisionHandler {
+    override val name = "my-custom-external"
+
+    override fun matches(
+        proposal: VisitProposal,
+        configuration: NavigatorConfiguration
+    ): Boolean {
+        return proposal.location.toUri().host == "external.example.com"
+    }
+
+    override fun handle(
+        proposal: VisitProposal,
+        configuration: NavigatorConfiguration,
+        activity: HotwireActivity
+    ): Router.Decision {
+        // Route the url however you like, then cancel the in-app navigation.
+        return Router.Decision.CANCEL
+    }
+}
 ```
 
 ## Manual Navigation
