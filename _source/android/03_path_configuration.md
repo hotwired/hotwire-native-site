@@ -1,6 +1,6 @@
 ---
 permalink: /android/path-configuration.html
-order: 02
+order: 03
 title: "Path Configuration"
 description: "Customize Android app behavior via the path configuration."
 ---
