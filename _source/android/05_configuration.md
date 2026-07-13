@@ -22,8 +22,7 @@ class MyApplication : Application() {
 }
 ```
 
-To ensure this invoked when the app starts, add the name of your `Application` instance to `AndroidManifest.xml` via the `android:name` property on the `<application>` node.
-p
+To ensure this is invoked when the app starts, add the name of your `Application` instance to `AndroidManifest.xml` via the `android:name` property on the `<application>` node.
 
 ```xml
 <application android:name=".MyApplication">
@@ -33,11 +32,31 @@ p
 
 ## Options
 
-Enable debugging in debug builds:
+Enable debug logging and WebView debugging in debug builds:
 
 ```kotlin
-Hotwire.config.debugLoggingEnabled = BuildConfig.DEBUG
+if (BuildConfig.DEBUG) {
+    Hotwire.config.logger.logLevel = HotwireLogLevel.DEBUG
+}
 Hotwire.config.webViewDebuggingEnabled = BuildConfig.DEBUG
+```
+
+By default, the library logs to Logcat with the log level set to `HotwireLogLevel.NONE`, so no logs are emitted. All library logging, including HTTP request logging, is controlled by the logger's `logLevel`. The available levels are `VERBOSE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, and `NONE`.
+
+To handle library logs in your app, for example to forward them to your own logging framework, provide a custom implementation of the [HotwireLogger](https://github.com/hotwired/hotwire-native-android/blob/main/core/src/main/kotlin/dev/hotwire/core/logging/HotwireLogger.kt) interface:
+
+```kotlin
+Hotwire.config.logger = MyAppLogger
+
+object MyAppLogger : HotwireLogger {
+    override var logLevel = HotwireLogLevel.DEBUG
+
+    override fun v(tag: String, msg: () -> String) { /* ... */ }
+    override fun d(tag: String, msg: () -> String) { /* ... */ }
+    override fun i(tag: String, msg: () -> String) { /* ... */ }
+    override fun w(tag: String, msg: () -> String) { /* ... */ }
+    override fun e(tag: String, throwable: Throwable?, msg: () -> String) { /* ... */ }
+}
 ```
 
 Set the default fragment destination:
