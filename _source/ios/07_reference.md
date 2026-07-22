@@ -65,9 +65,26 @@ Implement `handle(externalURL:)` to customize the behavior when an external URL 
 
 ### Handling Errors
 
-Network errors and responses with HTTP status codes outside of the 200 range are considered errors. By default a native screen with the error's localized description and a Retry button is presented.
+Network errors and responses with HTTP status codes outside of the 200 range are considered errors. By default a native screen with the error's localized description and a Retry button is presented, which you can customize via [`Hotwire.config.makeCustomErrorView`](/ios/configuration).
 
-Customize this behavior by implementing `visitableDidFailRequest(_:error:retryHandler:)`. Call `retryHandler()` to attempt the network request again.
+Errors are reported as a structured [`HotwireNativeError`](https://github.com/hotwired/hotwire-native-ios/blob/main/Source/Turbo/Errors/HotwireNativeError.swift), composed of `HTTPError` (4xx and 5xx status codes), `WebError` (network and connection failures), and `LoadError` (Turbo.js loading errors).
+
+Customize this behavior by implementing `visitableDidFailRequest(_:error:retryHandler:)`. Match on the error to handle specific cases, like presenting your login screen for 401 Unauthorized responses. Call `retryHandler()` to attempt the network request again.
+
+```swift
+func visitableDidFailRequest(_ visitable: any Visitable, error: HotwireNativeError, retryHandler: RetryBlock?) {
+    switch error {
+    case .http(.client(.unauthorized)):
+        // Present your login screen.
+    default:
+        if let errorPresenter = visitable as? ErrorPresenter {
+            errorPresenter.presentError(error) {
+                retryHandler?()
+            }
+        }
+    }
+}
+```
 
 ## `HotwireWebViewController`
 
