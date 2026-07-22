@@ -36,7 +36,7 @@ p
 Enable debugging in debug builds:
 
 ```kotlin
-Hotwire.config.debugLoggingEnabled = BuildConfig.DEBUG
+Hotwire.config.logger.logLevel = if (BuildConfig.DEBUG) HotwireLogLevel.DEBUG else HotwireLogLevel.NONE
 Hotwire.config.webViewDebuggingEnabled = BuildConfig.DEBUG
 ```
 
