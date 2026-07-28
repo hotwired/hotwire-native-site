@@ -186,7 +186,7 @@ class MyCustomExternalRouteDecisionHandler: RouteDecisionHandler {
 
     func matches(proposal: VisitProposal,
                  configuration: Navigator.Configuration) -> Bool {
-        proposal.url.host() == "external.example.com"
+        proposal.url.host == "external.example.com"
     }
 
     func handle(proposal: VisitProposal,

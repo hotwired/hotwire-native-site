@@ -2,7 +2,7 @@
 permalink: /android/native-screens.html
 order: 05
 title: "Native Screens"
-description: "Integrate fully native Kotlin screens in your Hotiwre Native app."
+description: "Integrate fully native Kotlin screens in your Hotwire Native app."
 ---
 
 # Native Screens

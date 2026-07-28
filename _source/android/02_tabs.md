@@ -115,7 +115,7 @@ class MainActivity : HotwireActivity() {
 }
 ```
 
-Every tab's start location is loaded up front when `load()` is called, so switching tabs is instant. Pass a second argument to `load()` to select a different initial tab, and use `setOnTabSelectedListener` to be notified when the selected tab changes:
+Every tab's start location is loaded up front, so switching tabs is instant. Pass a second argument to `load()` to select a different initial tab, and use `setOnTabSelectedListener` to be notified when the selected tab changes:
 
 ```kotlin
 bottomNavigationController.load(tabs, selectedTabIndex = 1)
