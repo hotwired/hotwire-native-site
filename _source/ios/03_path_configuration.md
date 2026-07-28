@@ -1,6 +1,6 @@
 ---
 permalink: /ios/path-configuration.html
-order: 02
+order: 03
 title: "Path Configuration"
 description: "Customize iOS app behavior via the path configuration."
 ---

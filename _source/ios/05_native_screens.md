@@ -1,6 +1,6 @@
 ---
 permalink: /ios/native-screens.html
-order: 04
+order: 05
 title: "Native Screens"
 description: "Integrate fully native Swift screens in your Hotiwre Native app."
 ---
@@ -43,7 +43,7 @@ Next, create a URL path pattern to match against, and set its `view_controller` 
 
 When a link is intercepted by Hotwire Native, it will go through its usual process of matching the link's URL path to all rules in the app's Path Configuration. When it matches the above rule, it will create a `VisitProposal` and will set this `view_controller` property to `"numbers"`.
 
-You can inspect this property when `handle(proposal:)` is called on `Navigator`'s delegate and instantiate your own view controller there. That's it! Hotwire Native will handle presentation (push/replace and animations) as if it were a web view controller.
+You can inspect this property when `handle(proposal:from:)` is called on `Navigator`'s delegate and instantiate your own view controller there. That's it! Hotwire Native will handle presentation (push/replace and animations) as if it were a web view controller.
 
 ```swift
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
