@@ -148,19 +148,22 @@
       <a class="nav__sublist-link" href="/android/getting-started">1: Getting Started
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/android/path-configuration">2: Path Configuration
+      <a class="nav__sublist-link" href="/android/tabs">2: Tabs
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/android/bridge-components">3: Bridge Components
+      <a class="nav__sublist-link" href="/android/path-configuration">3: Path Configuration
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/android/native-screens">4: Native Screens
+      <a class="nav__sublist-link" href="/android/bridge-components">4: Bridge Components
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/android/configuration">5: Configuration
+      <a class="nav__sublist-link" href="/android/native-screens">5: Native Screens
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/android/reference">6: Reference
+      <a class="nav__sublist-link" href="/android/configuration">6: Configuration
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/android/reference">7: Reference
       </a>
     </li></ul>
 
@@ -348,7 +351,7 @@
 <li><code>BrowserTabRouteDecisionHandler</code>: <strong>(Android Only)</strong> Routes all external <code>http</code>/<code>https</code> urls to a <a href="https://developer.chrome.com/docs/android/custom-tabs">Custom Tab</a> in your app.</li>
 <li><code>SystemNavigationRouteDecisionHandler</code>: Routes all remaining external urls (such as <code>sms:</code> or <code>mailto:</code>) through device’s system navigation.</li>
 </ul>
-<p>If you’d like to customize this behavior you can subclass the <code>RouteDecisionHandler</code> class in your app to provide your own implementation(s). Register your app’s decision handlers in order of importance. To decide how a url should be routed, the registered <code>RouteDecisionHandler</code> instances are called in order. When a matching <code>RouteDecisionHandler</code> is found for a given url, its <code>handle()</code> function is called and no other <code>RouteDecisionHandler</code> instances will be subsequently called.</p>
+<p>If you’d like to customize this behavior you can implement the <code>RouteDecisionHandler</code> protocol (iOS) or interface (Android) in your app to provide your own implementation(s). Register your app’s decision handlers in order of importance. To decide how a proposed visit should be routed, the registered <code>RouteDecisionHandler</code> instances are called in order. When a <code>RouteDecisionHandler</code> matching the proposal is found, its <code>handle()</code> function is called and no other <code>RouteDecisionHandler</code> instances will be subsequently called.</p>
 <p><strong>Example for iOS:</strong></p>
 <pre class="language-swift"><code class="language-swift"><span class="token class-name">Hotwire</span><span class="token punctuation">.</span><span class="token function">registerRouteDecisionHandlers</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
     <span class="token class-name">AppNavigationRouteDecisionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -359,6 +362,43 @@
     <span class="token function">AppNavigationRouteDecisionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token function">MyCustomExternalRouteDecisionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span></code></pre>
+<p>Each decision handler receives the full <code>VisitProposal</code>, so you can match on the proposed visit’s location, visit options, or path configuration properties:</p>
+<p><strong>Example for iOS:</strong></p>
+<pre class="language-swift"><code class="language-swift"><span class="token keyword">class</span> <span class="token class-name">MyCustomExternalRouteDecisionHandler</span><span class="token punctuation">:</span> <span class="token class-name">RouteDecisionHandler</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"my-custom-external"</span></span>
+
+    <span class="token keyword">func</span> <span class="token function-definition function">matches</span><span class="token punctuation">(</span>proposal<span class="token punctuation">:</span> <span class="token class-name">VisitProposal</span><span class="token punctuation">,</span>
+                 configuration<span class="token punctuation">:</span> <span class="token class-name">Navigator</span><span class="token punctuation">.</span><span class="token class-name">Configuration</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token class-name">Bool</span> <span class="token punctuation">{</span>
+        proposal<span class="token punctuation">.</span>url<span class="token punctuation">.</span>host <span class="token operator">==</span> <span class="token string-literal"><span class="token string">"external.example.com"</span></span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">func</span> <span class="token function-definition function">handle</span><span class="token punctuation">(</span>proposal<span class="token punctuation">:</span> <span class="token class-name">VisitProposal</span><span class="token punctuation">,</span>
+                configuration<span class="token punctuation">:</span> <span class="token class-name">Navigator</span><span class="token punctuation">.</span><span class="token class-name">Configuration</span><span class="token punctuation">,</span>
+                navigator<span class="token punctuation">:</span> <span class="token class-name">Navigating</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token class-name">Router</span><span class="token punctuation">.</span><span class="token class-name">Decision</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Route the url however you like, then cancel the in-app navigation.</span>
+        <span class="token keyword">return</span> <span class="token punctuation">.</span>cancel
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p><strong>Example for Android:</strong></p>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> MyCustomExternalRouteDecisionHandler <span class="token operator">:</span> Router<span class="token punctuation">.</span><span class="token function">RouteDecisionHandler</span> <span class="token punctuation">{</span>
+    <span class="token keyword">override</span> <span class="token keyword">val</span> name <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"my-custom-external"</span></span>
+
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">matches</span><span class="token punctuation">(</span>
+        proposal<span class="token operator">:</span> VisitProposal<span class="token punctuation">,</span>
+        configuration<span class="token operator">:</span> NavigatorConfiguration
+    <span class="token punctuation">)</span><span class="token operator">:</span> Boolean <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> proposal<span class="token punctuation">.</span>location<span class="token punctuation">.</span><span class="token function">toUri</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>host <span class="token operator">==</span> <span class="token string-literal singleline"><span class="token string">"external.example.com"</span></span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">handle</span><span class="token punctuation">(</span>
+        proposal<span class="token operator">:</span> VisitProposal<span class="token punctuation">,</span>
+        configuration<span class="token operator">:</span> NavigatorConfiguration<span class="token punctuation">,</span>
+        activity<span class="token operator">:</span> HotwireActivity
+    <span class="token punctuation">)</span><span class="token operator">:</span> Router<span class="token punctuation">.</span><span class="token function">Decision</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Route the url however you like, then cancel the in-app navigation.</span>
+        <span class="token keyword">return</span> Router<span class="token punctuation">.</span>Decision<span class="token punctuation">.</span>CANCEL
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <h2 id="manual-navigation" tabindex="-1"><a class="anchor" href="#manual-navigation">﹟</a> Manual Navigation</h2>
 <p><code>Navigator</code> can be used to navigate from a <a href="/overview/native-screens">native screen</a> to another native screen or back to a web context.</p>
 <h3 id="ios" tabindex="-1"><a class="anchor" href="#ios">﹟</a> iOS</h3>
