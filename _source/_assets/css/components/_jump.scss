@@ -29,7 +29,7 @@
     margin: 0;
     padding: 0;
 
-    &::after {
+    &:not(:last-child)::after {
       content: "/";
       display: inline-block;
       margin: 0 0.25em 0 0.125em;
