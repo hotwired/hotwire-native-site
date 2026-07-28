@@ -1,8 +1,8 @@
 ---
 permalink: /android/reference.html
-order: 06
+order: 07
 title: "Reference"
-description: "An reference guide to the Hotwire Native Android library."
+description: "A reference guide to the Hotwire Native Android library."
 ---
 
 # Reference
