@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Hotwire Native Community: Discussions & Issues</title>
-  <meta name="description" content="Start a discussion or report an issue on GitHub">
-  <link rel="canonical" href="https://native.hotwired.dev/community/discussions">
+  <title>Hotwire Native iOS: Tabs</title>
+  <meta name="description" content="How to add tabs to a Hotwire Native app on iOS.">
+  <link rel="canonical" href="https://native.hotwired.dev/ios/tabs">
 
   <link rel="alternate icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -48,7 +48,7 @@
   <svg width="60" height="60" viewBox="0 0 250 250" version="1.1" xmlns="github-corner"
 	style="fill:#000000; color:#FFFFFF;"
 	aria-hidden="true">
-	<a href="https://github.com/hotwired/hotwire-native-site/blob/main/./_source/community/discussions.md" target="_blank" class="github-corner">
+	<a href="https://github.com/hotwired/hotwire-native-site/blob/main/./_source/ios/02_tabs.md" target="_blank" class="github-corner">
 		<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
 		<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
 			fill="#FFFFFF" style="transform-origin: 130px 106px;" class="octo-arm">
@@ -118,13 +118,13 @@
 
     </li>
     <li>
-      <a class="nav__list-link" href="/ios/getting-started">iOS</a>
+      <a class="nav__list-link active" href="/ios/getting-started">iOS</a>
 
-      <ul class="nav__sublist "><li>
+      <ul class="nav__sublist  active"><li>
       <a class="nav__sublist-link" href="/ios/getting-started">1: Getting Started
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/ios/tabs">2: Tabs
+      <a class="nav__sublist-link active" href="/ios/tabs">2: Tabs
       </a>
     </li><li>
       <a class="nav__sublist-link" href="/ios/path-configuration">3: Path Configuration
@@ -190,10 +190,10 @@
 
     </li>
     <li>
-      <a class="nav__list-link active" href="/community/discussions">Community</a>
+      <a class="nav__list-link" href="/community/discussions">Community</a>
 
-      <ul class="nav__sublist  active"><li>
-      <a class="nav__sublist-link active" href="/community/discussions">Discussions & Issues
+      <ul class="nav__sublist "><li>
+      <a class="nav__sublist-link" href="/community/discussions">Discussions & Issues
       </a>
     </li></ul>
 
@@ -206,30 +206,72 @@
 
   <section id="content" class="docs__content grid__custom-item">
 
-    <h1>Discussions</h1>
-<p>If you’d like to discuss a Hotwire Native topic or have questions about your application, please use GitHub Discussions for each platform:</p>
-<div class="docs-actions">
-  <a class="docs-actions__item" href="https://github.com/hotwired/hotwire-native-ios/discussions">
-    <div class="docs-actions__icon docs-actions__icon--github" aria-hidden="true"></div>
-    iOS: GitHub Discussions
-  </a>
-  <a class="docs-actions__item" href="https://github.com/hotwired/hotwire-native-android/discussions">
-    <div class="docs-actions__icon docs-actions__icon--github" aria-hidden="true"></div>
-    Android: GitHub Discussions
-  </a>
-</div>
-<h1>Issues</h1>
-<p>If you’d like to report a Hotwire Native issue, please use GitHub Issues for each platform:</p>
-<div class="docs-actions">
-  <a class="docs-actions__item" href="https://github.com/hotwired/hotwire-native-ios/issues">
-    <div class="docs-actions__icon docs-actions__icon--github" aria-hidden="true"></div>
-    iOS: GitHub Issues
-  </a>
-  <a class="docs-actions__item" href="https://github.com/hotwired/hotwire-native-android/issues">
-    <div class="docs-actions__icon docs-actions__icon--github" aria-hidden="true"></div>
-    Android: GitHub Issues
-  </a>
-</div></section>
+    <h1>Tabs</h1>
+<p>A native tab bar elevates a Hotwire Native app to make it feel more like a native app. Under the hood, Hotwire Native uses a standard <code>UITabBarController</code> subclass. This means all the expected features work out of the box, including:</p>
+<ul>
+<li>Customization for tab titles and images</li>
+<li>Separate navigation stacks for each tab</li>
+<li>Tapping an active tab pops the stack to the root screen</li>
+</ul>
+<h2 id="add-a-tab-bar-controller" tabindex="-1"><a class="anchor" href="#add-a-tab-bar-controller">﹟</a> Add a tab bar controller</h2>
+<p>We’ll build on top of the app from the <a href="/ios/getting-started">Getting Started guide</a>. From there, replace the contents of <code>SceneDelegate</code> with the following:</p>
+<pre class="language-swift"><code class="language-swift"><span class="token keyword">import</span> <span class="token class-name">HotwireNative</span>
+<span class="token keyword">import</span> <span class="token class-name">UIKit</span>
+
+<span class="token keyword">let</span> rootURL <span class="token operator">=</span> <span class="token function">URL</span><span class="token punctuation">(</span>string<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"https://hotwire-native-demo.dev"</span></span><span class="token punctuation">)</span><span class="token operator">!</span>
+
+<span class="token keyword">class</span> <span class="token class-name">SceneDelegate</span><span class="token punctuation">:</span> <span class="token class-name">UIResponder</span><span class="token punctuation">,</span> <span class="token class-name">UIWindowSceneDelegate</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> window<span class="token punctuation">:</span> <span class="token class-name">UIWindow</span><span class="token operator">?</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">let</span> tabBarController <span class="token operator">=</span> <span class="token class-name">HotwireTabBarController</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">func</span> <span class="token function-definition function">scene</span><span class="token punctuation">(</span><span class="token omit keyword">_</span> scene<span class="token punctuation">:</span> <span class="token class-name">UIScene</span><span class="token punctuation">,</span> willConnectTo session<span class="token punctuation">:</span> <span class="token class-name">UISceneSession</span><span class="token punctuation">,</span> options connectionOptions<span class="token punctuation">:</span> <span class="token class-name">UIScene</span><span class="token punctuation">.</span><span class="token class-name">ConnectionOptions</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        window<span class="token operator">?</span><span class="token punctuation">.</span>rootViewController <span class="token operator">=</span> tabBarController
+        tabBarController<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>tabs<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Then, populate the tabs with a <code>tabs</code> variable at the bottom of the file:</p>
+<pre class="language-swift"><code class="language-swift"><span class="token keyword">let</span> tabs <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token class-name">HotwireTab</span><span class="token punctuation">(</span>
+        title<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"Navigation"</span></span><span class="token punctuation">,</span>
+        image<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token keyword">init</span><span class="token punctuation">(</span>systemName<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"arrow.left.arrow.right"</span></span><span class="token punctuation">)</span><span class="token operator">!</span><span class="token punctuation">,</span>
+        url<span class="token punctuation">:</span> rootURL
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token class-name">HotwireTab</span><span class="token punctuation">(</span>
+        title<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"Bridge Components"</span></span><span class="token punctuation">,</span>
+        image<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token keyword">init</span><span class="token punctuation">(</span>systemName<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"square.grid.2x2"</span></span><span class="token punctuation">)</span><span class="token operator">!</span><span class="token punctuation">,</span>
+        url<span class="token punctuation">:</span> rootURL<span class="token punctuation">.</span><span class="token function">appendingPathComponent</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"components"</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
+<span class="token punctuation">]</span></code></pre>
+<p>This creates two tabs, Navigation and Bridge Components.</p>
+<figure>
+    <img src="/assets/ios-tabs.png" width="400" alt="Hotwire Native tabs on iOS" />
+</figure>
+<p>Each <code>HotwireTab</code> requires the following parameters:</p>
+<ul>
+<li><code>title</code>: The string to display on the tab</li>
+<li><code>image</code>: The image to display on the tab - the example above uses <a href="https://developer.apple.com/sf-symbols/">SF Symbols</a></li>
+<li><code>url</code>: The URL to visit when the tab loads</li>
+</ul>
+<p>Optionally, pass <code>selectedImage</code> to display a different image when the user selects the tab.</p>
+<p>Each tab gets its own <code>Navigator</code> instance with its own navigation stack. The currently selected tab’s navigator is exposed via <code>activeNavigator</code>, useful when routing URLs manually. And pass a <a href="/ios/reference#navigatordelegate"><code>NavigatorDelegate</code></a> to the initializer to customize how proposals and errors are handled for every tab’s navigator:</p>
+<pre class="language-swift"><code class="language-swift"><span class="token class-name">HotwireTabBarController</span><span class="token punctuation">(</span>navigatorDelegate<span class="token punctuation">:</span> <span class="token keyword">self</span><span class="token punctuation">)</span></code></pre>
+<h2 id="lazy-loading" tabindex="-1"><a class="anchor" href="#lazy-loading">﹟</a> Lazy loading</h2>
+<p>Every tab’s start location is loaded up front when <code>load(_:)</code> is called, so switching tabs is instant. If loading every tab up front is too expensive, opt into lazy loading by passing <code>lazyLoadTabs: true</code> to the initializer. A lazily loaded tab doesn’t visit its start location until the user first selects it. The initially selected tab always loads right away.</p>
+<pre class="language-swift"><code class="language-swift"><span class="token class-name">HotwireTabBarController</span><span class="token punctuation">(</span>lazyLoadTabs<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">)</span></code></pre>
+<h2 id="search-tab" tabindex="-1"><a class="anchor" href="#search-tab">﹟</a> Search tab</h2>
+<p>Pass <code>isSearchTab: true</code> to give a tab the system search role. On iOS 18+ the tab is created as a <a href="https://developer.apple.com/documentation/uikit/uisearchtab"><code>UISearchTab</code></a>, which adopts the dedicated search appearance on iOS 26. On earlier iOS versions it behaves like a regular tab.</p>
+<pre class="language-swift"><code class="language-swift"><span class="token class-name">HotwireTab</span><span class="token punctuation">(</span>
+    title<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"Search"</span></span><span class="token punctuation">,</span>
+    image<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token keyword">init</span><span class="token punctuation">(</span>systemName<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"magnifyingglass"</span></span><span class="token punctuation">)</span><span class="token operator">!</span><span class="token punctuation">,</span>
+    url<span class="token punctuation">:</span> rootURL<span class="token punctuation">.</span><span class="token function">appendingPathComponent</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"search"</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    isSearchTab<span class="token punctuation">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">)</span></code></pre>
+<h2 id="hide-the-tab-bar-when-pushing" tabindex="-1"><a class="anchor" href="#hide-the-tab-bar-when-pushing">﹟</a> Hide the tab bar when pushing</h2>
+<p>By default, the tab bar stays visible when navigating deeper into a tab’s stack. Set <code>Hotwire.config.hideTabBarWhenPushed</code> to <code>true</code> to only show the tab bar on each tab’s root screen:</p>
+<pre class="language-swift"><code class="language-swift"><span class="token class-name">Hotwire</span><span class="token punctuation">.</span>config<span class="token punctuation">.</span>hideTabBarWhenPushed <span class="token operator">=</span> <span class="token boolean">true</span></code></pre>
+<p><a class="button" href="/ios/path-configuration">Next: Path Configuration</a></p></section>
 
   <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
 
