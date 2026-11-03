@@ -96,3 +96,53 @@ Set a custom user agent application prefix for every `WebView` instance. The lib
 ```kotlin
 Hotwire.config.applicationUserAgentPrefix = "My Application;"
 ```
+
+## Origin Trust
+
+Starting in version `1.4.0`, Hotwire Native checks the origin of every page before it lets the page navigate in-app or reach native code. Only origins your app trusts can:
+
+- Open in the app instead of a browser tab
+- Receive the library's JavaScript and send Turbo and bridge component messages
+- Open the file chooser
+- Get location, camera and microphone [permissions](/android/reference#permissions)
+
+An origin is the full scheme, host and port. `http://example.com` and `https://example.com:8443` are different origins from `https://example.com`.
+
+By default, `DefaultOriginTrustPolicy` trusts the origins of your `NavigatorHost` start locations. If your app loads pages from a single origin, you don't need to configure anything. `Hotwire.config.registeredOrigins` lists the origins the default policy trusts.
+
+To trust more origins, set your own policy. You can build on the default:
+
+```kotlin
+private val accounts = Origin.parse("https://accounts.example.com")
+
+Hotwire.config.originTrustPolicy = object : OriginTrustPolicy() {
+    override fun isTrustedForNavigation(origin: Origin) =
+        origin == accounts || DefaultOriginTrustPolicy.isTrustedForNavigation(origin)
+
+    override fun isTrustedForNativeAccess(origin: Origin) =
+        origin == accounts || DefaultOriginTrustPolicy.isTrustedForNativeAccess(origin)
+}
+```
+
+A policy makes 2 decisions:
+
+- `isTrustedForNavigation()`: whether a url on the origin opens in the app. On its own, this is for urls your path configuration routes to a native screen, like CDN images opened in a native image viewer.
+- `isTrustedForNativeAccess()`: whether pages on the origin can reach native code. A web page needs both, or it fails to load with `LoadError.UntrustedOrigin`.
+
+If your app doesn't use `NavigatorHost`, the default policy doesn't trust any origin, so you must set a policy.
+
+## Passkeys
+
+Starting in version `1.4.0`, you can allow WebAuthn (passkey) requests from your `WebView` instances. Set this in your `Application` instance, before any `WebView` is created:
+
+```kotlin
+Hotwire.config.webAuthenticationEnabled = true
+```
+
+Passkeys also need:
+
+- Your app associated with your website through [Digital Asset Links](https://developers.google.com/digital-asset-links)
+- A server that accepts your app's `android:apk-key-hash:<hash>` origin, because the `WebView` sends your app's identity instead of the page's origin
+- A device `WebView` that supports web authentication. On other devices, this setting has no effect.
+
+Only turn this on if your `WebView` instances load nothing but your own sites. Any page in the `WebView` can request passkeys for your associated sites, including cross-origin iframes your pages allow `publickey-credentials-get` or `publickey-credentials-create`.

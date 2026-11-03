@@ -92,4 +92,6 @@ Click Run → Run 'app' to launch the app in the emulator. You should see the fo
 
 This example only touches on the core requirements of creating a `HotwireActivity` and routing start location. Feel free to change the URL used for the initial visit to point to your web app.
 
+The app trusts your start location's origin automatically. If your app loads pages from more than one origin, see [Origin Trust](/android/configuration#origin-trust).
+
 And note that we are pointing to a demo application server that expects a bit more native functionality. Some of the links, like native controls, won't work out of the box. Check out the [Hotwire Native Android demo app](https://github.com/hotwired/hotwire-native-android/tree/main/demo) for examples on how to add bridge components, native screens, and more.
