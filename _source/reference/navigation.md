@@ -159,6 +159,8 @@ By default, all external urls outside of your app's domain open externally. The 
 - `BrowserTabRouteDecisionHandler`: **(Android Only)** Routes all external `http`/`https` urls to a [Custom Tab](https://developer.chrome.com/docs/android/custom-tabs) in your app.
 - `SystemNavigationRouteDecisionHandler`: Routes all remaining external urls (such as `sms:` or `mailto:`) through device's system navigation.
 
+**(Android Only)** Starting in version `1.4.0`, the default handlers compare full origins instead of hosts. Your app's urls are the ones on origins your app [trusts](/android/configuration#origin-trust), and by default that's the origins of your `NavigatorHost` start locations. A link to your host on `http://` or another port opens in a browser tab.
+
 If you'd like to customize this behavior you can implement the `RouteDecisionHandler` protocol (iOS) or interface (Android) in your app to provide your own implementation(s). Register your app's decision handlers in order of importance. To decide how a proposed visit should be routed, the registered `RouteDecisionHandler` instances are called in order. When a `RouteDecisionHandler` matching the proposal is found, its `handle()` function is called and no other `RouteDecisionHandler` instances will be subsequently called.
 
 **Example for iOS:**

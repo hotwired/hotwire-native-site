@@ -109,6 +109,8 @@ Hotwire.registerBridgeComponents(
 
 See the [Hotwire Native Android demo app](https://github.com/hotwired/hotwire-native-android/blob/main/demo/README.md) for a full implementation.
 
+Bridge components only receive messages from pages on origins your app [trusts](/android/configuration#origin-trust). If a component doesn't respond, check that the page's origin is trusted.
+
 ## Add CSS to Hide Bridged Elements
 
 We've now set up `"button"` components in the web and native apps. Whenever a native app supports the `"button"` component, it'll receive a message from the web component and display its native button.
