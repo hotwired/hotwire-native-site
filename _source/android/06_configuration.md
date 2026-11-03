@@ -101,17 +101,6 @@ Hotwire.config.applicationUserAgentPrefix = "My Application;"
 
 Starting in version `1.4.0`, Hotwire Native checks the origin of a page before it lets the page navigate in-app or reach native code. An origin is the full scheme, host and port, so `http://example.com` and `https://example.com:8443` are different origins from `https://example.com`.
 
-The library checks the origin for:
-
-- Route decisions: whether a link opens in the app or outside it
-- Deep links: a start location from a deep link must have the same origin as the navigator's start location, or the navigator uses its own start location instead
-- Injecting the library's JavaScript into a page
-- Turbo and bridge component messages, which only work from the main frame
-- The file chooser
-- Location, camera and microphone [permissions](/android/reference#permissions)
-
-The library only checks origins that the `WebView` or your app reports, never values a page provides. When it blocks something, it logs a warning, so set `Hotwire.config.logger.logLevel` to `HotwireLogLevel.WARN`, `INFO`, `DEBUG` or `VERBOSE` while you set up a policy.
-
 ### Default Policy
 
 By default, `DefaultOriginTrustPolicy` trusts the origins of your `NavigatorHost` start locations. If your app loads pages from a single origin, you don't need to configure anything.
@@ -138,16 +127,8 @@ Hotwire.config.originTrustPolicy = object : OriginTrustPolicy() {
 
 A policy makes 2 decisions:
 
-- `isTrustedForNavigation()`: whether a url on the origin opens in the app. Urls on other origins open in a browser tab, or through the system for other schemes like `mailto:`.
+- `isTrustedForNavigation()`: whether a url on the origin opens in the app.
 - `isTrustedForNativeAccess()`: whether pages on the origin can reach native code. The library only grants native access to origins that are also trusted for navigation.
-
-Trust the origins of your web pages for both. Navigation trust on its own is for urls your path configuration routes to a native screen, like CDN images opened in a native image viewer. A web page on an origin trusted only for navigation won't load.
-
-The library only asks your policy about `http` and `https` urls, and it passes an `Origin` it has already parsed, so you can compare origins with `==`. Create your own with `Origin.parse()`, or `Origin.parseOrNull()` if the url might not be valid.
-
-### Pages Outside Turbo
-
-A page can still load in the `WebView` without a Turbo visit, for example after a form with `data-turbo="false"` posts to another origin. If that origin isn't trusted for native access, the page loads, but it can't send messages to your app or use its permissions.
 
 ## Passkeys
 
