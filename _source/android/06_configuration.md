@@ -127,7 +127,9 @@ Hotwire.config.originTrustPolicy = object : OriginTrustPolicy() {
 A policy makes 2 decisions:
 
 - `isTrustedForNavigation()`: whether a url on the origin opens in the app. On its own, this is for urls your path configuration routes to a native screen, like CDN images opened in a native image viewer.
-- `isTrustedForNativeAccess()`: whether pages on the origin can reach native code. A web page needs both, or it fails to load with `LoadError.UntrustedOrigin`.
+- `isTrustedForNativeAccess()`: whether pages on the origin can reach native code: the library's JavaScript, Turbo and bridge component messages, the file chooser and permissions. The library only grants native access to origins that are also trusted for navigation.
+
+Trust the origins of your web pages for both. A web page on an origin trusted only for navigation won't load.
 
 If your app doesn't use `NavigatorHost`, the default policy doesn't trust any origin, so you must set a policy.
 

@@ -51,29 +51,6 @@ If a permission is missing from the manifest, the library denies the request and
 
 You don't need any permission for photos from a file input like `<input type="file" accept="image/*">`. The library opens the camera app for it.
 
-## Errors
-
-When a visit fails, the destination shows the view from `createErrorView()`. Override it in your web fragment to show your own view, and match on the error to change it:
-
-```kotlin
-override fun createErrorView(error: VisitError): View {
-    val message = when (error) {
-        is LoadError.UntrustedOrigin -> "This page can't open in the app."
-        is LoadError.WebViewNotSupported -> "Update Android System WebView to continue."
-        else -> error.description
-    }
-
-    return layoutInflater.inflate(R.layout.error, null).apply {
-        findViewById<TextView>(R.id.error_message).text = message
-    }
-}
-```
-
-Starting in version `1.4.0`, `LoadError` includes 2 new errors:
-
-- `LoadError.UntrustedOrigin(location)`: the page is on an origin your app doesn't [trust](/android/configuration#origin-trust).
-- `LoadError.WebViewNotSupported`: the device's `WebView` is too old for Hotwire Native, which needs version 88 or later.
-
 ## Custom HTML data attributes
 
 - `data-native-prevent-pull-to-refresh`: Apply to any element in your web app whose touch events conflict with the native pull-to-refresh behavior in the `WebView`. By default, scrollable elements prevent pull-to-refresh, but you may need to apply this custom attribute to elements that have draggable or swipeable behaviors.
