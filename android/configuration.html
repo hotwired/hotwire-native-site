@@ -271,6 +271,38 @@ Hotwire<span class="token punctuation">.</span>config<span class="token punctuat
 </li>
 </ul>
 <pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span>config<span class="token punctuation">.</span>applicationUserAgentPrefix <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"My Application;"</span></span></code></pre>
+<h2 id="origin-trust" tabindex="-1"><a class="anchor" href="#origin-trust">﹟</a> Origin Trust</h2>
+<p>Starting in version <code>1.4.0</code>, Hotwire Native checks the origin of a page before it lets the page navigate in-app or reach native code. An origin is the full scheme, host and port, so <code>http://example.com</code> and <code>https://example.com:8443</code> are different origins from <code>https://example.com</code>.</p>
+<h3 id="default-policy" tabindex="-1"><a class="anchor" href="#default-policy">﹟</a> Default Policy</h3>
+<p>By default, <code>DefaultOriginTrustPolicy</code> trusts the origins of your <code>NavigatorHost</code> start locations. If your app loads pages from a single origin, you don’t need to configure anything.</p>
+<p>Each <code>NavigatorHost</code> registers its start location while it exists, and it removes the registration when it’s destroyed. Every navigator opens all registered origins in the app, including the origins of other navigators. <code>Hotwire.config.registeredOrigins</code> lists the origins that are registered right now.</p>
+<p>If your app doesn’t use <code>NavigatorHost</code>, nothing gets registered, so the default policy doesn’t trust any origin. You must set your own policy.</p>
+<h3 id="custom-policy" tabindex="-1"><a class="anchor" href="#custom-policy">﹟</a> Custom Policy</h3>
+<p>To trust more origins, set <code>Hotwire.config.originTrustPolicy</code>. You can build on the default:</p>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">private</span> <span class="token keyword">val</span> accounts <span class="token operator">=</span> Origin<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"https://accounts.example.com"</span></span><span class="token punctuation">)</span>
+
+Hotwire<span class="token punctuation">.</span>config<span class="token punctuation">.</span>originTrustPolicy <span class="token operator">=</span> <span class="token keyword">object</span> <span class="token operator">:</span> <span class="token function">OriginTrustPolicy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">isTrustedForNavigation</span><span class="token punctuation">(</span>origin<span class="token operator">:</span> Origin<span class="token punctuation">)</span> <span class="token operator">=</span>
+        origin <span class="token operator">==</span> accounts <span class="token operator">||</span> DefaultOriginTrustPolicy<span class="token punctuation">.</span><span class="token function">isTrustedForNavigation</span><span class="token punctuation">(</span>origin<span class="token punctuation">)</span>
+
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">isTrustedForNativeAccess</span><span class="token punctuation">(</span>origin<span class="token operator">:</span> Origin<span class="token punctuation">)</span> <span class="token operator">=</span>
+        origin <span class="token operator">==</span> accounts <span class="token operator">||</span> DefaultOriginTrustPolicy<span class="token punctuation">.</span><span class="token function">isTrustedForNativeAccess</span><span class="token punctuation">(</span>origin<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>A policy makes 2 decisions:</p>
+<ul>
+<li><code>isTrustedForNavigation()</code>: whether a url on the origin opens in the app.</li>
+<li><code>isTrustedForNativeAccess()</code>: whether pages on the origin can reach native code. The library only grants native access to origins that are also trusted for navigation.</li>
+</ul>
+<h2 id="passkeys" tabindex="-1"><a class="anchor" href="#passkeys">﹟</a> Passkeys</h2>
+<p>Starting in version <code>1.4.0</code>, you can allow WebAuthn (passkey) requests from your <code>WebView</code> instances. Set this in your <code>Application</code> instance, before any <code>WebView</code> is created:</p>
+<pre class="language-kotlin"><code class="language-kotlin">Hotwire<span class="token punctuation">.</span>config<span class="token punctuation">.</span>webAuthenticationEnabled <span class="token operator">=</span> <span class="token boolean">true</span></code></pre>
+<p>Passkeys also need:</p>
+<ul>
+<li>Your app associated with your website through <a href="https://developers.google.com/digital-asset-links">Digital Asset Links</a></li>
+<li>A server that accepts your app’s <code>android:apk-key-hash:&lt;hash&gt;</code> origin, because the <code>WebView</code> sends your app’s identity instead of the page’s origin</li>
+<li>A device <code>WebView</code> that supports web authentication. On other devices, this setting has no effect.</li>
+</ul>
+<p>Only turn this on if your <code>WebView</code> instances load nothing but your own sites. Any page in the <code>WebView</code> can request passkeys for your associated sites, including cross-origin iframes your pages allow <code>publickey-credentials-get</code> or <code>publickey-credentials-create</code>.</p>
 <p><a class="button" href="/android/reference">Next: Reference</a></p></section>
 
   <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">

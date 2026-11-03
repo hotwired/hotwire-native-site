@@ -280,6 +280,7 @@
     <span class="token function">BridgeComponentFactory</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"button"</span></span><span class="token punctuation">,</span> <span class="token operator">::</span>ButtonComponent<span class="token punctuation">)</span>
 <span class="token punctuation">)</span></code></pre>
 <p>See the <a href="https://github.com/hotwired/hotwire-native-android/blob/main/demo/README.md">Hotwire Native Android demo app</a> for a full implementation.</p>
+<p>Bridge components only receive messages from pages on origins your app <a href="/android/configuration#origin-trust">trusts</a>. If a component doesn’t respond, check that the page’s origin is trusted.</p>
 <h2 id="add-css-to-hide-bridged-elements" tabindex="-1"><a class="anchor" href="#add-css-to-hide-bridged-elements">﹟</a> Add CSS to Hide Bridged Elements</h2>
 <p>We’ve now set up <code>&quot;button&quot;</code> components in the web and native apps. Whenever a native app supports the <code>&quot;button&quot;</code> component, it’ll receive a message from the web component and display its native button.</p>
 <p>There’s one final piece to finish. We want to hide the web button when a native button is being displayed in the native app. It’s easy to write scoped css that is only applied if:</p>
